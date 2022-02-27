@@ -1,0 +1,20 @@
+{
+  "name": "gtaportal-server",
+  "version": "1.0.0",
+  "description": "GTA submission portal for department use",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "UMKCDepartmentProject"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "mysql": "^2.18.1"
+  }
+}

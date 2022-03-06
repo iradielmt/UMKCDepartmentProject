@@ -33,6 +33,6 @@
 
 <script>
 export default {
-  name: "Header",
+  name: "Header-start",
 };
 </script>

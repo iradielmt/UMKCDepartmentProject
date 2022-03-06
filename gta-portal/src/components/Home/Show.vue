@@ -9,7 +9,7 @@
         <th>UMKC ID</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody style="color: #D1CDC8 ;">
       <tr v-for="student in students" :key="student.id">
         <td>{{student.umkcID}}</td>
         <td>{{student.fname}}</td>
@@ -24,7 +24,7 @@
 <script>
 import axios from 'axios';
 export default {
-  name: "Show",
+  name: "Show-start",
   data() {
     return {
       students: {}

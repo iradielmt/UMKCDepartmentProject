@@ -17,9 +17,6 @@ connection.connect((err) => {
     console.log("Connected successfully to MySql server")
 });
 
-api.listen(3000, () => {
-    console.log("Server started ...");
-});
 api.get("/", (req, res) => {
     res.send("Hello From The Server");
 })

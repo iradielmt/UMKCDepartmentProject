@@ -15,10 +15,10 @@
         </div>
         <div class="row mt-4">
           <div class="col-md-2">
-            <label for="" class="mt-1">ID</label>
+            <label for="" class="mt-1">UMKC ID</label>
           </div>
           <div class="col-md-6">
-            <input type="text" class="form-control" placeholder="Contact No" v-model="umkcID" />
+            <input type="text" class="form-control" placeholder="ID" v-model="umkcID" />
           </div>
         </div>
         <div class="row mt-4">
@@ -56,7 +56,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <img src="../../public/Images/Nerd-rafiki.svg" alt="" />
+        <img src="gta-portal/public/Images/Nerd-rafiki.svg" alt="" />
       </div>
     </div>
   </div>
@@ -65,7 +65,7 @@
 <script>
 import axios from 'axios';
 export default {
-  name: "Home",
+  name: "Home-start",
   data() {
     return{
       fname: "",

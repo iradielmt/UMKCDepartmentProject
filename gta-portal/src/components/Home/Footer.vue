@@ -8,6 +8,16 @@
 
 <script>
 export default {
-  name: "Footer",
+  name: "Footer-start",
 };
 </script>
+
+<style scoped>
+/* footer {
+  width: 100%;
+  height: 55px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+} */
+</style>

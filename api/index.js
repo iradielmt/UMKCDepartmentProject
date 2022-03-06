@@ -19,7 +19,7 @@ api.post("/student", (req, res) => {
 
 let fname = req.body.fname;
 let lname = req.body.lname;
-let id = req.body.id;
+let umkcID = req.body.umkcID;
 
 function validateFName(fname) {
     let errors = [];
@@ -46,24 +46,24 @@ function validateLName(lname) {
     return errors;
 }
 
-function validateID(id) {
+function validateID(umkcID) {
     let errors = [];
     // check whether ID is empty or not
-    if (id.length == 0) {
+    if (umkcID.length == 0) {
         errors.push("ID Is empty");
     }
     // checks whether ID length is less then 10 character
-    if (id.length < 8) {
+    if (umkcID.length < 8) {
         errors.push("ID must be at least 8 Digits");
     }
 
     // checks whether contact no length is more then 10 character
-    if (id.length > 9) {
+    if (umkcID.length > 9) {
         errors.push("ID Must Be of 10 Digits");
     }
 
     // Using regular expression check whether contactno is only containing digits or not
-    if (!(/[0-9]/g.test(id))) {
+    if (!(/[0-9]/g.test(umkcID))) {
         errors.push("ID must contain digits only");
     }
 

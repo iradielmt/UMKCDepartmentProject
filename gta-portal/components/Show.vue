@@ -1,0 +1,47 @@
+<template>
+  <div>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>UMKC ID</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="student in students" :key="student.id">
+        <td>{{student.umkcID}}</td>
+        <td>{{student.fname}}</td>
+        <td>{{student.lname}}</td>
+        <td>{{student.email}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+export default {
+  name: "Show",
+  data() {
+    return {
+      students: {}
+    }
+  },
+  mounted(){
+    this.loadStudentsTable();
+  },
+  methods: {
+    loadStudentsTable: function(){
+      axios.get("/api/students").then((res) => {
+        this.students = res.data.data;
+      })
+          .catch(()=>{
+            console.log("Something Went Wrong");
+          })
+    }
+  }
+};
+</script>

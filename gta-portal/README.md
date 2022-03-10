@@ -1,5 +1,3 @@
-# UMKCDepartmentProject
-Web based application to handle GTA applications
 # gta-portal
 
 ## Project setup

@@ -9,7 +9,7 @@ const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "universitydatabase"
+    database: "umkcgtadatabase"
 });
 
 connection.connect((err) => {
@@ -101,7 +101,7 @@ api.post("/student", (req, res) => {
         });
     }
     else {
-        let query = `INSERT INTO USERS (fname, lname, umkcID, admin) VALUES ('${fname}', '${lname}', '${umkcID}', '${admin}')`;
+        let query = `INSERT INTO STUDENTS (fname, lname, umkcID, admin) VALUES ('${fname}', '${lname}', '${umkcID}', '${admin}')`;
 
         connection.query(query, (err, result) => {
             if (err) {

@@ -30,7 +30,6 @@ function validateFName(fname) {
     if (fname.length == 0) {
         errors.push("First Name Is Null");
     }
-
     if (fname.length > 50) {
         errors.push("First Name Length Can Not Exceed 50 Characters.");
     }
@@ -42,11 +41,9 @@ function validateLName(lname) {
     if (lname.length == 0) {
         errors.push("Last Name Is Null");
     }
-
     if (lname.length > 50) {
         errors.push("Last Name Length Can Not Exceed 50 Characters.");
     }
-
     return errors;
 }
 
@@ -56,21 +53,18 @@ function validateID(umkcID) {
     if (umkcID.length == 0) {
         errors.push("ID Is empty");
     }
-    // checks whether ID length is less then 10 character
+    // checks whether ID length is less then required digits
     if (umkcID.length < 8) {
         errors.push("ID must be at least 8 Digits");
     }
-
-    // checks whether contact no length is more then 10 character
+    // checks whether ID length is more then 10 digits
     if (umkcID.length > 9) {
-        errors.push("ID Must Be of 10 Digits");
+        errors.push("ID can't exceed 9 Digits");
     }
-
-    // Using regular expression check whether contactno is only containing digits or not
+    // Using regular expression check whether ID is only containing digits or not
     if (!(/[0-9]/g.test(umkcID))) {
         errors.push("ID must contain digits only");
     }
-
     return errors;
 }
 
@@ -84,7 +78,6 @@ function isAdmin(umkcID){
 }
 
 api.post("/api/student", (req, res) => {
-    debugger;
     console.log("Request..	");
     let fname = req.body.fname;
     let lname = req.body.lname;
@@ -107,7 +100,6 @@ api.post("/api/student", (req, res) => {
     }
     else {
         let query = `INSERT INTO Students (fname, lname, umkcID, admin) VALUES ('${fname}', '${lname}', '${umkcID}', '${admin}')`;
-        console.log(query);
         connection.query(query, (err, result) => {
             if (err) {
                 console.log(err.message);
@@ -116,15 +108,11 @@ api.post("/api/student", (req, res) => {
                     msg: "Something went wrong please try again"
                 })
             }
-
             // if we reach till this point means record is inserted succesfully
-
-
             return res.json(200, {
                 msg: "User Registered Succesfully",
             })
         })
-
     }
 });
 

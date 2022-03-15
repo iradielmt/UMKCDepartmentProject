@@ -3,10 +3,10 @@
     <table class="table table-bordered">
       <thead>
       <tr>
-        <th>ID</th>
+        <th>UMKC ID</th>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>UMKC ID</th>
+        <th>Email</th>
       </tr>
       </thead>
       <tbody style="color: #D1CDC8 ;">

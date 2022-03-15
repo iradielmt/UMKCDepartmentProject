@@ -21,6 +21,10 @@ api.get("/", (req, res) => {
     res.send("Hello From The Server");
 })
 
+api.post("/api/dummy", (req, res)=> {
+    return res.send("Test route");
+})
+
 function validateFName(fname) {
     let errors = [];
     if (fname.length == 0) {
@@ -71,16 +75,17 @@ function validateID(umkcID) {
 }
 
 function isAdmin(umkcID){
-    let admin = false;
+    let admin = 0;
 
     if(umkcID.length == 9){
-        admin = true;
+        admin = 1;
     }
     return admin;
 }
 
-api.post("/student", (req, res) => {
-    console.log("Requesey..	");
+api.post("/api/student", (req, res) => {
+    debugger;
+    console.log("Request..	");
     let fname = req.body.fname;
     let lname = req.body.lname;
     let umkcID = req.body.umkcID;
@@ -90,7 +95,7 @@ api.post("/student", (req, res) => {
     let errID = validateID(umkcID); // will validate ID
     let admin = isAdmin(umkcID); // will determine if user is student or admin
 
-    if (errFName.length || errLName.length || errEmail.length || errContactNo.length || errBirthDate.length || errSemester.length || errCourse.length) {
+    if (errFName.length || errLName.length || errID.length) {
         res.json(200, {
             msg: "Validation Failed",
             errors: {
@@ -101,20 +106,21 @@ api.post("/student", (req, res) => {
         });
     }
     else {
-        let query = `INSERT INTO STUDENTS (fname, lname, umkcID, admin) VALUES ('${fname}', '${lname}', '${umkcID}', '${admin}')`;
-
+        let query = `INSERT INTO Students (fname, lname, umkcID, admin) VALUES ('${fname}', '${lname}', '${umkcID}', '${admin}')`;
+        console.log(query);
         connection.query(query, (err, result) => {
             if (err) {
+                console.log(err.message);
                 // status code 500 is for Internal Server Error
-                res.json(500, {
-                    msg: "Some thing went wrong please try again"
+                return res.json(500, {
+                    msg: "Something went wrong please try again"
                 })
             }
 
             // if we reach till this point means record is inserted succesfully
 
 
-            res.json(200, {
+            return res.json(200, {
                 msg: "User Registered Succesfully",
             })
         })

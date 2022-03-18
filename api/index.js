@@ -25,6 +25,28 @@ api.post("/api/dummy", (req, res)=> {
     return res.send("Test route");
 })
 
+function validateEmail(email) {
+    let errors = [];
+
+    // checks whether email is empty or not
+    if (email.length == 0) {
+        errors.push("Email Is Null");
+    }
+
+    // checks whether email length is more then 100 or not
+    if (email.length > 100) {
+        errors.push("Email Can not exceed 100 Character");
+    }
+
+
+    // checks whether email is valid or not usinf regular expression
+    if (!(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g.test(email))) {
+        errors.push("Email Is Not Valid");
+    }
+
+    return errors;
+}
+
 function validateFName(fname) {
     let errors = [];
     if (fname.length == 0) {
@@ -136,6 +158,44 @@ api.get("/api/students", (req, res) => {
 api.listen(3000, () => {
     console.log("Server started ...");
 });
+
+api.get("/api/login", (req, res)=> {
+    let umkcID = req.body.umkcID;
+    let email = req.body.email;
+    let errID = validateID(umkcID); // will validate ID
+    let errEmail = validateEmail(email); // will validate user email is in proper format
+    if (errID.length || errEmail.length) {
+        res.json(200, {
+            msg: "Validation Failed",
+            errors: {
+                umkcID: errID,
+                email: errEmail,
+            }
+        });
+    }
+    else {
+        let query = `SELECT umkcID, email FROM Accounts WHERE umkcID = '${umkcID}'`;
+        connection.query(query, (err, results) => {
+            if (err) {
+                console.log(err.message);
+                // status code 500 is for Internal Server Error
+                return res.json(500, {
+                    msg: "Something went wrong please try again"
+                })
+            }
+            // if (!results.affectedRows.length) {
+            //     console.log("No account")
+            // }
+            console.log(results.affectedRows);
+            // if we reach till this point means record is inserted succesfully
+
+            return res.json(200, {
+                msg: "Succesful Login",
+            })
+        })
+    }
+})
+
 
 
 

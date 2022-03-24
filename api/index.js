@@ -133,6 +133,8 @@ api.get("/api/students", (req, res) => {
     })
 })
 
+//-----------Admin------------------
+
 api.listen(3000, () => {
     console.log("Server started ...");
 });

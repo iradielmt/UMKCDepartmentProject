@@ -21,10 +21,6 @@ api.get("/", (req, res) => {
     res.send("Hello From The Server");
 })
 
-api.post("/api/dummy", (req, res)=> {
-    return res.send("Test route");
-})
-
 function validateEmail(email) {
     let errors = [];
 

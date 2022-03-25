@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6">
@@ -23,29 +24,21 @@
         </div>
         <div class="row mt-4">
           <div class="col-md-2">
-            <label for="" class="mt-1">Semester</label>
+            <label for="" class="mt-1">Email</label>
           </div>
           <div class="col-md-6">
-            <select name="" id="" class="form-select">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-            </select>
+            <input type="text" class="form-control" placeholder="Email" v-model="email" />
           </div>
         </div>
         <div class="row mt-4">
           <div class="col-md-2">
-            <label for="" class="mt-1">Course</label>
+            <label for="" class="mt-1">GTA Certified</label>
           </div>
           <div class="col-md-6">
-            <select name="" id="" class="form-select">
-              <option value="B.Tech Computer Engineering">B.Tech Computer Engineering</option>
-              <option value="B.Tech Information Technology">B.Tech Information Technology</option>
+            <select name="" id="" class="form-select" v-model="certified">
+              <option value=""> </option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
             </select>
           </div>
         </div>
@@ -56,21 +49,31 @@
         </div>
       </div>
       <div class="col-md-6">
-        <img src="gta-portal/public/Images/Nerd-rafiki.svg" alt="" />
+        <img src="../../../../public/Images/Nerd-rafiki.svg" alt=""/>
       </div>
     </div>
   </div>
+  <Footer />
 </template>
 
 <script>
 import axios from 'axios';
+import Header from "@/components/Views/Home/Header.vue";
+import Footer from "@/components/Views/Home/Footer.vue";
 export default {
-  name: "Home-start",
+  name: "RegistrationPage",
+  components: {
+    Header,
+    Footer
+  },
   data() {
     return{
       fname: "",
       lname: "",
+      umkcID: "",
       id: "",
+      email: "",
+      certified: false,
     }
   },
   methods: {

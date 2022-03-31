@@ -13,11 +13,11 @@ export default {
 </script>
 
 <style scoped>
-/* footer {
+ footer {
   width: 100%;
   height: 55px;
   position: absolute;
   bottom: 0;
   left: 0;
-} */
+} 
 </style>

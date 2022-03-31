@@ -1,17 +1,44 @@
 <template>
-    <div>
-        test
+  <Header />
+  <body>
+    <div class="container-fluid; margin-left:0px" style="height: 400px; background-color: blue">
+      <div class="col text-center">
+        <div class="">
+          <button type="button" class="btn btn-light btn-lg btn-block">Post Job</button>
+          <div class="row" style="text-align: center; color: yellow">
+            <p>Use this button to post a new job!</p>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="container-fluid; margin-left:0px" style="height: 400px; background-color: yellow">
+      <div class="col text-center">
+      <button type="button" class="btn btn-dark btn-lg btn-block">View Candidates</button>
+      <div class="row" style="text-align: center; color: blue">
+          <p>Use this button to view potential candidates for desired position!</p>
+      </div>
+    </div>
+    </div>
+  </body>
 </template>
 
 <script>
+import Header from "@/components/Views/Admin/AdminHeader.vue";
+
+
 export default {
   name: "Admin-page",
+  components:{
+    Header
+  },
+  
 };
 </script>
 
 <style scoped>
-img {
-  height: 500px;
+
+.btn-lg{
+  padding: 10px 20px 10px, 5px;
+  width: 300px;
 }
 </style>

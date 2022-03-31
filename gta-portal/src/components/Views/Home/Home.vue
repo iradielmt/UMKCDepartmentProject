@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+<div class="container-fluid">
     <div class="row">
       <div class="col-md-6">
         <div class="row mt-4">
@@ -64,6 +64,7 @@
 
 <script>
 import axios from 'axios';
+
 export default {
   name: "Home-start",
   data() {

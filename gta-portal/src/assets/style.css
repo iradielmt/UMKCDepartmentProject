@@ -876,7 +876,8 @@ textarea.form-control {
     position: relative; }
   .info-wrap .dbox {
     width: 100%;
-    margin-bottom: 25px; }
+    margin-bottom: 25px; 
+    color: lightblue;}
     .info-wrap .dbox:last-child {
       margin-bottom: 0; }
     .info-wrap .dbox p {
@@ -898,4 +899,8 @@ textarea.form-control {
       width: calc(100% - 50px); }
 
 
-
+li{
+  color: lightblue;
+  padding: 1%;
+  
+}

@@ -41,7 +41,7 @@
                                             <p class="mb-4">You may contact UMKC if any problems occuring applying/logging in. Contact us here.</p>
                                     <div class="dbox w-100 d-flex align-items-start">
                                         <div class="icon d-flex align-items-center justify-content-center">
-                                             <img src="@/assets/droppin.png" alt="centered image" height="50%" width="50%">
+                                             <img src="@/assets/droppin.png" alt="centered image" height="60%" width="60%">
                                             <span class="fa fa-map-marker"></span>
                                         </div>
                                         <div class="text pl-3">
@@ -68,7 +68,7 @@
                                 </div>
                                     <div class="dbox w-100 d-flex align-items-center">
                                         <div class="icon d-flex align-items-center justify-content-center">
-                                            <img src="@/assets/world.png" alt="centered image" height="75%" width="50%">
+                                            <img src="@/assets/world.png" alt="centered image" height="50%" width="50%">
                                             <span class="fa fa-globe"></span>
                                         </div>
                                         <div class="text pl-3">
@@ -101,6 +101,3 @@ export default {
 
 
 <style> @import '@/assets/style.css' </style>
-<style scoped >
-  
-</style>

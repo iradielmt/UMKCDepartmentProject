@@ -1,45 +1,42 @@
 <template>
-  <Header>
-  <body>
-    <div class="container-fluid" style="height: 400px; background-color: blue">
-      <div class="col text-center">
-        <div class="col text-center">
-          <button type="button" class="btn btn-light btn-lg btn-block">Post Job</button>
-          <div class="row" style="text-align: center; color: yellow">
-            <p>Use this button to post a new job!</p>
+<div class="main">
+<section class="vh-100" style="background-color: #6c757d;">
+    <div class="container py-5 h-50" >
+      <div class="row d-flex justify-content-center align-items-center h-100" >
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5" >
+          <div class="card shadow-2-strong" style="border-radius: 1rem;background-color: #272a34" >
+            <div class="card-body p-5 text-center">
+              <h3 class="mb-5" style="color: white">View Candidates</h3>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Choose Job
+
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" data-model="modalOne" href="#">Temp1</a></li>
+                  <li><a class="dropdown-item" href="#">Temp2</a></li>
+                  <li><a class="dropdown-item" href="#">Temp3</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="container-fluid; margin-left:0px" style="height: 400px; background-color: yellow">
-      <div class="col text-center">
-      <button type="button" class="btn btn-dark btn-lg btn-block">View Candidates</button>
-      <div class="row" style="text-align: center; color: blue">
-          <p>Use this button to view potential candidates for desired position!</p>
-      </div>
-    </div>
-    </div>
-  </body>
-
+  </section>
+</div>
 </template>
 
 <script>
-import Header from "@/components/Views/Admin/AdminHeader.vue";
-import Footer from "@/components/Views/Home/Footer.vue";
 
 export default {
-  name: "Admin-page",
-  components:{
-    Header, Footer
-  },
-  
-};
+  name: "Admin-page"
+}
+
+
 </script>
 
 <style scoped>
 
-.btn-lg{
-  padding: 10px 20px 10px, 5px;
-  width: 300px;
-}
+  
 </style>

@@ -1,4 +1,5 @@
 <template>
+<Header />
 <div class="main">
 <section class="vh-100" style="background-color: #6c757d;">
     <div class="container py-5 h-50" >
@@ -13,9 +14,30 @@
 
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" data-model="modalOne" href="#">Temp1</a></li>
-                  <li><a class="dropdown-item" href="#">Temp2</a></li>
-                  <li><a class="dropdown-item" href="#">Temp3</a></li>
+                  <li><a class="dropdown-item" data-model="modalOne" href="#">CS 101</a></li>
+                  <li><a class="dropdown-item" href="#">CS 191</a></li>
+                  <li><a class="dropdown-item" href="#">CS 201R</a></li>
+                  <li><a class="dropdown-item" data-model="modalOne" href="#">CS 291</a></li>
+                  <li><a class="dropdown-item" href="#">CS 303</a></li>
+                  <li><a class="dropdown-item" href="#">CS 320</a></li>
+                  <li><a class="dropdown-item" data-model="modalOne" href="#">CS 349</a></li>
+                  <li><a class="dropdown-item" href="#">CS 394R</a></li>
+                  <li><a class="dropdown-item" href="#">CS 404</a></li>
+                  <li><a class="dropdown-item" data-model="modalOne" href="#">CS 441</a></li>
+                  <li><a class="dropdown-item" href="#">CS 449</a></li>
+                  <li><a class="dropdown-item" href="#">CS 456</a></li>
+                  <li><a class="dropdown-item" data-model="modalOne" href="#">CS 457</a></li>
+                  <li><a class="dropdown-item" href="#">CS 458</a></li>
+                  <li><a class="dropdown-item" href="#">CS 461</a></li>
+                  <li><a class="dropdown-item" data-model="modalOne" href="#">CS 465R</a></li>
+                  <li><a class="dropdown-item" href="#">CS 470</a></li>
+                  <li><a class="dropdown-item" href="#">CS 5520</a></li>
+                  <li><a class="dropdown-item" data-model="modalOne" href="#">CS 5525</a></li>
+                  <li><a class="dropdown-item" href="#">CS 5552A</a></li>
+                  <li><a class="dropdown-item" href="#">CS 5565</a></li>
+                  <li><a class="dropdown-item" data-model="modalOne" href="#">CS 5573</a></li>
+                  <li><a class="dropdown-item" href="#">CS 5590PA</a></li>
+                  <li><a class="dropdown-item" href="#">CS 5592</a></li>
                 </ul>
               </div>
             </div>
@@ -28,8 +50,10 @@
 </template>
 
 <script>
+import Header from '../Admin/AdminHeader.vue'
 
 export default {
+  components: { Header },
   name: "Admin-page"
 }
 

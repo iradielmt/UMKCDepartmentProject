@@ -1,4 +1,5 @@
 <template>
+  <Header/>
   <div>
     <table class="table table-bordered">
       <thead>
@@ -19,12 +20,19 @@
       </tbody>
     </table>
   </div>
+  <Footer/>
 </template>
 
 <script>
 import axios from 'axios';
+import Header from "@/components/Views/Home/Header.vue";
+import Footer from "@/components/Views/Home/Footer.vue";
 export default {
   name: "Show-start",
+  components: {
+    Header,
+    Footer
+  },
   data() {
     return {
       students: {}

@@ -3,6 +3,7 @@
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <img src="@/assets/umkc.png" alt="centered image" height="150" width="275"> 
           <div class="card shadow-2-strong" style="border-radius: 1rem;">
             <div class="card-body p-5 text-center">
               <h3 class="mb-5">Sign in</h3>
@@ -36,5 +37,5 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+
+<style> @import '@/assets/style.css' </style>

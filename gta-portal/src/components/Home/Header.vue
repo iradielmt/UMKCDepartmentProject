@@ -21,7 +21,7 @@
           </li>
           <li class="nav-item">
             <router-link class="nav-link active" aria-current="page" to="/InfoPage"
-            >Qualifications</router-link
+            >Info</router-link
             >
           </li>
           <li class="nav-item">

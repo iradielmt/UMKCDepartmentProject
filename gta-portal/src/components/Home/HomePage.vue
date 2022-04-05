@@ -25,11 +25,11 @@
                                             <form>
                                                 <div class="row">
                                                 
-                                                <button class="button-19">Register</button>
+                                                <button class="button-19" @click="$router.push('/Register')">Register</button>
                                                 
                                                 <br>
                                                 <h3 class="mb-4">Existing GTA login:</h3>
-                                                <button class="button-19">Login</button>
+                                                <button class="button-19" @click="$router.push('/Login')">Login</button>
                                                 
                                                 </div>
                                             </form>

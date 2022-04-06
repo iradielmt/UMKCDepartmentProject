@@ -21,15 +21,12 @@ api.get("/", (req, res) => {
     res.send("Hello From The Server");
 })
 
-api.post("/api/dummy", (req, res)=> {
-    return res.send("Test route");
-})
-
 function validateFName(fname) {
     let errors = [];
     if (fname.length == 0) {
         errors.push("First Name Is Null");
     }
+
     if (fname.length > 50) {
         errors.push("First Name Length Can Not Exceed 50 Characters.");
     }
@@ -41,9 +38,11 @@ function validateLName(lname) {
     if (lname.length == 0) {
         errors.push("Last Name Is Null");
     }
+
     if (lname.length > 50) {
         errors.push("Last Name Length Can Not Exceed 50 Characters.");
     }
+
     return errors;
 }
 
@@ -53,32 +52,35 @@ function validateID(umkcID) {
     if (umkcID.length == 0) {
         errors.push("ID Is empty");
     }
-    // checks whether ID length is less then required digits
+    // checks whether ID length is less then 10 character
     if (umkcID.length < 8) {
         errors.push("ID must be at least 8 Digits");
     }
-    // checks whether ID length is more then 10 digits
+
+    // checks whether contact no length is more then 10 character
     if (umkcID.length > 9) {
-        errors.push("ID can't exceed 9 Digits");
+        errors.push("ID Must Be of 10 Digits");
     }
-    // Using regular expression check whether ID is only containing digits or not
+
+    // Using regular expression check whether contactno is only containing digits or not
     if (!(/[0-9]/g.test(umkcID))) {
         errors.push("ID must contain digits only");
     }
+
     return errors;
 }
 
 function isAdmin(umkcID){
-    let admin = 0;
+    let admin = false;
 
     if(umkcID.length == 9){
-        admin = 1;
+        admin = true;
     }
     return admin;
 }
 
-api.post("/api/student", (req, res) => {
-    console.log("Request..	");
+api.post("/student", (req, res) => {
+    console.log("Requesey..	");
     let fname = req.body.fname;
     let lname = req.body.lname;
     let umkcID = req.body.umkcID;
@@ -88,7 +90,7 @@ api.post("/api/student", (req, res) => {
     let errID = validateID(umkcID); // will validate ID
     let admin = isAdmin(umkcID); // will determine if user is student or admin
 
-    if (errFName.length || errLName.length || errID.length) {
+    if (errFName.length || errLName.length || errEmail.length || errContactNo.length || errBirthDate.length || errSemester.length || errCourse.length) {
         res.json(200, {
             msg: "Validation Failed",
             errors: {
@@ -99,20 +101,24 @@ api.post("/api/student", (req, res) => {
         });
     }
     else {
-        let query = `INSERT INTO Students (fname, lname, umkcID, admin) VALUES ('${fname}', '${lname}', '${umkcID}', '${admin}')`;
+        let query = `INSERT INTO USERS (fname, lname, umkcID, admin) VALUES ('${fname}', '${lname}', '${umkcID}', '${admin}')`;
+
         connection.query(query, (err, result) => {
             if (err) {
-                console.log(err.message);
                 // status code 500 is for Internal Server Error
-                return res.json(500, {
-                    msg: "Something went wrong please try again"
+                res.json(500, {
+                    msg: "Some thing went wrong please try again"
                 })
             }
+
             // if we reach till this point means record is inserted succesfully
-            return res.json(200, {
+
+
+            res.json(200, {
                 msg: "User Registered Succesfully",
             })
         })
+
     }
 });
 
@@ -131,13 +137,26 @@ api.get("/api/students", (req, res) => {
             data: result
         })
     })
-})
+});
 
-//-----------Admin------------------
+
+api.get("/api/applications", (req, res) => {
+    let query = "SELECT fname, lname, umkcID, courseID FROM Applications WHERE courseID = 10095";
+
+    connection.query(query, (err, result) => {
+        if (err) {
+            res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+});
 
 api.listen(3000, () => {
     console.log("Server started ...");
 });
-
-
-

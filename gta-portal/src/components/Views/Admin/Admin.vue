@@ -1,5 +1,4 @@
 <template>
-<Header />
 <div class="main">
 <section class="vh-100" style="background-color: #6c757d;">
     <div class="container py-5 h-50" >
@@ -14,7 +13,7 @@
 
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" data-model="modalOne" href="#">CS 101</a></li>
+                  <li><a class="dropdown-item" data-toggle="modal" data-target="#applicationModal">CS 101</a></li>
                   <li><a class="dropdown-item" href="#">CS 191</a></li>
                   <li><a class="dropdown-item" href="#">CS 201R</a></li>
                   <li><a class="dropdown-item" data-model="modalOne" href="#">CS 291</a></li>
@@ -44,16 +43,19 @@
           </div>
         </div>
       </div>
+      <div id="displayTable">
+      <Table />
+    </div>
     </div>
   </section>
 </div>
 </template>
 
 <script>
-import Header from '../Admin/AdminHeader.vue'
+import Table from '../Admin/Table.vue'
 
 export default {
-  components: { Header },
+  components: { Table },
   name: "Admin-page"
 }
 

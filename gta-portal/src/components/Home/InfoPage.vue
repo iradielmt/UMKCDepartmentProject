@@ -2,7 +2,7 @@
 <template>
     <html lang="en">
   <head>
-  	<title> GTA Qualification Information</title>
+ <title> GTA Qualification Information</title>
     <meta charset="utf-8">
 	</head>
 	<body>
@@ -49,11 +49,11 @@
 										<li>These are the courses that, potentially, needlab instructors:  CS 101L; CS 201L, ECE 227; ECE 229; ECE 277; ECE 303; ECE 377; ECE 331; ECE 427; ECE 429 </li>
 										<li>Please do not include any courses not mentioned, above in your application as this will not help your potential employment. </li> 
 										<li>Descriptions for the above-mentioned courses can be found, here:  https://catalog.umkc.edu/course-offerings/  DO NOT include a copy of a CV/resume, cover letter or reference letters as that will not help your potential employment.</li> 
-									  </ul>
+</ul>
 									
 									
 								
-			          </div>
+</div>
 							</div>
 						</div>
 					</div>

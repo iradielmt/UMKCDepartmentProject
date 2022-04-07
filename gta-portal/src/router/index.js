@@ -3,6 +3,7 @@ import Register from '@/components/Home/Register'
 import InfoPage from "@/components/Home/InfoPage"
 import HomePage from "@/components/Home/HomePage"
 import Login from "@/components/Home/Login"
+import AppPage from "@/components/Home/AppPage"
 
 const routes = [
     {
@@ -25,6 +26,10 @@ const routes = [
     {
         path: "/Login",
         component: Login
+    },
+    {
+        path: "/AppPage",
+        component: AppPage
     }
 ];
 

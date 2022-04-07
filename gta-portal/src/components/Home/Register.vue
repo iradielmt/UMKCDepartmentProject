@@ -1,10 +1,27 @@
+/*eslint no-mixed-spaces-and-tabs: ["error", "smart-tabs"]*/
 <template>
-  <!-- <Header />  -->
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6">
+    <html lang="en">
+  <head>
+<title> GTA Qualification Information</title>
+    <meta charset="utf-8">
+</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+                   <img src="@/assets/umkc.png" alt="centered image" height="150" width="275"> 
+					<h2 class="heading-section">Register</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-10">
+					<div class="wrapper">
+						<div class="contact-wrap w-100 p-md-5 p-4 py-5">
+
+								<div class="col-md-6">
         <div class="row mt-4">
-          <div class="col-md-2">
+          <div>
             <label for="" class="mt-1">Name</label>
           </div>
           <div class="col-md-4">
@@ -15,7 +32,7 @@
           </div>
         </div>
         <div class="row mt-4">
-          <div class="col-md-2">
+          <div>
             <label for="" class="mt-1">UMKC ID</label>
           </div>
           <div class="col-md-6">
@@ -23,14 +40,14 @@
           </div>
         </div>
         <div class="row mt-4">
-          <div class="col-md-2">
+          <div >
             <label for="" class="mt-1">Email</label>
           </div>
           <div class="col-md-6">
             <input type="text" class="form-control" placeholder="Email" v-model="email" />
           </div>
           <div class="row mt-4">
-          <div class="col-md-2">
+          <div>
             <label for="" class="mt-1">Contact Number</label>
           </div>
           <div class="col-md-6">
@@ -39,7 +56,7 @@
         </div>
         </div>
         <div class="row mt-4">
-          <div class="col-md-2">
+          <div>
             <label for="" class="mt-1">GTA Certified</label>
           </div>
           <div class="col-md-6">
@@ -52,16 +69,29 @@
         </div>
         <div class="row mt-4">
           <div class="col-md-2">
-            <button class="btn btn-primary" @click="registerStudent">Register</button>
+            <button class="btn btn-primary" @click="$router.push('/AppPage')" >Register</button>
           </div>
         </div>
+
+        
       </div>
-      <!-- <div class="col-md-6">
-        <img src="../../../../public/Images/Nerd-rafiki.svg" alt=""/>
-      </div> -->
+     
     </div>
   </div>
-  <!-- <Footer /> -->
+									
+								
+</div>
+						</div>
+      </div>
+			
+			
+		
+		
+	</section>
+
+
+	</body>
+</html>
 </template>
 
 <script>
@@ -69,7 +99,7 @@ import axios from 'axios';
 // import Header from "@/components/Views/Home/Header.vue";
 // import Footer from "@/components/Views/Home/Footer.vue";
 export default {
-  name: "RegistrationPage",
+  name: "PrettyReg",
   // components: {
   //   Header,
   //   Footer
@@ -124,8 +154,7 @@ export default {
 };
 </script>
 
-<style scoped>
-img {
-  height: 500px;
-}
-</style>
+
+
+
+<style> @import '@/assets/style.css' </style>

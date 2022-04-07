@@ -1,4 +1,4 @@
-/* eslint-disable */
+/*eslint no-mixed-spaces-and-tabs: ["error", "smart-tabs"]*/
 <template>
     <html lang="en">
         <head>

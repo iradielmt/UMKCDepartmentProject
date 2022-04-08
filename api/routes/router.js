@@ -31,9 +31,7 @@ router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
                     } else {
                         // has hashed pw => add to database
                         db.query(
-                            `INSERT INTO Accounts (email, username, password, registered) VALUES ('${uuid.v4()}', ${db.escape(
-                                req.body.username
-                            )}, ${db.escape(hash)}, now())`,
+                            `INSERT INTO Accounts (email, umkcID) VALUES (${db.escape(req.body.email)}, ${db.escape(hash)} )`,
                             (err, result) => {
                                 if (err) {
                                     throw err;
@@ -54,8 +52,9 @@ router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
+    let umkcID = req.body.umkcID.toString();
     db.query(
-        `SELECT * FROM Accounts WHERE email = ${db.escape(req.body.email)};`,
+        `SELECT * FROM Accounts WHERE email = '${req.body.email}'`,
         (err, result) => {
             // user does not exists
             if (err) {
@@ -70,9 +69,10 @@ router.post('/login', (req, res, next) => {
                 });
             }
             // check password
+            console.log(umkcID);
             bcrypt.compare(
-                req.body.umkcID,
-                result[0]['umkcID'],
+                req.body.umkcID.toString(),
+                result[0].umkcID.toString(),
                 (bErr, bResult) => {
                     // wrong password
                     if (bErr) {
@@ -91,7 +91,7 @@ router.post('/login', (req, res, next) => {
                             }
                         );
                         db.query(
-                            `UPDATE Accounts SET last_login = now() WHERE id = '${result[0].id}'`
+                            `UPDATE Accounts SET last_login = now() WHERE email = '${result[0].id}'`
                         );
                         return res.status(200).send({
                             msg: 'Logged in!',

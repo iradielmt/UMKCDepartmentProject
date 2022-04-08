@@ -23,7 +23,7 @@ module.exports = {
             });
         }
         // checks whether email is empty or not
-        if (req.body.email.length == 0) {
+        if (!req.body.email) {
             return res.status(400).send({
                 msg: 'Email Cannot Be Null'
             });
@@ -67,7 +67,7 @@ module.exports = {
         // checks whether ID length is more then 10 digits
         if (umkcID.length > 9) {
             return res.status(400).send({
-                msg: 'ID cannott exceed 9 Digits'
+                msg: 'ID cannot exceed 9 Digits'
             });
         }
         // password min 6 chars
@@ -90,6 +90,6 @@ module.exports = {
         //         msg: 'Both passwords must match'
         //     });
         // }
-        // next();
+        next();
     }
 };

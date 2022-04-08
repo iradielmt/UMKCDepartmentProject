@@ -32,6 +32,14 @@
         </div>
         <div class="row mt-4">
           <div class="col-md-2">
+            <label for="" class="mt-1">Contact Number</label>
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Contact #" v-model="contactno" />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-md-2">
             <label for="" class="mt-1">GTA Certified</label>
           </div>
           <div class="col-md-6">
@@ -70,18 +78,21 @@ export default {
     return{
       fname: "",
       lname: "",
-      umkcID: "",
+      umkcID: '',
       id: "",
       email: "",
+      contactno: '',
       certified: false,
     }
   },
   methods: {
     registerStudent: function() {
-      axios.post("/api/student", {
+      axios.post("/api/register", {
         fname: this.fname,
         lname: this.lname,
         umkcID: this.umkcID,
+        email: this.email,
+        contactno: this.contactno
       }).then((res) => {
         if(res.data.msg === "Validation Failed"){
           let errors = res.data.errors;

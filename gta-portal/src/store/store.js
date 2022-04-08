@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import Vuex from 'vuex';
 import Axios from 'axios';
 import createPersistedState from 'vuex-persistedstate';
@@ -34,7 +33,7 @@ const store = new Vuex.Store({
         }
     },
     actions: {
-        login: ({ commit, dispatch }, { token, user }) => {
+        login: ({ commit }, { token, user }) => {
             commit('SET_TOKEN', token);
             commit('SET_USER', user);
 

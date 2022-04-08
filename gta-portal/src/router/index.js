@@ -1,10 +1,10 @@
 import { createWebHistory, createRouter } from 'vue-router'
-import Register from '@/components/Home/Register'
-import InfoPage from "@/components/Home/InfoPage"
-import HomePage from "@/components/Home/HomePage"
-import Login from "@/components/Home/Login"
-import AppPage from "@/components/Home/AppPage"
-import LoginPaje from "@/components/Home/LoginPaje"
+import Register from '@/components/Views/Register/Register'
+import InfoPage from "@/components/Views/Info/InfoPage"
+import HomePage from "@/components/Views/Home/HomePage"
+import Login from "@/components/Views/Login/Login"
+import AppPage from "@/components/Views/Application/AppPage"
+import LoginPaje from "@/components/Views/Login/LoginPaje"
 
 const routes = [
     {

@@ -1,4 +1,5 @@
 <template>
+  <Header></Header>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -88,6 +89,7 @@
 </section>
 </body>
 </html>
+  <Footer></Footer>
 </template>
 
 <script>

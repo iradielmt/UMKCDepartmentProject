@@ -75,11 +75,9 @@
 
                  <div class="row mt-4">
                  <div class="col-md-2">
-                 <button class="btn btn-primary" @click="$router.push('/AppPage')" >Register</button>
+                 <button class="btn btn-primary" >Register</button>
                  </div>
                  </div>
-
-        
                 </div>
               </div>
             </div>							

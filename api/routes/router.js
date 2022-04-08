@@ -25,8 +25,9 @@ router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
                 // New account being created
                 bcrypt.hash(req.body.umkcID, 10, (err, hash) => {
                     if (err) {
+                        console.log(err);
                         return res.status(500).send({
-                            msg: err
+                            msg: JSON.stringify(err)
                         });
                     } else {
                         // has hashed pw => add to database
@@ -69,7 +70,6 @@ router.post('/login', (req, res, next) => {
                 });
             }
             // check password
-            console.log(umkcID);
             bcrypt.compare(
                 req.body.umkcID.toString(),
                 result[0].umkcID.toString(),
@@ -91,7 +91,7 @@ router.post('/login', (req, res, next) => {
                             }
                         );
                         db.query(
-                            `UPDATE Accounts SET last_login = now() WHERE email = '${result[0].id}'`
+                            `UPDATE Accounts SET last_login = now() WHERE email = '${result[0].email}'`
                         );
                         return res.status(200).send({
                             msg: 'Logged in!',

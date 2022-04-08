@@ -25,7 +25,7 @@
             >
           </li>
           <li class="nav-item">
-            <router-link class="nav-link active" style="text-align:right;" aria-current="page" to="/Login"
+            <router-link class="nav-link active" style="text-align:right;" aria-current="page" to="/Loginpaje"
             >Login</router-link>
           </li>
         </ul>
@@ -36,6 +36,6 @@
 
 <script>
 export default {
-  name: "Header-start",
+  name: "HeaderHome",
 };
 </script>

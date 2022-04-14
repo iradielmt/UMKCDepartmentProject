@@ -94,7 +94,7 @@ function isAdmin(umkcID){
     let admin = 0;
 
     if(umkcID.length == 9){
-        admin = true;
+        admin = 1;
     }
     return admin;
 }

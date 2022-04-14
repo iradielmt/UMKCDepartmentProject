@@ -177,7 +177,7 @@ api.get("/api/applications", (req, res) => {
     })
 });
 
-api.get("/api/getCourseNum", (req, res) => {
+api.get("/api/courseNum", (req, res) => {
     let query = `SELECT * FROM Courses WHERE courseNo ='${req.query.courseNo}'`;
 
     connection.query(query, (err, result) => {

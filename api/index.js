@@ -182,7 +182,7 @@ api.get("/api/courseNum", (req, res) => {
 
     connection.query(query, (err, result) => {
         if (err) {
-            res.json(500, {
+            return res.json(500, {
                 msg: "Internal Server Error Please Try Again"
             })
         }

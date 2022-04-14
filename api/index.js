@@ -77,7 +77,7 @@ function validateID(umkcID) {
         errors.push("ID must be at least 8 Digits");
     }
 
-    // checks whether contact no length is more then 10 character
+    // checks whether ID length is more then 10 character
     if (umkcID.length > 9) {
         errors.push("ID can't exceed 9 Digits");
     }

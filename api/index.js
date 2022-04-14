@@ -170,7 +170,6 @@ api.get("/api/applications", (req, res) => {
 
 api.get("/api/courseNum", (req, res) => {
     let query = `SELECT * FROM Courses WHERE courseNo ='${req.body.courseNo}'`;
-
     connection.query(query, (err, result) => {
         if (err) {
             return res.json(500, {

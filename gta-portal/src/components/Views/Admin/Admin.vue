@@ -127,7 +127,7 @@ export default {
   },
   methods: {
     // matchCourse: function(){
-    //   axios.get("/api/getCourseNum",{params: {courseNo: this.courseName}}).then((res) => {
+    //   axios.get("/api/courseNum",{params: {courseNo: this.courseName}}).then((res) => {
     //     this.courseID = res.data.data.courseID;
     //   })
     //   .catch(()=>{

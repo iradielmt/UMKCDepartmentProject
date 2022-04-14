@@ -80,7 +80,6 @@ function validateID(umkcID) {
     if (umkcID.length > 9) {
         errors.push("ID can't exceed 9 Digits");
     }
-
     // Using regular expression check whether ID is only containing digits or not
     if (!(/[0-9]/g.test(umkcID))) {
         errors.push("ID must contain digits only");

@@ -133,7 +133,6 @@ api.post("/api/student", (req, res) => {
 
             // if we reach till this point means record is inserted succesfully
 
-
             return res.json(200, {
                 msg: "User Registered Succesfully",
             })

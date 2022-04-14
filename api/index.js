@@ -118,7 +118,7 @@ api.post("/api/student", (req, res) => {
         });
     }
     else {
-        let query = `INSERT INTO USERS (fname, lname, umkcID, admin) VALUES ('${fname}', '${lname}', '${umkcID}', '${admin}')`;
+        let query = `INSERT INTO Students (fname, lname, umkcID, admin) VALUES ('${fname}', '${lname}', '${umkcID}', '${admin}')`;
         connection.query(query, (err, result) => {
             if (err) {
                 // status code 500 is for Internal Server Error

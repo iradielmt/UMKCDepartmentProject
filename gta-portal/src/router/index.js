@@ -5,6 +5,7 @@ import HomePage from "@/components/Home/HomePage"
 import Login from "@/components/Home/Login"
 import AppPage from "@/components/Home/AppPage"
 import LoginPaje from "@/components/Home/LoginPaje"
+import Admin from "@/components/Views/Admin/Admin"
 
 const routes = [
     {
@@ -35,6 +36,10 @@ const routes = [
     {
         path: "/LoginPaje",
         component: LoginPaje
+    },
+    {
+        path: "/admin",
+        component: Admin
     }
 ];
 

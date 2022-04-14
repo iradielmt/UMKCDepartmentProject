@@ -79,7 +79,7 @@ function validateID(umkcID) {
 
     // checks whether contact no length is more then 10 character
     if (umkcID.length > 9) {
-        errors.push("ID Must Be of 10 Digits");
+        errors.push("ID can't exceed 9 Digits");
     }
 
     // Using regular expression check whether contactno is only containing digits or not

@@ -91,7 +91,7 @@ function validateID(umkcID) {
 }
 
 function isAdmin(umkcID){
-    let admin = false;
+    let admin = 0;
 
     if(umkcID.length == 9){
         admin = true;

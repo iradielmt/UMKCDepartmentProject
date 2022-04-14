@@ -127,7 +127,7 @@ api.post("/api/student", (req, res) => {
             if (err) {
                 // status code 500 is for Internal Server Error
                 return res.json(500, {
-                    msg: "Some thing went wrong please try again"
+                    msg: "Something went wrong please try again"
                 })
             }
 

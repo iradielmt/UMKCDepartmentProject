@@ -85,7 +85,6 @@ function validateID(umkcID) {
     if (!(/[0-9]/g.test(umkcID))) {
         errors.push("ID must contain digits only");
     }
-
     return errors;
 }
 

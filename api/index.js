@@ -72,7 +72,7 @@ function validateID(umkcID) {
     if (umkcID.length == 0) {
         errors.push("ID Is empty");
     }
-    // checks whether ID length is less then 10 character
+    // checks whether ID length is less then required digits
     if (umkcID.length < 8) {
         errors.push("ID must be at least 8 Digits");
     }

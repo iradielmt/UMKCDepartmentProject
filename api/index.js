@@ -100,7 +100,7 @@ function isAdmin(umkcID){
 }
 
 api.post("/api/student", (req, res) => {
-    console.log("Requesey..	");
+    console.log("Request..	");
     let fname = req.body.fname;
     let lname = req.body.lname;
     let umkcID = req.body.umkcID;

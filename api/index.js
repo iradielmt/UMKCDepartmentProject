@@ -110,7 +110,7 @@ api.post("/api/student", (req, res) => {
     let errID = validateID(umkcID); // will validate ID
     let admin = isAdmin(umkcID); // will determine if user is student or admin
 
-    if (errFName.length || errLName.length || errEmail.length || errContactNo.length || errBirthDate.length || errSemester.length || errCourse.length) {
+    if (errFName.length || errLName.length || errID.length) {
         res.json(200, {
             msg: "Validation Failed",
             errors: {

@@ -135,7 +135,7 @@ export default {
     //   })
     // },
     loadApplicationsTable: function(){
-      axios.get("/api/getCourseNum", { params: { courseNo: "CS291" } }).then((res) => {
+      axios.get("/api/courseNum", { params: { courseNo: "CS291" } }).then((res) => {
         this.courseID = res.data.courseID;
         console.log(this.courseID);
       })

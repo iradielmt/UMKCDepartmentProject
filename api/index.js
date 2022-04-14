@@ -99,7 +99,7 @@ function isAdmin(umkcID){
     return admin;
 }
 
-api.post("/student", (req, res) => {
+api.post("/api/student", (req, res) => {
     console.log("Requesey..	");
     let fname = req.body.fname;
     let lname = req.body.lname;

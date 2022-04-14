@@ -133,7 +133,6 @@ api.post("/api/student", (req, res) => {
                 msg: "User Registered Succesfully",
             })
         })
-
     }
 });
 

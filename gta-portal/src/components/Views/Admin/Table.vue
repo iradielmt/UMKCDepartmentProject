@@ -1,23 +1,24 @@
 <template>
-    <div class="table-responsive">
+    <div>
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>First</th>
                     <th>Last</th>
                     <th>UMKC ID</th>
-                    <th>Course</th>
+                    <th>Course ID</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="applications in applications" :key="applications.id">
-                    <td>{{applications.fname}}</td>
-                    <td>{{applications.lname}}</td>
-                    <td>{{applications.umkcID}}</td>
-                    <td>{{applications.courseID}}</td>
+                <tr v-for="application in applications" :key="application.id">
+                    <td>{{application.fname}}</td>
+                    <td>{{application.lname}}</td>
+                    <td>{{application.umkcID}}</td>
+                    <td>{{application.courseID}}</td> 
+                    <!-- <td><button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">show modal</button>
+                        <example-modal></example-modal></td> -->
                 </tr>
-                <!--
-                    <button 
+                    <!-- <button 
                         v-on:click="viewApplication( {{ $section->pivot->id}}, {{ $student_id}} )" 
                         class="btn btn-xs btn-primary">View
                     </button> -->
@@ -40,8 +41,11 @@
         name: "Table-Page",
         data() {
             return {
-            applications: {}
+                applications: {}
             }
+        },
+        props: {
+          'courseName': String
         },
         mounted(){
             this.loadApplicationsTable();
@@ -54,7 +58,7 @@
                 .catch(()=>{
                     console.log("Something Went Wrong");
                 })
-            }
+            }       
         }
     };
 </script>

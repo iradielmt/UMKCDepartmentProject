@@ -159,6 +159,41 @@ api.get("/api/students", (req, res) => {
     })
 });
 
+api.get("/api/applications", (req, res) => {
+    let courseID = req.body.courseID;
+    let query = `SELECT * FROM Applications WHERE courseID ='${courseID}'`;
+
+    connection.query(query, (err, result) => {
+        if (err) {
+            res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+});
+
+api.get("/api/getCourseNum", (req, res) => {
+    let query = `SELECT * FROM Courses WHERE courseNo ='${req.query.courseNo}'`;
+
+    connection.query(query, (err, result) => {
+        if (err) {
+            res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+});
+
 api.get("/api/login", (req, res, next)=> {
     let umkcID = req.body.umkcID;
     let email = req.body.email;
@@ -204,23 +239,6 @@ api.use((err, req, res, next) => {
         errors: {...res.locals.errors}
     });
 })
-
-api.get("/api/applications", (req, res) => {
-    let query = "SELECT fname, lname, umkcID, courseID FROM Applications WHERE courseID = 10095";
-
-    connection.query(query, (err, result) => {
-        if (err) {
-            res.json(500, {
-                msg: "Internal Server Error Please Try Again"
-            })
-        }
-
-        res.send(200, {
-            msg: "All the data fetched successfully",
-            data: result
-        })
-    })
-});
 
 api.listen(3000, () => {
     console.log("Server started ...");

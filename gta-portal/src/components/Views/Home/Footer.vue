@@ -1,8 +1,6 @@
 <template>
-  <footer class="footer py-3 bg-dark" style="position: absolute; bottom:0px; left: 0px; width: 100%;">
-    <div class="container">
-      
-    </div>
+  <footer class="footer py-3 bg-dark" style="position: absolute; bottom:0; left: 0px; width: 100%;">
+    
   </footer>
 </template>
 

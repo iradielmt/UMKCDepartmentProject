@@ -841,16 +841,16 @@ h1, h2, h3, h4, h5,
   border: 1px solid rgba(255, 255, 255, 0.2); }
   .form-control::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
-    color: rgba(255, 255, 255, 0.5) !important; }
+    color: black; }
   .form-control::-moz-placeholder {
     /* Firefox 19+ */
-    color: rgba(255, 255, 255, 0.5) !important; }
+    color: black; }
   .form-control:-ms-input-placeholder {
     /* IE 0+ */
-    color: rgba(255, 255, 255, 0.5) !important; }
+    color: black; }
   .form-control:-moz-placeholder {
     /* Firefox 18- */
-    color: rgba(255, 255, 255, 0.5) !important; }
+    color: black; }
   .form-control:focus, .form-control:active {
     background: transparent;
     border-color: rgba(255, 255, 255, 0.5) !important; }

@@ -4,8 +4,10 @@
 <title> Apply </title>
 <meta charset="utf-8">
 </head>
-
-<body>
+<body style="margin-bottom:5%;">
+<div>
+<Header />
+</div>
   <section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -19,7 +21,7 @@
 		<div class="col-lg-10">
 			<div class="wrapper">
 				<div class="contact-wrap w-100 p-md-5 p-4 py-5"> 
-					<div class="col-md-6">
+					<div class="col-md-10">
             <div class="row mt-4">
               
                <div>
@@ -112,18 +114,17 @@
              </div>
              <div class="col-md-6">
              <input type="text" class="form-control" placeholder="Courses" v-model="Courses" />
+
+             <div class="row mt-4">
+                 <button class="btn btn-primary" @click="$router.push('/AppPage')" >Apply</button>
              </div>
+             </div>
+            
 
            </div>
          </div>
        </div>
-       
-      <div class="row mt-4">
-        <div class="col-md-2">
-          <button class="btn btn-primary" @click="registerStudent">Apply</button>
-      </div>
-
-           </div>
+  
           </div>
         </div>
       </div>
@@ -131,19 +132,20 @@
   </div>
 </section>
 </body>
+<Footer />
 </html>
 </template>
 
 <script>
 import axios from 'axios';
-// import Header from "@/components/Views/Home/Header.vue";
-// import Footer from "@/components/Views/Home/Footer.vue";
+import Header from "@/components/Views/Home/Header.vue";
+ import Footer from "@/components/Views/Home/Footer.vue";
 export default {
   name: "AppPage",
-  // components: {
-  //   Header,
-  //   Footer
-  // },
+   components: {
+     Header,
+     Footer
+   },
   data() {
     return{
       fname: "",

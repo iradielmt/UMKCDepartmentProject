@@ -25,7 +25,7 @@
             >
           </li>
           <li class="nav-item">
-            <router-link class="nav-link active" style="text-align:right;" aria-current="page" to="/Login"
+            <router-link class="nav-link active" style="text-align:right;" aria-current="page" to="/LoginPage"
             >Login</router-link>
           </li>
         </ul>

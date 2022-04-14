@@ -97,12 +97,4 @@ export default {
   name: "HomePage"
 }
 
-
-
 </script>
-
-  
-
-
-
-<style> @import '@/assets/style.css' </style>

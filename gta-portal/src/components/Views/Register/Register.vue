@@ -38,7 +38,7 @@
                   <label for="" class="mt-1">UMKC ID</label>
                   </div>
                   <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="ID" v-model="umkcID" />
+                  <input type="text" class="form-control" placeholder="12345678" v-model="umkcID" />
                   </div>
                   </div>
        
@@ -47,7 +47,7 @@
                  <label for="" class="mt-1">Email</label>
                  </div>
                  <div class="col-md-6">
-                 <input type="text" class="form-control" placeholder="Email" v-model="email" />
+                 <input type="text" class="form-control" placeholder="example@test.com" v-model="email" />
                  </div>
           
                  <div class="row mt-4">
@@ -55,7 +55,7 @@
                  <label for="" class="mt-1">Contact Number</label>
                  </div>
                  <div class="col-md-6">
-                 <input type="text" class="form-control" placeholder="Contact Number" v-model="cNumber" />
+                 <input type="text" class="form-control" placeholder="8165555555" v-model="contactNo" />
                  </div>
                  </div>
                  </div>
@@ -74,8 +74,9 @@
                  </div>
 
                  <div class="row mt-4">
-                 <div class="col-md-2">
-                 <button class="btn btn-primary" >Register</button>
+                 <div class="col-md-4">
+                   <button class="btn btn-primary" @click="signUp" value="Sign Up">Register</button>
+                   <p style="color:gold" v-if="msg">{{ msg }}</p>
                  </div>
                  </div>
                 </div>
@@ -90,7 +91,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
+import AuthService from '@/services/AuthService.js';
 // import Header from "@/components/Views/Home/Header.vue";
 // import Footer from "@/components/Views/Home/Footer.vue";
 export default {
@@ -107,49 +109,28 @@ export default {
       id: "",
       email: "",
       certified: false,
-      cNumber: ""
+      contactNo: "",
+      msg: ''
     }
   },
   methods: {
-    registerStudent: function() {
-      axios.post("/api/student", {
-        fname: this.fname,
-        lname: this.lname,
-        umkcID: this.umkcID,
-      }).then((res) => {
-        if(res.data.msg === "Validation Failed"){
-          let errors = res.data.errors;
-          let errorMsg = "";
-          if(errors.fname.length != 0){
-            for(let i=0; i<errors.fname.length; i++){
-              errorMsg += `${errors.fname[i]}\n`;
-            }
-          }
-
-          if(errors.lname.length != 0) {
-            for (let i = 0; i < errors.lname.length; i++) {
-              errorMsg += `${errors.lname[i]}\n`;
-            }
-          }
-          if(errors.umkcID.length != 0){
-            for(let i=0; i<errors.umkcID.length; i++){
-              errorMsg += `${errors.umkcID[i]}\n`;
-            }
-          }
-          alert(errorMsg);
-        }
-        else{
-          alert("Successfully Saved");
-        }
-      }).catch(()=>{
-        alert("Something Went Wrong");
-      })
+    async signUp() {
+      try {
+        const credentials = {
+          fname: this.fname,
+          lname: this.lname,
+          umkcID: this.umkcID,
+          email: this.email,
+          contactNo: this.contactNo,
+          certified: this.certified,
+        };
+        const response = await AuthService.signUp(credentials);
+        this.msg = response.msg;
+        // await this.$router.push('/LoginPaje');
+      } catch (error) {
+        this.msg = error.response.data.msg;
+      }
     }
   }
 };
 </script>
-
-
-
-
-<style> @import '@/assets/style.css' </style>

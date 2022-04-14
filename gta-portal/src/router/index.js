@@ -2,45 +2,56 @@ import { createWebHistory, createRouter } from 'vue-router'
 import Register from '@/components/Views/Register/Register'
 import InfoPage from "@/components/Views/Info/InfoPage"
 import HomePage from "@/components/Views/Home/HomePage"
-import Login from "@/components/Views/Login/Login"
 import AppPage from "@/components/Views/Application/AppPage"
-import LoginPaje from "@/components/Views/Login/LoginPaje"
+import LoginPage from "@/components/Views/Login/LoginPage"
+import Login from "@/components/Views/Login/Login"
 
+import store from "/src/store/store"
 const routes = [
     {
         path: "/",
         component: HomePage,
     },
     {
-        path: "/InfoPage",
+        path: "/info",
         component: InfoPage
     },
     {
-        path: "/Register",
+        path: "/register",
         component: Register
     },
     {
-        path: "/HomePage",
-        component: HomePage
-    }
-    ,
-    {
-        path: "/Login",
-        component: Login
+        path: "/login",
+        component: LoginPage
     },
     {
         path: "/AppPage",
-        component: AppPage
-    } ,
+        component: AppPage,
+        meta: {
+            requiresAuth: true,
+        },
+    },
     {
-        path: "/LoginPaje",
-        component: LoginPaje
+        path: "/login2",
+        component: Login
     }
 ];
 
 const router = createRouter({
     history: createWebHistory(),
     routes,
+});
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some((route) => route.meta.requiresAuth) && store.state.user === null) {
+        next({name: 'login'});
+        return;
+    }
+    if (to.path === '/login' && store.state.user != null) {
+        next({name: 'portfolios'});
+        return;
+    }
+    next();
 });
 
 export default router;

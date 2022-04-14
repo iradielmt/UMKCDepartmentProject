@@ -11,7 +11,6 @@ router.get("/", (req, res) => {
 })
 
 router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
-
     db.query(
         `SELECT * FROM Accounts WHERE LOWER(email) = LOWER(${db.escape(
             req.body.email
@@ -30,18 +29,33 @@ router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
                             msg: JSON.stringify(err)
                         });
                     } else {
-                        // has hashed pw => add to database
+                        // has hashed umkcID => add to database
                         db.query(
                             `INSERT INTO Accounts (email, umkcID) VALUES (${db.escape(req.body.email)}, ${db.escape(hash)} )`,
                             (err, result) => {
                                 if (err) {
                                     throw err;
                                     return res.status(400).send({
-                                        msg: err
+                                        msg: 'An unexpected error occurred'
                                     });
                                 }
                                 return res.status(201).send({
                                     msg: 'Registered!'
+                                });
+                            }
+                        );
+                        // Student Info added to DB
+                        db.query(
+                            `INSERT INTO Students (umkcID, fname, lname, contactNo, email, certified) VALUES (${db.escape(req.body.umkcID)}, ${db.escape(req.body.fname)}, ${db.escape(req.body.lname)}, ${db.escape(req.body.contactNo)}, ${db.escape(req.body.email)}, ${db.escape(req.body.certified)})`,
+                            (err, result) => {
+                                if (err) {
+                                    throw err;
+                                    return res.status(400).send({
+                                        msg: 'An unexpected error occurred'
+                                    });
+                                }
+                                return res.status(201).send({
+                                    msg: 'Information Recorded'
                                 });
                             }
                         );
@@ -53,7 +67,6 @@ router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
-    let umkcID = req.body.umkcID.toString();
     db.query(
         `SELECT * FROM Accounts WHERE email = '${req.body.email}'`,
         (err, result) => {
@@ -108,9 +121,8 @@ router.post('/login', (req, res, next) => {
     );
 });
 
-router.get('/secret-route', userMiddleware.isLoggedIn, (req, res, next) => {
-    console.log(req.userData);
-    res.send('This is the secret content. Only logged in users can see that!');
+router.get('/validate', userMiddleware.isLoggedIn, (req, res, next) => {
+    res.send('Logged in');
 });
 
 // router.post("/student", (req, res) => {

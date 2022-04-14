@@ -52,20 +52,19 @@ module.exports = {
                 msg: 'ID cannot be null'
             });
         }
-        let umkcID = req.body.umkcID.toString(10);
         if (!(/[0-9]/g.test(req.body.umkcID))) {
             return res.status(400).send({
                 msg: 'ID must contain digits only'
             });
         }
         // checks whether ID length is less then required digits
-        if (umkcID.length < 8) {
+        if (req.body.umkcID.length < 8) {
             return res.status(400).send({
                 msg: 'ID must be at least 8 Digits'
             });
         }
         // checks whether ID length is more then 10 digits
-        if (umkcID.length > 9) {
+        if (req.body.umkcID.length > 9) {
             return res.status(400).send({
                 msg: 'ID cannot exceed 9 Digits'
             });

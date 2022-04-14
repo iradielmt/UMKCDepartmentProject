@@ -152,7 +152,7 @@ export default {
       id: "",
       email: "",
       certified: false,
-      cNumber: ""
+      contactNo: ""
     }
   },
   methods: {
@@ -193,8 +193,3 @@ export default {
   }
 };
 </script>
-
-
-
-
-<style> @import '@/assets/style.css' </style>

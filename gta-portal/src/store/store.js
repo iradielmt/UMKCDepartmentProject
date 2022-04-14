@@ -1,4 +1,4 @@
-import Vuex from 'vuex';
+import { createStore } from 'vuex'
 import Axios from 'axios';
 import createPersistedState from 'vuex-persistedstate';
 
@@ -9,7 +9,7 @@ const getDefaultState = () => {
     };
 };
 
-const store = new Vuex.Store({
+const store = createStore({
     strict: true,
     plugins: [createPersistedState()],
     state: getDefaultState(),

@@ -1,16 +1,30 @@
 <template>
-  <section class="vh-100" style="background-color: #508bfc;">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <img src="@/assets/umkc.png" alt="centered image" height="150" width="275"> 
+                <h2 class="heading-section">GTA Login</h2>
+            </div>
+        </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="wrapper">
+                <div class="row no-gutters">
+                     <div class="card shadow-2-strong" style="border-radius: 1rem;">
             <div class="card-body p-5 text-center">
               <h3 class="mb-5">Sign in</h3>
               <div class="form-outline mb-4">
-                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" placeholder="Email"/>
+                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" placeholder="Email" v-model="email"/>
               </div>
               <div class="form-outline mb-4">
-                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="UMKC ID" />
+                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="UMKC ID" v-model="umkcID"/>
               </div>
               <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
               <div>
@@ -18,24 +32,47 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
+                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+</section>
+</body>
+</html>
 </template>
 
 <script>
+import AuthService from "@/services/AuthService";
 export default {
   name: "LoginPage",
-  data() {
-    return{
-      email: "",
-      UMKCid: "",
-    }
+  data(){
+    return {
+      email: '',
+      umkcID: '',
+      msg: ''
+    };
   },
-}
+  methods: {
+    async login() {
+      try {
+        const credentials = {
+          email: this.email,
+          umkcID: this.umkcID
+        };
+        const response = await AuthService.login(credentials);
+        this.msg = response.msg;
+        const token = response.token;
+        const user = response.user;
+        this.$store.dispatch('login', { token, user });
+        await this.$router.push('/appPage');
+      } catch (error) {
+        this.msg = error.response.data.msg;
+      }
+    }
+  }
+};
+
 </script>
-
-<style scoped>
-
-</style>

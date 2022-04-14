@@ -70,12 +70,4 @@ export default {
   name: "InfoPage"
 }
 
-
-
 </script>
-
-  
-
-
-
-<style> @import '@/assets/style.css' </style>

@@ -184,7 +184,6 @@ api.get("/api/courseNum", (req, res) => {
                 msg: "Internal Server Error Please Try Again"
             })
         }
-
         res.send(200, {
             msg: "All the data fetched successfully",
             data: result

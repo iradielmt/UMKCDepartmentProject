@@ -9,7 +9,10 @@
             <div class="card-body p-5 text-center">
               <h3 class="mb-5" style="color: white">Apply for Job:</h3>
               <div class="dropdown">
-                <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Start Application</a>
+                <a href="/AppPage" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Start Application</a>
+              </div>
+               <div>
+                <p class="mb-0">Already filled out an application? <a href="/profile" class="text-white-50 fw-bold">View Applications</a></p>
               </div>
             </div>
           </div>

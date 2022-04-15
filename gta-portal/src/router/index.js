@@ -2,9 +2,10 @@ import { createWebHistory, createRouter } from 'vue-router'
 import Register from '@/components/Home/Register'
 import InfoPage from "@/components/Home/InfoPage"
 import HomePage from "@/components/Home/HomePage"
-import LoginPage from "@/components/Home/LoginPage"
 import AppPage from "@/components/Home/AppPage"
-
+import LoginPaje from "@/components/Home/LoginPaje"
+import Admin from "@/components/Views/Admin/Admin"
+import Login from "@/components/Home/Login"
 const routes = [
     {
         path: "/",
@@ -24,12 +25,20 @@ const routes = [
     }
     ,
     {
+        path: "/Login",
+        component: Login
+    },
+    {
         path: "/AppPage",
         component: AppPage
     } ,
     {
-        path: "/LoginPage",
-        component: LoginPage
+        path: "/LoginPaje",
+        component: LoginPaje
+    },
+    {
+        path: "/admin",
+        component: Admin
     }
 ];
 

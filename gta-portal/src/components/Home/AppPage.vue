@@ -4,8 +4,10 @@
 <title> Apply </title>
 <meta charset="utf-8">
 </head>
-
-<body>
+<body style="margin-bottom:5%;">
+<div>
+<Header />
+</div>
   <section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -19,7 +21,7 @@
 		<div class="col-lg-10">
 			<div class="wrapper">
 				<div class="contact-wrap w-100 p-md-5 p-4 py-5"> 
-					<div class="col-md-6">
+					<div class="col-md-10">
             <div class="row mt-4">
               
                <div>
@@ -47,7 +49,7 @@
                <label for="" class="mt-1">UMKC Current Level (BS/MS/PhD)</label>
                </div>
                <div class="col-md-6">
-               <input type="text" class="form-control" placeholder="Clevel" v-model="CLevel" />
+               <input type="text" class="form-control" placeholder="Current level" v-model="CLevel" />
                </div>
 
                <div class="row mt-4">
@@ -55,56 +57,56 @@
                <label for="" class="mt-1">Graduating Semester</label>
                </div>
                <div class="col-md-6">
-               <input type="text" class="form-control" placeholder="GradSem" v-model="GradSemester" />
+               <input type="text" class="form-control" placeholder="Graduating Semester" v-model="GradSemester" />
                </div>
 
               <div>
               <label for="" class="mt-1">UMKC Cumulative GPA (leave blank if first semester is in progress) </label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="C_GPA" v-model="C_GPA" />
+              <input type="text" class="form-control" placeholder="UMKC Cumlative GPA" v-model="C_GPA" />
               </div>
 
               <div>
               <label for="" class="mt-1">Hours completed at UMKC (leave blank if first semester is in progress)</label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="hoursUMKC" v-model="hoursUMKC" />
+              <input type="text" class="form-control" placeholder="Hours done at UMKC" v-model="hoursUMKC" />
               </div>
 
               <div>
               <label for="" class="mt-1">Undergraduate Degree (if applicable, e.g., BTEC, BSCS, IT)</label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="UG_Degree" v-model="UG_Degree" />
+              <input type="text" class="form-control" placeholder="Undergraduate Degree" v-model="UG_Degree" />
               </div>
 
               <div>
               <label for="" class="mt-1">Current Major(CS/IT/ECE/EE)</label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="C_Major" v-model="C_Major" />
+              <input type="text" class="form-control" placeholder="Current Major" v-model="C_Major" />
               </div>
 
               <div>
               <label for="" class="mt-1">Applying for: (Grader, Lab Instructor or Both) </label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="App_For" v-model="App_For" />
+              <input type="text" class="form-control" placeholder="Appplying For" v-model="App_For" />
               </div>
 
               <div>
               <label for="" class="mt-1">Are you GTA certified? If so, which term did you complete your certification? If you have a previous degree from a US Institute, please indicate this as that waives GTA certification</label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Cert" v-model="Cert" />
+              <input type="text" class="form-control" placeholder="Term of Completion/NA" v-model="Cert" />
               </div>
 
               <div>
               <label for="" class="mt-1">If you have a previous degree from a US Institute, please indicate this as that waives GTA certification.</label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="CertUni" v-model="CertUni" />
+              <input type="text" class="form-control" placeholder="Certification(s)/NA" v-model="CertUni" />
               </div>
 
              <div>
@@ -112,18 +114,17 @@
              </div>
              <div class="col-md-6">
              <input type="text" class="form-control" placeholder="Courses" v-model="Courses" />
+
+             <div class="row mt-4">
+                 <button class="btn btn-primary" @click="$router.push('/AppPage')" >Apply</button>
              </div>
+             </div>
+            
 
            </div>
          </div>
        </div>
-       
-      <div class="row mt-4">
-        <div class="col-md-2">
-          <button class="btn btn-primary" @click="registerStudent">Apply</button>
-      </div>
-
-           </div>
+  
           </div>
         </div>
       </div>
@@ -131,19 +132,20 @@
   </div>
 </section>
 </body>
+<Footer />
 </html>
 </template>
 
 <script>
 import axios from 'axios';
-// import Header from "@/components/Views/Home/Header.vue";
-// import Footer from "@/components/Views/Home/Footer.vue";
+import Header from "@/components/Views/Home/Header.vue";
+ import Footer from "@/components/Views/Home/Footer.vue";
 export default {
   name: "AppPage",
-  // components: {
-  //   Header,
-  //   Footer
-  // },
+   components: {
+     Header,
+     Footer
+   },
   data() {
     return{
       fname: "",

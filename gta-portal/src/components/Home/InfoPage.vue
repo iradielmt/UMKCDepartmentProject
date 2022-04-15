@@ -4,8 +4,10 @@
 <title> GTA Qualification Information</title>
 <meta charset="utf-8">
 </head>
-<body>
-
+<body style="margin-bottom:5%;">
+<div>
+<Header />
+</div>
 <section class="ftco-section">
 
 <div class="container"> <!-- Lines 11-17 build header -->
@@ -59,14 +61,16 @@
 		</div>
 	</div>
 </section>
-
-
 </body>
+<Footer />
 </html>
 </template>
 
 <script>
+import Header from '../Views/Home/Header.vue'
+import Footer from '../Views/Home/Footer.vue'
 export default {
+  components: { Header, Footer },
   name: "InfoPage"
 }
 

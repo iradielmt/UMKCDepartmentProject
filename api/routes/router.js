@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
     db.query(
         `SELECT * FROM Accounts WHERE LOWER(email) = LOWER(${db.escape(
-            req.body.email
+                req.body.email
         )});`,
         (err, result) => {
             if (result.length) {
@@ -180,6 +180,38 @@ router.get("/students", (req, res) => {
         })
     })
 })
+
+router.get("/api/applications", (req, res) => {
+    let courseID = req.body.courseID;
+    let query = `SELECT * FROM Applications WHERE courseID ='${courseID}'`;
+
+    db.query(query, (err, result) => {
+        if (err) {
+            return res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+});
+
+router.get("/api/courseNum", (req, res) => {
+    let query = `SELECT * FROM Courses WHERE courseNo ='${req.body.courseNo}'`;
+    db.query(query, (err, result) => {
+        if (err) {
+            return res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+});
 //
 // router.post("/login", (req, res, next)=> {
 //     let umkcID = req.body.umkcID;

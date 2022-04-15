@@ -74,7 +74,5 @@ export default {
   name: "InfoPage"
 }
 
-
-
 </script>
 

@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "Footer-start",
+  name: "FooterHome",
 };
 </script>
 

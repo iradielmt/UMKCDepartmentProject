@@ -119,12 +119,12 @@
                  <button class="btn btn-primary" @click="$router.push('/AppPage')" >Apply</button>
              </div>
              </div>
-            
+
 
            </div>
          </div>
        </div>
-  
+
           </div>
         </div>
       </div>

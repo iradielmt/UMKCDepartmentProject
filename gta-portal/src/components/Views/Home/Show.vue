@@ -20,7 +20,7 @@
       </tbody>
     </table>
   </div>
-  <Footer/>
+  <Footer />
 </template>
 
 <script>

@@ -1,42 +1,32 @@
 import { createWebHistory, createRouter } from 'vue-router'
-import Register from '@/components/Home/Register'
-import InfoPage from "@/components/Home/InfoPage"
-import HomePage from "@/components/Home/HomePage"
-import AppPage from "@/components/Home/AppPage"
-import LoginPaje from "@/components/Home/LoginPaje"
+import Register from '@/components/Views/Register/Register'
+import InfoPage from "@/components/Views/Info/InfoPage"
+import HomePage from "@/components/Views/Home/HomePage"
+import AppPage from "@/components/Views/Application/AppPage"
 import StudentPage from "@/components/Views/Student/StudentPage"
 import Admin from "@/components/Views/Admin/Admin"
-import Login from "@/components/Home/Login"
+import Login from "@/components/Views/Login/LoginPage"
 const routes = [
     {
         path: "/",
         component: HomePage,
     },
     {
-        path: "/InfoPage",
+        path: "/info",
         component: InfoPage
     },
     {
-        path: "/Register",
+        path: "/register",
         component: Register
     },
     {
-        path: "/HomePage",
-        component: HomePage
-    }
-    ,
-    {
-        path: "/Login",
+        path: "/login",
         component: Login
     },
     {
         path: "/AppPage",
         component: AppPage
     } ,
-    {
-        path: "/LoginPaje",
-        component: LoginPaje
-    },
     {
         path: "/student",
         component: StudentPage

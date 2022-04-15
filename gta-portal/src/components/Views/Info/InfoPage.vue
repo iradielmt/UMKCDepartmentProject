@@ -67,8 +67,8 @@
 </template>
 
 <script>
-import Header from '../Views/Home/Header.vue'
-import Footer from '../Views/Home/Footer.vue'
+import Header from '../Home/Header.vue'
+import Footer from '../Home/Footer.vue'
 export default {
   components: { Header, Footer },
   name: "InfoPage"
@@ -78,8 +78,3 @@ export default {
 
 </script>
 
-  
-
-
-
-<style> @import '@/assets/style.css' </style>

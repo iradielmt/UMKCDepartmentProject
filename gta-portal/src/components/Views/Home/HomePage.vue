@@ -95,8 +95,8 @@
 </template>
 
 <script>
-import Header from '../Views/Home/Header.vue'
-import Footer from '../Views/Home/Footer.vue'
+import Header from './Header.vue'
+import Footer from './Footer.vue'
 export default {
   components: { Header, Footer },
   name: "HomePage"
@@ -105,9 +105,3 @@ export default {
 
 
 </script>
-
-  
-
-
-
-<style> @import '@/assets/style.css' </style>

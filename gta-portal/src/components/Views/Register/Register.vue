@@ -4,8 +4,10 @@
 <title> GTA Qualification Information</title>
 <meta charset="utf-8">
 </head>
-
-<body>
+<body style="margin-bottom:5%;">
+<div>
+<Header />
+</div>
 	<section class="ftco-section"> 
 		<div class="container"> <!-- Lines 9-15 build header -->
 			<div class="row justify-content-center">
@@ -19,7 +21,7 @@
 				<div class="col-lg-10">
 					<div class="wrapper">
 						<div class="contact-wrap w-100 p-md-5 p-4 py-5">
-              <div class="col-md-6">
+              <div class="col-md-10">
                 <div class="row mt-4">
                   
                   <div>
@@ -87,20 +89,21 @@
     </div>	
   </section>
 </body>
+<Footer />
 </html>
 </template>
 
 <script>
 // import axios from 'axios';
 import AuthService from '@/services/AuthService.js';
-// import Header from "@/components/Views/Home/Header.vue";
-// import Footer from "@/components/Views/Home/Footer.vue";
+import Header from "@/components/Views/Home/Header.vue";
+import Footer from "@/components/Views/Home/Footer.vue";
 export default {
   name: "RegisterPage",
-  // components: {
-  //   Header,
-  //   Footer
-  // },
+  components: {
+    Header,
+    Footer
+  },
   data() {
     return{
       fname: "",

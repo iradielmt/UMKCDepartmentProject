@@ -4,8 +4,8 @@ import InfoPage from "@/components/Views/Info/InfoPage"
 import HomePage from "@/components/Views/Home/HomePage"
 import AppPage from "@/components/Views/Application/AppPage"
 import LoginPage from "@/components/Views/Login/LoginPage"
-import Login from "@/components/Views/Login/Login"
-
+import StudentPage from "@/components/Views/Student/StudentPage"
+import Admin from "@/components/Views/Admin/Admin"
 import store from "/src/store/store"
 const routes = [
     {
@@ -32,8 +32,12 @@ const routes = [
         },
     },
     {
-        path: "/login2",
-        component: Login
+        path: "/student",
+        component: StudentPage
+    },
+    {
+        path: "/admin",
+        component: Admin
     }
 ];
 

@@ -4,7 +4,10 @@
 <head>
 <meta charset="utf-8">
 </head>
-<body>
+<body style="margin-bottom:5%;">
+<div>
+    <Header />
+</div>
 <section class="ftco-section">
     <div class="container">
         <div class="row justify-content-center">
@@ -26,7 +29,7 @@
                                         <div class="row">
                                             <button class="button-19" @click="$router.push('/Register')">Register</button>
                                             <h3 class="mb-4">Existing GTA login:</h3>
-                                            <button class="button-19" @click="$router.push('/Login')">Login</button>
+                                            <button class="button-19" @click="$router.push('/LoginPage')">Login</button>
                                         </div>
                                     </form>
                         </div>
@@ -88,12 +91,15 @@
     </div>
 </section>
 </body>
+<Footer />
 </html>
-  <Footer></Footer>
 </template>
 
 <script>
+import Header from './Header.vue'
+import Footer from './Footer.vue'
 export default {
+  components: { Header, Footer },
   name: "HomePage"
 }
 

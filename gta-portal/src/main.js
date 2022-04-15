@@ -7,7 +7,9 @@ import Axios from 'axios'
 //CSS imports
 import 'bootstrap/dist/css/bootstrap.css'
 import '@/assets/style.css'
-import 'vuesax/dist/vuesax.css'
+import 'bootstrap/js/src/dropdown';
+import 'bootstrap/js/src/button';
+import 'bootstrap/js/dist/dropdown.js'
 
 // Vue.config.productionTip = false;
 // set auth header

@@ -1,5 +1,4 @@
 <template>
-  <Header></Header>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -29,7 +28,7 @@
                                         <div class="row">
                                             <button class="button-19" @click="$router.push('/Register')">Register</button>
                                             <h3 class="mb-4">Existing GTA login:</h3>
-                                            <button class="button-19" @click="$router.push('/LoginPage')">Login</button>
+                                            <button class="button-19" @click="$router.push('/login')">Login</button>
                                         </div>
                                     </form>
                         </div>

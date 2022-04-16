@@ -52,7 +52,7 @@ const router = createRouter({
 //         return;
 //     }
 //     if (to.path === '/login' && store.state.user != null) {
-//         next({name: 'portfolios'});
+//         next({name: 'student'});
 //         return;
 //     }
 //     next();

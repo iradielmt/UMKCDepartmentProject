@@ -4,7 +4,7 @@ import InfoPage from "@/components/Home/InfoPage"
 import HomePage from "@/components/Home/HomePage"
 import AppPage from "@/components/Home/AppPage"
 import Admin from "@/components/Views/Admin/Admin"
-import Login from "@/components/Home/LoginPage"
+import LoginPage from "@/components/Home/LoginPage"
 const routes = [
     {
         path: "/",
@@ -24,8 +24,8 @@ const routes = [
     }
     ,
     {
-        path: "/Login",
-        component: Login
+        path: "/LoginPage",
+        component: LoginPage
     },
     {
         path: "/AppPage",

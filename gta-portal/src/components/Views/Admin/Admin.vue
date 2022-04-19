@@ -1,7 +1,12 @@
 <template>
-<Header />
-<div class="main">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+</head>
+<body style="margin-bottom:5%;">
+    <Header />
   <section class="vh-100" style="background-color: #6c757d;">
+    <div class="main">
       <div class="container py-5 h-50" >
         <div class="row d-flex justify-content-center align-items-center h-100" >
           <div class="col-12 col-md-8 col-lg-6 col-xl-5" >
@@ -102,9 +107,11 @@
         </div>
       </div>
     </div>
+    </div>
   </section>
-</div>
-<Footer />
+  <Footer />
+  </body>
+</html>
 </template>
 
 <script>

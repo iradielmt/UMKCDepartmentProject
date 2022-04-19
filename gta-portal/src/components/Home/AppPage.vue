@@ -110,7 +110,7 @@
               </div>
 
              <div>
-             <label for="" class="mt-1">Courses you could serve as lab instructoror grade for(ex. CS 201L/CS 5525/ECE 216, etc.):</label>
+             <label for="" class="mt-1">Courses you could serve as lab instructoror grade for(ex. CS 201L/CS 5525/ECE 216, etc.)</label>
              </div>
              <div class="col-md-6">
              <input type="text" class="form-control" placeholder="Courses" v-model="Courses" />

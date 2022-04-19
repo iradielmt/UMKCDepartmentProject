@@ -3,9 +3,8 @@ import Register from '@/components/Home/Register'
 import InfoPage from "@/components/Home/InfoPage"
 import HomePage from "@/components/Home/HomePage"
 import AppPage from "@/components/Home/AppPage"
-import LoginPaje from "@/components/Home/LoginPaje"
 import Admin from "@/components/Views/Admin/Admin"
-import Login from "@/components/Home/Login"
+import Login from "@/components/Home/LoginPage"
 const routes = [
     {
         path: "/",
@@ -32,10 +31,6 @@ const routes = [
         path: "/AppPage",
         component: AppPage
     } ,
-    {
-        path: "/LoginPaje",
-        component: LoginPaje
-    },
     {
         path: "/admin",
         component: Admin

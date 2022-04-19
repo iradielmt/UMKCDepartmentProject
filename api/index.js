@@ -45,6 +45,7 @@ function validateFName(fname) {
     if (fname.length == 0) {
         errors.push("First Name Is Null");
     }
+
     if (fname.length > 50) {
         errors.push("First Name Length Can Not Exceed 50 Characters.");
     }
@@ -56,9 +57,11 @@ function validateLName(lname) {
     if (lname.length == 0) {
         errors.push("Last Name Is Null");
     }
+
     if (lname.length > 50) {
         errors.push("Last Name Length Can Not Exceed 50 Characters.");
     }
+
     return errors;
 }
 
@@ -73,7 +76,7 @@ function validateID(umkcID) {
     if (umkcID.length < 8) {
         errors.push("ID must be at least 8 Digits");
     }
-    // checks whether ID length is more then 10 digits
+    // checks whether ID length is more then 9 digits
     if (umkcID.length > 9) {
         errors.push("ID can't exceed 9 Digits");
     }
@@ -118,7 +121,6 @@ api.post("/api/student", (req, res) => {
         let query = `INSERT INTO Students (fname, lname, umkcID, admin) VALUES ('${fname}', '${lname}', '${umkcID}', '${admin}')`;
         connection.query(query, (err, result) => {
             if (err) {
-                console.log(err.message);
                 // status code 500 is for Internal Server Error
                 return res.json(500, {
                     msg: "Something went wrong please try again"
@@ -147,10 +149,38 @@ api.get("/api/students", (req, res) => {
             data: result
         })
     })
-})
+});
 
-api.listen(3000, () => {
-    console.log("Server started ...");
+api.get("/api/applications", (req, res) => {
+    let courseID = req.body.courseID;
+    let query = `SELECT * FROM Applications WHERE courseID ='${courseID}'`;
+
+    connection.query(query, (err, result) => {
+        if (err) {
+            return res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+});
+
+api.get("/api/courseNum", (req, res) => {
+    let query = `SELECT * FROM Courses WHERE courseNo ='${req.body.courseNo}'`;
+    connection.query(query, (err, result) => {
+        if (err) {
+            return res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
 });
 
 api.get("/api/login", (req, res, next)=> {
@@ -199,4 +229,6 @@ api.use((err, req, res, next) => {
     });
 })
 
-
+api.listen(3000, () => {
+    console.log("Server started ...");
+});

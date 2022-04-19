@@ -1,7 +1,7 @@
 <template>
 <Header />
-<div class="main">
-  <section class="vh-100" style="background-color: #6c757d;">
+<div >
+  <section class="vh-100">
       <div class="container py-5 h-50" >
         <div class="row d-flex justify-content-center align-items-center h-100" >
           <div class="col-12 col-md-8 col-lg-6 col-xl-5" >
@@ -10,7 +10,8 @@
                 <h3 class="mb-5" style="color: white">View Candidates</h3>
                 <div class="dropdown">
                   <select class="form-select form-control" v-model="courseName">
-                    <option value="CS101">CS 101</option>
+                    <option :value="cousre.courseNo" v-for="course in courses" :key="course.id"> {{ course.courseName }} </option>
+                    <!-- <option value="12719">CS 101</option>
                     <option value="CS191">CS 191</option>
                     <option value="CS201R">CS 201R</option>
                     <option value="CS291">CS 291</option>
@@ -55,10 +56,10 @@
                     <option value="ECE5578">ECE 5578</option>
                     <option value="ECE5586">ECE 5586</option>
                     <option value="IT222">IT 222</option>
-                    <option value="IT321">IT 321</option>
+                    <option value="IT321">IT 321</option> -->
                   </select>
                   <div>
-                    <button @click="loadApplicationsTable">Load {{ courseName }} candidates</button>
+                    <button @click="applications; isShow = !isShow">Load {{ courseName }} candidates</button>
                   </div>
                 </div>
               </div>
@@ -66,7 +67,7 @@
           </div>
         </div>
         <div id="displayTable">
-        <div>
+        <div v-show="isShow">
           <table class="table table-bordered">
             <thead>
                 <tr>
@@ -77,11 +78,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="application in applications" :key="application.id">
-                    <td>{{application.fname}}</td>
-                    <td>{{application.lname}}</td>
-                    <td>{{application.umkcID}}</td>
-                    <td>{{application.courseID}}</td> 
+                <tr v-for="applicatio in application" :key="applicatio.id">
+                    <td>{{applicatio.fname}}</td>
+                    <td>{{applicatio.lname}}</td>
+                    <td>{{applicatio.umkcID}}</td>
+                    <td>{{applicatio.courseID}}</td> 
                     <!-- <td><button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">show modal</button>
                         <example-modal></example-modal></td> -->
                 </tr>
@@ -111,7 +112,17 @@
 // import Table from '../Admin/Table.vue'
 import Header from "@/components/Views/Home/Header.vue";
 import Footer from "@/components/Views/Home/Footer.vue";
+import ViewApplications from "@/services/ViewApplications";
 import axios from 'axios';
+function getCourses(){
+      let courses = {}
+      axios.get("/courses").then((res) => {
+          courses = res.data.data;
+      }).catch(()=>{
+        console.log("Something Went Wrong");
+      })
+      return courses;
+}       
 export default {
   components: { 
     Header,
@@ -120,35 +131,32 @@ export default {
   name: "Admin-page",
   data(){
     return{
+      application: {},
       courseName: '',
       courseID: '',
-      disabled: false
+      isShow: false
     }
   },
-  methods: {
-    // matchCourse: function(){
-    //   axios.get("/api/courseNum",{params: {courseNo: this.courseName}}).then((res) => {
-    //     this.courseID = res.data.data.courseID;
-    //   })
-    //   .catch(()=>{
-    //     console.log("Something Went Wrong");
-    //   })
-    // },
-    loadApplicationsTable: function(){
-      axios.get("/api/courseNum", { params: { courseNo: "CS291" } }).then((res) => {
-        this.courseID = res.data.courseID;
-        console.log(this.courseID);
-      })
-      .catch(()=>{
-        console.log("Something Went Wrong");
-      })
-      console.log(this.coursID);
-      axios.get("/api/applications", {params: {courseID: this.courseID}}).then((res) => {
-          this.applications = res.data.data;
-      })
-      .catch(()=>{
-          console.log("Something Went Wrong");
-      })           
+  computed: {
+    courses(){
+      return getCourses();
+    }
+  },
+  methods: {  
+    async applications() {
+      try {
+        const credentials = {
+          courseNo: '12179',
+        };
+        const response = await ViewApplications.applications(credentials);
+        console.log(this.courseName);
+        this.msg = response.msg;
+        console.log(this.msg);
+        this.application = response.data;
+        //await this.$router.push('/appPage');
+      } catch (error) {
+        this.msg = error.response.data.msg;
+      }
     }
   }
 };

@@ -112,6 +112,8 @@
 import Header from "@/components/Views/Home/Header.vue";
 import Footer from "@/components/Views/Home/Footer.vue";
 import axios from 'axios';
+import AuthService from '@/services/AuthService.js';
+
 export default {
   components: { 
     Header,
@@ -122,6 +124,7 @@ export default {
     return{
       courseName: '',
       courseID: '',
+      msg: '',
       disabled: false
     }
   },
@@ -134,15 +137,18 @@ export default {
     //     console.log("Something Went Wrong");
     //   })
     // },
+    async getCourseNum() {
+      try {
+        const credentials = {
+          courseNo: this.courseName,
+        };
+        const response = await AuthService.getCourseNum(credentials);
+        this.msg = response.msg;
+      } catch (error) {
+        this.msg = error.response.data.msg;
+      }
+    },
     loadApplicationsTable: function(){
-      axios.get("/api/courseNum", { params: { courseNo: "CS291" } }).then((res) => {
-        this.courseID = res.data.courseID;
-        console.log(this.courseID);
-      })
-      .catch(()=>{
-        console.log("Something Went Wrong");
-      })
-      console.log(this.coursID);
       axios.get("/api/applications", {params: {courseID: this.courseID}}).then((res) => {
           this.applications = res.data.data;
       })

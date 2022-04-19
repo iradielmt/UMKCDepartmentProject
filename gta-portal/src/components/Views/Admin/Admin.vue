@@ -10,8 +10,8 @@
                 <h3 class="mb-5" style="color: white">View Candidates</h3>
                 <div class="dropdown">
                   <select class="form-select form-control" v-model="courseName">
-                    <option :value="cousre.courseNo" v-for="course in courses" :key="course.id"> {{ course.courseName }} </option>
-                    <!-- <option value="12719">CS 101</option>
+                    <!-- <option :value="course.courseNo" v-for="course in courses" :key="course.id"> {{ course.courseName }} </option> -->
+                    <option value="12719">CS 101</option>
                     <option value="CS191">CS 191</option>
                     <option value="CS201R">CS 201R</option>
                     <option value="CS291">CS 291</option>
@@ -56,10 +56,10 @@
                     <option value="ECE5578">ECE 5578</option>
                     <option value="ECE5586">ECE 5586</option>
                     <option value="IT222">IT 222</option>
-                    <option value="IT321">IT 321</option> -->
+                    <option value="IT321">IT 321</option>
                   </select>
                   <div>
-                    <button @click="applications; isShow = !isShow">Load {{ courseName }} candidates</button>
+                    <button @click="applications(); isShow = !isShow">Load {{ courseName }} candidates</button>
                   </div>
                 </div>
               </div>
@@ -112,17 +112,18 @@
 // import Table from '../Admin/Table.vue'
 import Header from "@/components/Views/Home/Header.vue";
 import Footer from "@/components/Views/Home/Footer.vue";
-import ViewApplications from "@/services/ViewApplications";
-import axios from 'axios';
-function getCourses(){
-      let courses = {}
-      axios.get("/courses").then((res) => {
-          courses = res.data.data;
-      }).catch(()=>{
-        console.log("Something Went Wrong");
-      })
-      return courses;
-}       
+//import ViewApplications from "@/services/ViewApplications";
+ import axios from 'axios';
+ const url = 'http://localhost:3000/api/';
+// function getCourses(){
+//       let courses = {}
+//       axios.get("/courses").then((res) => {
+//           courses = res.data.data;
+//       }).catch(()=>{
+//         console.log("Something Went Wrong");
+//       })
+//       return courses;
+// }       
 export default {
   components: { 
     Header,
@@ -137,22 +138,25 @@ export default {
       isShow: false
     }
   },
-  computed: {
-    courses(){
-      return getCourses();
-    }
-  },
+  // computed: {
+  //   courses(){
+  //     return getCourses();
+  //   }
+  // },
   methods: {  
-    async applications() {
+    applications: function() {
       try {
         const credentials = {
-          courseNo: '12179',
+          courseNo: '12719',
         };
-        const response = await ViewApplications.applications(credentials);
-        console.log(this.courseName);
-        this.msg = response.msg;
-        console.log(this.msg);
+       // const response = await ViewApplications.applications(credentials);
+       
+        const response = axios.get(url + 'applications/', credentials).then(response => response.data);
+        console.log(response);
         this.application = response.data;
+        console.log(this.application);
+        console.log("test");
+        Object.keys(response).map(key => response[key]).forEach(obj => console.log(obj))
         //await this.$router.push('/appPage');
       } catch (error) {
         this.msg = error.response.data.msg;

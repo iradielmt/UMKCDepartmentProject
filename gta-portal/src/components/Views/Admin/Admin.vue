@@ -1,7 +1,13 @@
 <template>
 <Header />
 <div >
-  <section class="vh-100">
+  <section class="vh-100" style="background-color: skyblue;">
+    <div class="center1">
+      <div class="col-md-6 text-center mb-5">
+        <img src="@/assets/umkc.png" alt="centered image" height="150" width="275">
+      </div>
+    </div>
+    <div class="main">
       <div class="container py-5 h-50" >
         <div class="row d-flex justify-content-center align-items-center h-100" >
           <div class="col-12 col-md-8 col-lg-6 col-xl-5" >
@@ -22,7 +28,7 @@
         <div >
           <table class="table table-bordered">
             <thead>
-                <tr>
+            <tr style="background-color:lightblue;">
                     <th>First</th>
                     <th>Last</th>
                     <th>UMKC ID</th>
@@ -45,13 +51,13 @@
         </div>
       </div>
     </div>
+    </div>
   </section>
 </div>
 <Footer />
 </template>
 
 <script>
-// import Table from '../Admin/Table.vue'
 import Header from "@/components/Views/Home/Header.vue";
 import Footer from "@/components/Views/Home/Footer.vue";
 import axios from 'axios';

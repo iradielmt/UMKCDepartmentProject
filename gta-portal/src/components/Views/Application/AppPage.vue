@@ -49,7 +49,7 @@
                <label for="" class="mt-1">UMKC Current Level (BS/MS/PhD)</label>
                </div>
                <div class="col-md-6">
-               <input type="text" class="form-control" placeholder="Current level" v-model="CLevel" />
+               <input type="text" class="form-control" placeholder="Current level" v-model="currLevel" />
                </div>
 
                <div class="row mt-4">
@@ -57,42 +57,41 @@
                <label for="" class="mt-1">Graduating Semester</label>
                </div>
                <div class="col-md-6">
-               <input type="text" class="form-control" placeholder="Graduating Semester" v-model="GradSemester" />
+                 <input type="text" class="form-control" placeholder="Graduating Semester" v-model="gradSemester" />
                </div>
-
               <div>
               <label for="" class="mt-1">UMKC Cumulative GPA (leave blank if first semester is in progress) </label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="UMKC Cumlative GPA" v-model="C_GPA" />
+              <input type="text" class="form-control" placeholder="UMKC Cumlative GPA" v-model="GPA" />
               </div>
 
               <div>
               <label for="" class="mt-1">Hours completed at UMKC (leave blank if first semester is in progress)</label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Hours done at UMKC" v-model="hoursUMKC" />
+              <input type="text" class="form-control" placeholder="Hours done at UMKC" v-model="hrsCompleted" />
               </div>
 
               <div>
               <label for="" class="mt-1">Undergraduate Degree (if applicable, e.g., BTEC, BSCS, IT)</label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Undergraduate Degree" v-model="UG_Degree" />
+              <input type="text" class="form-control" placeholder="Undergraduate Degree" v-model="degree" />
               </div>
 
               <div>
               <label for="" class="mt-1">Current Major(CS/IT/ECE/EE)</label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Current Major" v-model="C_Major" />
+              <input type="text" class="form-control" placeholder="Current Major" v-model="currMajor" />
               </div>
 
               <div>
               <label for="" class="mt-1">Applying for: (Grader, Lab Instructor or Both) </label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Appplying For" v-model="App_For" />
+              <input type="text" class="form-control" placeholder="Appplying For" v-model="position" />
               </div>
 
               <div>
@@ -150,11 +149,18 @@ export default {
     return{
       fname: "",
       lname: "",
-      umkcID: "",
+      umkcID: 0,
       id: "",
       email: "",
+      currLevel: "",
+      gradSemester: "",
+      GPA: 0.0,
+      hrsCompleted: 0,
+      currMajor: "",
+      position: "",
       certified: false,
-      cNumber: ""
+      courseID: 0,
+      courses: {},
     }
   },
   methods: {

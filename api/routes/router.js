@@ -182,29 +182,10 @@ router.get("/students", (req, res) => {
 })
 
 router.get("/courses", (req, res) => {
-    let query = "SELECT * FROM Courses";
-
+    let query = `SELECT * FROM Courses`;
     db.query(query, (err, result) => {
         if (err) {
-            res.json(500, {
-                msg: "Internal Server Error Please Try Again"
-            })
-        }
-
-        res.send(200, {
-            msg: "All the data fetched successfully",
-            data: result
-        })
-    })
-})
-
-router.get("/applications", (req, res) => {
-    // let courseID = req.body.courseID;
-    let query = `SELECT * FROM Applications WHERE courseID ='${req.body.courseID}'`;
-
-    db.query(query, (err, result) => {
-        if (err) {
-            res.json(500, {
+            return res.json(500, {
                 msg: "Internal Server Error Please Try Again"
             })
         }
@@ -214,6 +195,23 @@ router.get("/applications", (req, res) => {
         })
     })
 });
+
+router.get("/applications", (req, res) => {
+    let param = req.query.courseNo;
+    let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY GPA DESC`;
+    db.query(query, (err, result) => {
+        if (err) {
+            return res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+});
+
 
 router.get("/api/courseNum", (req, res) => {
     let query = `SELECT * FROM Courses WHERE courseNo ='${req.body.courseNo}'`;

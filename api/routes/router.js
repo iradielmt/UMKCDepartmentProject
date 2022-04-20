@@ -125,45 +125,6 @@ router.get('/validate', userMiddleware.isLoggedIn, (req, res, next) => {
     res.send('Logged in');
 });
 
-// router.post("/student", (req, res) => {
-//     console.log("Request..	");
-//     let fname = req.body.fname;
-//     let lname = req.body.lname;
-//     let umkcID = req.body.umkcID;
-//
-//     let errFName = validateFName(fname); // will validate first name
-//     let errLName = validateLName(lname); // will validate last name
-//     let errID = validateID(umkcID); // will validate ID
-//     let admin = isAdmin(umkcID); // will determine if user is student or admin
-//
-//     if (errFName.length || errLName.length || errID.length) {
-//         res.json(200, {
-//             msg: "Validation Failed",
-//             errors: {
-//                 fname: errFName,
-//                 lname: errLName,
-//                 umkcID: errID,
-//             }
-//         });
-//     }
-//     else {
-//         let query = `INSERT INTO Students (fname, lname, umkcID, admin) VALUES ('${fname}', '${lname}', '${umkcID}', '${admin}')`;
-//         db.connection.query(query, (err, result) => {
-//             if (err) {
-//                 console.log(err.message);
-//                 // status code 500 is for Internal Server Error
-//                 return res.json(500, {
-//                     msg: "Something went wrong please try again"
-//                 })
-//             }
-//             // if we reach till this point means record is inserted succesfully
-//             return res.json(200, {
-//                 msg: "User Registered Succesfully",
-//             })
-//         })
-//     }
-// });
-//
 router.get("/students", (req, res) => {
     let query = "SELECT * FROM STUDENTS";
 
@@ -182,7 +143,7 @@ router.get("/students", (req, res) => {
 })
 
 router.get("/courses", (req, res) => {
-    let query = `SELECT * FROM Courses`;
+    let query = `SELECT * FROM Courses ORDER BY courseNo ASC`;
     db.query(query, (err, result) => {
         if (err) {
             return res.json(500, {
@@ -213,7 +174,7 @@ router.get("/applications", (req, res) => {
 });
 
 
-router.get("/api/courseNum", (req, res) => {
+router.get("/courseNum", (req, res) => {
     let query = `SELECT * FROM Courses WHERE courseNo ='${req.body.courseNo}'`;
     db.query(query, (err, result) => {
         if (err) {

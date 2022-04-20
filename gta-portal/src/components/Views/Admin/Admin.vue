@@ -106,5 +106,7 @@ export default {
 </script>
 
 <style scoped>
-
+.row{
+  margin-bottom: 20px;
+}
 </style>

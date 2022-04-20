@@ -190,7 +190,7 @@ router.get("/courses", (req, res) => {
             })
         }
         res.send(200, {
-            msg: "data fetched",
+            msg: "All the data fetched successfully",
             data: result
         })
     })
@@ -206,6 +206,7 @@ router.get("/applications", (req, res) => {
             })
         }
         res.send(200, {
+            msg: "All the data fetched successfully",
             data: result
         })
     })

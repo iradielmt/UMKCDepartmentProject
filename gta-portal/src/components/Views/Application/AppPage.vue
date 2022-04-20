@@ -166,9 +166,9 @@
 </template>
 
 <script>
-import axios from 'axios';
 import Header from "@/components/Views/Home/Header.vue";
  import Footer from "@/components/Views/Home/Footer.vue";
+import AuthService from "@/services/AuthService";
 export default {
   name: "AppPage",
    components: {
@@ -192,43 +192,36 @@ export default {
       certified: false,
       courseID: 0,
       courses: {},
+      msg: ''
     }
   },
   methods: {
-    registerStudent: function() {
-      axios.post("/api/student", {
-        fname: this.fname,
-        lname: this.lname,
-        umkcID: this.umkcID,
-      }).then((res) => {
-        if(res.data.msg === "Validation Failed"){
-          let errors = res.data.errors;
-          let errorMsg = "";
-          if(errors.fname.length != 0){
-            for(let i=0; i<errors.fname.length; i++){
-              errorMsg += `${errors.fname[i]}\n`;
-            }
-          }
-
-          if(errors.lname.length != 0) {
-            for (let i = 0; i < errors.lname.length; i++) {
-              errorMsg += `${errors.lname[i]}\n`;
-            }
-          }
-          if(errors.umkcID.length != 0){
-            for(let i=0; i<errors.umkcID.length; i++){
-              errorMsg += `${errors.umkcID[i]}\n`;
-            }
-          }
-          alert(errorMsg);
+    async postApp() {
+      try {
+        const credentials = {
+          fname: this.fname,
+          lname: this.lname,
+          umkcID: this.umkcID,
+          email: this.email,
+          currLevel: this.currLevel,
+          gradSemester: this.gradSemester,
+          GPA: this.GPA,
+          hrsCompleted: this.hrsCompleted,
+          degree: this.degree,
+          currMajor: this.currMajor,
+          position: this.position,
+          certified: this.certified,
+          courseID: this.courseID,
+        };
+        const response = await AuthService.postApp(credentials);
+        this.accountMsg = response.msg;
+        if(this.accountMsg === "Registered!"){
+          await this.$router.push('/login');
         }
-        else{
-          alert("Successfully Saved");
-        }
-      }).catch(()=>{
-        alert("Something Went Wrong");
-      })
-    }
+      } catch (error) {
+        this.accountMsg = error.response.data.accountMsg;
+      }
+    },
   }
 };
 </script>

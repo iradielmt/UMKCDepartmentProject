@@ -65,6 +65,7 @@ router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
         }
     );
 });
+
 router.post("/register/student", (req, res) => {
     db.query(
         `INSERT INTO Students (umkcID, fname, lname, contactNo, email, certified) VALUES (${db.escape(req.body.umkcID)}, ${db.escape(req.body.fname)}, ${db.escape(req.body.lname)}, ${db.escape(req.body.contactNo)}, ${db.escape(req.body.email)}, ${db.escape(req.body.certified)})`,
@@ -81,6 +82,24 @@ router.post("/register/student", (req, res) => {
         }
     );
 })
+
+router.post("/send/app", (req, res) => {
+    db.query(
+        `INSERT INTO Applications (fname, lname, umkcID, email, currLevel, gradSemester, GPA, hrsCompleted, degree, currMajor, position, certified, courseID) VALUES (${db.escape(req.body.fname)}, ${db.escape(req.body.lname)}, ${db.escape(req.body.umkcID)}, ${db.escape(req.body.email)}, ${db.escape(req.body.currLevel)}, ${db.escape(req.body.gradSemester)}, ${db.escape(req.body.GPA)}, ${db.escape(req.body.hrsCompleted)}, ${db.escape(req.body.degree)}, ${db.escape(req.body.currMajor)}, ${db.escape(req.body.position)}, ${db.escape(req.body.certified)}, ${db.escape(req.body.courseID)})`,
+        (err, result) => {
+            if (err) {
+                throw err;
+                return res.status(400).send({
+                    msg: 'An unexpected error occurred'
+                });
+            }
+            return res.status(201).send({
+                msg: 'Information Recorded'
+            });
+        }
+    );
+})
+
 router.post('/login', (req, res, next) => {
     db.query(
         `SELECT * FROM Accounts WHERE email = '${req.body.email}'`,

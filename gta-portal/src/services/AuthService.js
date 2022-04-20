@@ -20,5 +20,10 @@ export default {
         return axios
             .post(url + 'register/student', credentials)
             .then(response => response.data);
+    },
+    postApp(credentials) {
+        return axios
+            .post(url + 'send/app', credentials)
+            .then(response => response.data);
     }
 };

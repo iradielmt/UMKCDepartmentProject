@@ -38,8 +38,8 @@
 
 				<h3 class="mb-4"> Further Information:</h3>
 				<ul>
-				<li>You must be GTA certified to work as a lab instructor. More information on the certification process can be found, here:  https://catalog.umkc.edu/general-graduate-academic-regulations-information/international-graduate-student-academic-regulations/. </li>
-				<li>If you have questions, please contact the School of Graduate Studies at umkcsgs@umkc.eduor 816-235-1301.</li>
+				<li>You must be GTA certified to work as a lab instructor. More information on the certification process can be found, here: <a href="https://catalog.umkc.edu/general-graduate-academic-regulations-information/international-graduate-student-academic-regulations/">https://catalog.umkc.edu/general-graduate-academic-regulations-information/international-graduate-student-academic-regulations/</a>. </li>
+				<li>If you have questions, please contact the School of Graduate Studies at <a href="mailto:umkcsgs@umkc.edu"> umkcsgs@umkc.edu</a> or 816-235-1301.</li>
 				<li>If you are not GTA certified, you may only apply for Grader positions. </li>
 				<li>GTA certification for international students can only be waived with a previous degree from a US institute. </li> 
 				<li>International F-1 students are limited to 20 hours/week and domestic students/PR card holders are limited to 28 hours/week. </li>
@@ -53,8 +53,6 @@
 				<li>Please do not include any courses not mentioned, above in your application as this will not help your potential employment. </li> 
 				<li>Descriptions for the above-mentioned courses can be found, here:  https://catalog.umkc.edu/course-offerings/  DO NOT include a copy of a CV/resume, cover letter or reference letters as that will not help your potential employment.</li> 
 				</ul>
-									
-									
 					</div>
 				</div>
 			</div>

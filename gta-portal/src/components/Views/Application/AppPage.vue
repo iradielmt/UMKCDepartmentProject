@@ -12,7 +12,7 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-          <img src="@/assets/umkc.png" alt="centered image" height="150" width="275"> 
+          <img src="@/assets/umkc.png" alt="centered image" height="150" width="275">
 					<h2 class="heading-section">Apply</h2>
 	</div>
 </div>
@@ -20,10 +20,10 @@
 	<div class="row justify-content-center">
 		<div class="col-lg-10">
 			<div class="wrapper">
-				<div class="contact-wrap w-100 p-md-5 p-4 py-5"> 
+				<div class="contact-wrap w-100 p-md-5 p-4 py-5">
 					<div class="col-md-10">
             <div class="row mt-4">
-              
+
                <div>
                <label for="" class="mt-1">Name</label>
                </div>

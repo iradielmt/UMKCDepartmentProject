@@ -130,7 +130,9 @@ export default {
         };
         const response = await AuthService.signUp(credentials);
         this.msg = response.msg;
-        // await this.$router.push('/LoginPaje');
+        if(this.msg === "Registered!"){
+           await this.$router.push('/login');
+        }
       } catch (error) {
         this.msg = error.response.data.msg;
       }

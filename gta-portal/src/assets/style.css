@@ -18,6 +18,10 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
+  /*background-image: url('backdrop.jpg');*/
+  /*background-repeat: no-repeat;*/
+  /*background-attachment: fixed; */
+  /*background-size: 100% 100%;*/
   background-color: skyblue; 
   margin-bottom: 5%;
 }
@@ -832,8 +836,6 @@ h1, h2, h3, h4, h5,
 
 .form-control {
   height: 52px;
-  background: transparent;
-  color: black;
   font-size: 14px;
   border-radius: 0px;
   -webkit-box-shadow: none !important;
@@ -841,18 +843,22 @@ h1, h2, h3, h4, h5,
   border: 1px solid rgba(255, 255, 255, 0.2); }
   .form-control::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
-    color: black; }
+    color: black;
+    background-color: white; }
   .form-control::-moz-placeholder {
     /* Firefox 19+ */
-    color: black; }
+    color: black;
+    background-color: white; }
   .form-control:-ms-input-placeholder {
     /* IE 0+ */
-    color: black; }
+    color: black;
+    background-color: white; }
   .form-control:-moz-placeholder {
     /* Firefox 18- */
-    color: black; }
+    color: black;
+    background-color: white; }
   .form-control:focus, .form-control:active {
-    background: transparent;
+    background: white;
     border-color: rgba(255, 255, 255, 0.5) !important; }
 
 

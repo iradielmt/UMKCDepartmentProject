@@ -119,6 +119,7 @@ export default {
   methods: {
     async signUp() {
       try {
+         window.open("/AppPage");
         const credentials = {
           fname: this.fname,
           lname: this.lname,

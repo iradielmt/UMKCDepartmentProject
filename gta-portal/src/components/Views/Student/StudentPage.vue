@@ -5,7 +5,7 @@
 </head>
 <body style="margin-bottom:5%;">
 <Header />
-<div class="row justify-content-center">
+<div class="center1">
             <div class="col-md-6 text-center mb-5">
                 <img src="@/assets/umkc.png" alt="centered image" height="150" width="275"> 
             </div>

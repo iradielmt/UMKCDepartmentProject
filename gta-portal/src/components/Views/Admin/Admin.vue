@@ -5,7 +5,13 @@
 </head>
 <body style="margin-bottom:5%;">
     <Header />
-  <section class="vh-100" style="background-color: #6c757d;">
+  <section class="vh-100" style="background-color: skyblue;">
+  <div class="center1">
+            <div class="col-md-6 text-center mb-5">
+                <img src="@/assets/umkc.png" alt="centered image" height="150" width="275"> 
+            </div>
+        </div>
+
     <div class="main">
       <div class="container py-5 h-50" >
         <div class="row d-flex justify-content-center align-items-center h-100" >
@@ -74,7 +80,7 @@
         <div>
           <table class="table table-bordered">
             <thead>
-                <tr>
+                <tr style="background-color:lightblue;">
                     <th>First</th>
                     <th>Last</th>
                     <th>UMKC ID</th>

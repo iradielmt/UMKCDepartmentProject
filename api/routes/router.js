@@ -183,7 +183,6 @@ router.get("/students", (req, res) => {
 
 router.get("/courses", (req, res) => {
     let query = `SELECT * FROM Courses`;
-
     db.query(query, (err, result) => {
         if (err) {
             return res.json(500, {
@@ -200,7 +199,6 @@ router.get("/courses", (req, res) => {
 router.get("/applications", (req, res) => {
     let param = req.query.courseNo;
     let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY GPA DESC`;
-
     db.query(query, (err, result) => {
         if (err) {
             return res.json(500, {

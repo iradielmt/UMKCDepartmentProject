@@ -142,10 +142,10 @@
              <label for="" class="mt-1">Courses you could serve as lab instructoror grade for(ex. CS 201L/CS 5525/ECE 216, etc.)</label>
              </div>
              <div class="col-md-6">
-             <input type="text" class="form-control" placeholder="Courses" v-model="Courses" />
+             <input type="text" class="form-control" placeholder="Courses" v-model="courseID" />
 
              <div class="row mt-4">
-                 <button class="btn btn-primary" >Apply</button>
+                 <button class="btn btn-primary" @click="postApp">Apply</button>
              </div>
              </div>
 
@@ -179,18 +179,18 @@ export default {
     return{
       fname: "",
       lname: "",
-      umkcID: 0,
+      umkcID: null,
       id: "",
       email: "",
       currLevel: "",
       gradSemester: "",
-      GPA: 0.0,
+      GPA: null,
       degree:"",
-      hrsCompleted: 0,
+      hrsCompleted: null,
       currMajor: "",
       position: "",
       certified: false,
-      courseID: 0,
+      courseID: null,
       courses: {},
       msg: ''
     }

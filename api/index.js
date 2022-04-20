@@ -27,6 +27,7 @@ api.use((err, req, res, next) => {
     });
 })
 
+
 function isAdmin(umkcID){
     let admin = 0;
 

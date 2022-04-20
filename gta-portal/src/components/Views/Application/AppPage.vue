@@ -146,6 +146,7 @@
 
              <div class="row mt-4">
                  <button class="btn btn-primary" @click="postApp">Apply</button>
+                 <p style="color:skyblue" v-if="msg"> {{ msg }}</p>
              </div>
              </div>
 

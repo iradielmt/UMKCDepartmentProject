@@ -83,6 +83,7 @@ router.post("/register/student", (req, res) => {
     );
 })
 
+
 router.post("/send/app", (req, res) => {
     db.query(
         `INSERT INTO Applications (fname, lname, umkcID, email, currLevel, gradSemester, GPA, hrsCompleted, degree, currMajor, position, certified, courseID) VALUES (${db.escape(req.body.fname)}, ${db.escape(req.body.lname)}, ${db.escape(req.body.umkcID)}, ${db.escape(req.body.email)}, ${db.escape(req.body.currLevel)}, ${db.escape(req.body.gradSemester)}, ${db.escape(req.body.GPA)}, ${db.escape(req.body.hrsCompleted)}, ${db.escape(req.body.degree)}, ${db.escape(req.body.currMajor)}, ${db.escape(req.body.position)}, ${db.escape(req.body.certified)}, ${db.escape(req.body.courseID)})`,

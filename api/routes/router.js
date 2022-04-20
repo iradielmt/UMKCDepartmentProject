@@ -45,20 +45,20 @@ router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
                             }
                         );
                         // Student Info added to DB
-                        db.query(
-                            `INSERT INTO Students (umkcID, fname, lname, contactNo, email, certified) VALUES (${db.escape(req.body.umkcID)}, ${db.escape(req.body.fname)}, ${db.escape(req.body.lname)}, ${db.escape(req.body.contactNo)}, ${db.escape(req.body.email)}, ${db.escape(req.body.certified)})`,
-                            (err, result) => {
-                                if (err) {
-                                    throw err;
-                                    return res.status(400).send({
-                                        msg: 'An unexpected error occurred'
-                                    });
-                                }
-                                return res.status(201).send({
-                                    msg: 'Information Recorded'
-                                });
-                            }
-                        );
+                        // db.query(
+                        //     `INSERT INTO Students (umkcID, fname, lname, contactNo, email, certified) VALUES (${db.escape(req.body.umkcID)}, ${db.escape(req.body.fname)}, ${db.escape(req.body.lname)}, ${db.escape(req.body.contactNo)}, ${db.escape(req.body.email)}, ${db.escape(req.body.certified)})`,
+                        //     (err, result) => {
+                        //         if (err) {
+                        //             throw err;
+                        //             return res.status(400).send({
+                        //                 msg: 'An unexpected error occurred'
+                        //             });
+                        //         }
+                        //         return res.status(201).send({
+                        //             msg: 'Information Recorded'
+                        //         });
+                        //     }
+                        // );
                     }
                 });
             }

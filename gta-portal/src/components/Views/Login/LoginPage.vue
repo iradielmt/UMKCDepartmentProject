@@ -29,7 +29,7 @@
               <div class="form-outline mb-4">
                 <input type="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="UMKC ID" v-model="umkcID"/>
               </div>
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+              <button @click="login" class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
               <div>
                 <p class="mb-0">Don't have an account? <a href="/register" class="mb-22 fw-bold">Sign Up</a></p>
               </div>

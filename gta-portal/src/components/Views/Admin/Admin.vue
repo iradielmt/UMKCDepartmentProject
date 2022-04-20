@@ -16,7 +16,7 @@
               </div>
             </div>
           </div>
-          
+
         </div>
 
         <div>
@@ -80,7 +80,7 @@ export default {
    mounted() {
     this.loadClasses();
   },
-  methods: {  
+  methods: {
     loadClasses: function(){
       axios.get(url + "courses").then((res) => {
         this.classes = res.data.data;

@@ -4,9 +4,8 @@
 <meta charset="utf-8">
 </head>
 <body style="margin-bottom:5%;">
-<div>
     <Header />
-</div>
+
 <section class="ftco-section">
     <div class="container">
         <div class="row justify-content-center">
@@ -46,7 +45,7 @@
                                              </div>
 
                                             <div class="text pl-3">
-                                            <p class="mb-4"><span>Address:</span> 198 West 21th Street, Kansas City MO</p>
+                                            <p class="mb-4"><span>Address:</span> 5110 Rockhill Rd, Kansas City, MO 64110</p>
                                             </div>
                                         </div>
 
@@ -57,7 +56,7 @@
                                         <span class="fa fa-phone"></span>
                                         </div>
                                         <div class="text pl-3">
-                                        <p><span>Phone:</span> <a href="tel://1234567920">+816 123 4567</a></p>
+                                        <p><span>Phone:</span> <a href="tel://1234567920">(816) 235-1000</a></p>
                                         </div>
                                     </div>
 
@@ -67,7 +66,7 @@
                                         <span class="fa fa-paper-plane"></span>
                                         </div>
                                         <div class="text pl-3">
-                                        <p><span>Email:</span> <a href="mailto:info@yoursite.com"> gtasubmission@umkc.edu</a></p>
+                                        <p><span>Email:</span> <a href="mailto:umkcsceworkstudy@umkc.edu"> umkcsceworkstudy@umkc.edu</a></p>
                                         </div>
                                     </div>
 
@@ -77,10 +76,9 @@
                                         <span class="fa fa-globe"></span>
                                         </div>
                                         <div class="text pl-3">
-                                        <p><span>Website</span> <a href="#">UMKC.com</a></p>
+                                        <p><span>Website</span> <a href="https://sce.umkc.edu/">https://sce.umkc.edu/</a></p>
                                          </div>
                                     </div>
-                        
                             </div>
                         </div>
                     </div>

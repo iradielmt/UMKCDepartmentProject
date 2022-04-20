@@ -65,7 +65,22 @@ router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
         }
     );
 });
-
+router.post("/register/student", (req, res) => {
+    db.query(
+        `INSERT INTO Students (umkcID, fname, lname, contactNo, email, certified) VALUES (${db.escape(req.body.umkcID)}, ${db.escape(req.body.fname)}, ${db.escape(req.body.lname)}, ${db.escape(req.body.contactNo)}, ${db.escape(req.body.email)}, ${db.escape(req.body.certified)})`,
+        (err, result) => {
+            if (err) {
+                throw err;
+                return res.status(400).send({
+                    msg: 'An unexpected error occurred'
+                });
+            }
+            return res.status(201).send({
+                msg: 'Information Recorded'
+            });
+        }
+    );
+})
 router.post('/login', (req, res, next) => {
     db.query(
         `SELECT * FROM Accounts WHERE email = '${req.body.email}'`,

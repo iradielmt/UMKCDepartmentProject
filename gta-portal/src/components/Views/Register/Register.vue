@@ -74,11 +74,10 @@
                  </select>
                  </div>
                  </div>
-
                  <div class="row mt-4">
                  <div class="col-md-4">
                    <button class="btn btn-primary" @click="signUp" value="Sign Up">Register</button>
-                   <p style="color:gold" v-if="msg">{{ msg }}</p>
+                   <p style="color:skyblue" v-if="accountMsg">* {{ accountMsg }}</p>
                  </div>
                  </div>
                 </div>
@@ -113,13 +112,13 @@ export default {
       email: "",
       certified: false,
       contactNo: "",
-      msg: ''
+      accountMsg: '',
+      studentMsg:''
     }
   },
   methods: {
     async signUp() {
       try {
-         window.open("/AppPage");
         const credentials = {
           fname: this.fname,
           lname: this.lname,
@@ -129,14 +128,16 @@ export default {
           certified: this.certified,
         };
         const response = await AuthService.signUp(credentials);
-        this.msg = response.msg;
-        if(this.msg === "Registered!"){
+        const response2 = await AuthService.postStudent(credentials);
+        this.accountMsg = response.msg;
+        this.studentMsg = response2.msg
+        if(this.accountMsg === "Registered!"){
            await this.$router.push('/login');
         }
       } catch (error) {
-        this.msg = error.response.data.msg;
+        this.accountMsg = error.response.data.accountMsg;
       }
-    }
+    },
   }
 };
 </script>

@@ -23,7 +23,6 @@
 				<div class="contact-wrap w-100 p-md-5 p-4 py-5">
 					<div class="col-md-10">
             <div class="row mt-4">
-
                <div>
                <label for="" class="mt-1">Name</label>
                </div>
@@ -34,7 +33,6 @@
                <input type="text" class="form-control" v-model="lname" placeholder="Last Name" />
                </div>
                </div>
-
                <div class="row mt-4">
                <div>
                <label for="" class="mt-1">UMKC ID</label>
@@ -49,7 +47,7 @@
                <label for="" class="mt-1">UMKC Current Level (BA/BS/MS/PhD)</label>
                </div>
                <div class="col-md-6">
-               <select name="CurrentLevel" id="CurrentLevel">
+               <select name="CurrentLevel" id="CurrentLevel" v-model="currLevel">
                   <option value="BA">BA</option>
                   <option value="BS">BS</option>
                   <option value="MS">MS</option>
@@ -62,7 +60,7 @@
                <label for="" class="mt-1">Graduating Semester</label>
                </div>
                <div class="col-md-6">
-               <select name="GradSemester" id="GradSemester">
+               <select name="GradSemester" id="GradSemester" v-model="gradSemester">
                   <option value="Spring 22">Spring 22</option>
                   <option value="Summer 22">Summer 22</option>
                   <option value="Fall 22">Fall 22</option>
@@ -107,8 +105,8 @@
               <label for="" class="mt-1">Current Major(CS/IT/ECE/EE)</label>
               </div>
               <div class="col-md-6">
-              <select name="CurrentMajor" id="CurrentMajor">
-                  <option value="CS">BA</option>
+              <select name="CurrentMajor" id="CurrentMajor" v-model="currMajor">
+                  <option value="CS">CS</option>
                   <option value="IT">IT</option>
                   <option value="ECE">ECE</option>
                   <option value="EE">EE</option>
@@ -119,7 +117,7 @@
               <label for="" class="mt-1">Applying for: (Grader, Lab Instructor or Both) </label>
               </div>
               <div class="col-md-6">
-              <select name="applying" id="applying">
+              <select name="applying" id="applying" v-model="position">
                   <option value="Grader">Grader</option>
                   <option value="Lab Instructor">Lab Instructor</option>
                   <option value="Both">Both</option>
@@ -130,14 +128,14 @@
               <label for="" class="mt-1">Are you GTA certified? If so, which term did you complete your certification? If you have a previous degree from a US Institute, please indicate this as that waives GTA certification</label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Term of Completion/NA" v-model="Cert" />
+              <input type="text" class="form-control" placeholder="Term of Completion/NA" v-model="term" />
               </div>
 
               <div>
               <label for="" class="mt-1">If you have a previous degree from a US Institute, please indicate this as that waives GTA certification.</label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Certification(s)/NA" v-model="CertUni" />
+              <input type="text" class="form-control" placeholder="Certification(s)/NA" v-model="certified" />
               </div>
 
              <div>
@@ -147,7 +145,7 @@
              <input type="text" class="form-control" placeholder="Courses" v-model="Courses" />
 
              <div class="row mt-4">
-                 <button class="btn btn-primary" @click="$router.push('/AppPage')" >Apply</button>
+                 <button class="btn btn-primary" >Apply</button>
              </div>
              </div>
 
@@ -187,6 +185,7 @@ export default {
       currLevel: "",
       gradSemester: "",
       GPA: 0.0,
+      degree:"",
       hrsCompleted: 0,
       currMajor: "",
       position: "",

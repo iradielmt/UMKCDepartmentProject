@@ -46,10 +46,15 @@
 
                <div class="row mt-4">
                <div>
-               <label for="" class="mt-1">UMKC Current Level (BS/MS/PhD)</label>
+               <label for="" class="mt-1">UMKC Current Level (BA/BS/MS/PhD)</label>
                </div>
                <div class="col-md-6">
-               <input type="text" class="form-control" placeholder="Current level" v-model="currLevel" />
+               <select name="CurrentLevel" id="CurrentLevel">
+                  <option value="BA">BA</option>
+                  <option value="BS">BS</option>
+                  <option value="MS">MS</option>
+                  <option value="PhD">PhD</option>
+                </select>
                </div>
 
                <div class="row mt-4">
@@ -57,8 +62,26 @@
                <label for="" class="mt-1">Graduating Semester</label>
                </div>
                <div class="col-md-6">
-                 <input type="text" class="form-control" placeholder="Graduating Semester" v-model="gradSemester" />
+               <select name="GradSemester" id="GradSemester">
+                  <option value="Spring 22">Spring 22</option>
+                  <option value="Summer 22">Summer 22</option>
+                  <option value="Fall 22">Fall 22</option>
+                  <option value="Spring 23">Spring 23</option>
+                  <option value="Summer 23">Summer 23</option>
+                  <option value="Fall 23">Fall 23</option>
+                  <option value="Spring 24">Spring 24</option>
+                  <option value="Summer 24">Summer 24</option>
+                  <option value="Fall 24">Fall 24</option>
+                  <option value="Spring 25">Spring 25</option>
+                  <option value="Summer 25">Summer 25</option>
+                  <option value="Fall 25">Fall 25</option>
+                  <option value="Spring 26">Spring 26</option>
+                  <option value="Summer 26">Summer 26</option>
+                  <option value="Fall 26">Fall 26</option>
+
+                </select>
                </div>
+
               <div>
               <label for="" class="mt-1">UMKC Cumulative GPA (leave blank if first semester is in progress) </label>
               </div>
@@ -84,14 +107,23 @@
               <label for="" class="mt-1">Current Major(CS/IT/ECE/EE)</label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Current Major" v-model="currMajor" />
+              <select name="CurrentMajor" id="CurrentMajor">
+                  <option value="CS">BA</option>
+                  <option value="IT">IT</option>
+                  <option value="ECE">ECE</option>
+                  <option value="EE">EE</option>
+                </select>
               </div>
 
               <div>
               <label for="" class="mt-1">Applying for: (Grader, Lab Instructor or Both) </label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Appplying For" v-model="position" />
+              <select name="applying" id="applying">
+                  <option value="Grader">Grader</option>
+                  <option value="Lab Instructor">Lab Instructor</option>
+                  <option value="Both">Both</option>
+                </select>
               </div>
 
               <div>

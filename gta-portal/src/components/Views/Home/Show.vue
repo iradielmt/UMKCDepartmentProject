@@ -1,5 +1,5 @@
 <template>
-  <Header/>
+  <HeaderHome></HeaderHome>
   <div>
     <table class="table table-bordered">
       <thead>
@@ -22,3 +22,30 @@
   </div>
   <Footer />
 </template>
+
+<script>
+import axios from 'axios';
+import HeaderHome from "@/components/Views/Home/Header";
+export default {
+  name: "ShowHome",
+  components: {HeaderHome},
+  data() {
+    return {
+      students: {}
+    }
+  },
+  mounted(){
+    this.loadStudentsTable();
+  },
+  methods: {
+    loadStudentsTable: function(){
+      axios.get("/api/students").then((res) => {
+        this.students = res.data.data;
+      })
+          .catch(()=>{
+            console.log("Something Went Wrong");
+          })
+    }
+  }
+};
+</script>

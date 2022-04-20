@@ -154,7 +154,7 @@ export default {
       })
       .catch(()=>{
           console.log("Something Went Wrong");
-      })           
+      })
     }
   }
 };

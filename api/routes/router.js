@@ -45,20 +45,20 @@ router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
                             }
                         );
                         // Student Info added to DB
-                        db.query(
-                            `INSERT INTO Students (umkcID, fname, lname, contactNo, email, certified) VALUES (${db.escape(req.body.umkcID)}, ${db.escape(req.body.fname)}, ${db.escape(req.body.lname)}, ${db.escape(req.body.contactNo)}, ${db.escape(req.body.email)}, ${db.escape(req.body.certified)})`,
-                            (err, result) => {
-                                if (err) {
-                                    throw err;
-                                    return res.status(400).send({
-                                        msg: 'An unexpected error occurred'
-                                    });
-                                }
-                                return res.status(201).send({
-                                    msg: 'Information Recorded'
-                                });
-                            }
-                        );
+                        // db.query(
+                        //     `INSERT INTO Students (umkcID, fname, lname, contactNo, email, certified) VALUES (${db.escape(req.body.umkcID)}, ${db.escape(req.body.fname)}, ${db.escape(req.body.lname)}, ${db.escape(req.body.contactNo)}, ${db.escape(req.body.email)}, ${db.escape(req.body.certified)})`,
+                        //     (err, result) => {
+                        //         if (err) {
+                        //             throw err;
+                        //             return res.status(400).send({
+                        //                 msg: 'An unexpected error occurred'
+                        //             });
+                        //         }
+                        //         return res.status(201).send({
+                        //             msg: 'Information Recorded'
+                        //         });
+                        //     }
+                        // );
                     }
                 });
             }
@@ -181,13 +181,30 @@ router.get("/students", (req, res) => {
     })
 })
 
-router.get("/api/applications", (req, res) => {
-    let courseID = req.body.courseID;
-    let query = `SELECT * FROM Applications WHERE courseID ='${courseID}'`;
+router.get("/courses", (req, res) => {
+    let query = "SELECT * FROM Courses";
 
     db.query(query, (err, result) => {
         if (err) {
-            return res.json(500, {
+            res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+})
+
+router.get("/applications", (req, res) => {
+    // let courseID = req.body.courseID;
+    let query = `SELECT * FROM Applications WHERE courseID ='${req.body.courseID}'`;
+
+    db.query(query, (err, result) => {
+        if (err) {
+            res.json(500, {
                 msg: "Internal Server Error Please Try Again"
             })
         }

@@ -1,7 +1,12 @@
 <template>
-<Header />
-<div class="main">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+</head>
+<body style="margin-bottom:5%;">
+    <Header />
   <section class="vh-100" style="background-color: #6c757d;">
+    <div class="main">
       <div class="container py-5 h-50" >
         <div class="row d-flex justify-content-center align-items-center h-100" >
           <div class="col-12 col-md-8 col-lg-6 col-xl-5" >
@@ -102,9 +107,11 @@
         </div>
       </div>
     </div>
+    </div>
   </section>
-</div>
-<Footer />
+  <Footer />
+  </body>
+</html>
 </template>
 
 <script>
@@ -112,6 +119,8 @@
 import Header from "@/components/Views/Home/Header.vue";
 import Footer from "@/components/Views/Home/Footer.vue";
 import axios from 'axios';
+import AuthService from '@/services/AuthService.js';
+
 export default {
   components: { 
     Header,
@@ -122,6 +131,7 @@ export default {
     return{
       courseName: '',
       courseID: '',
+      msg: '',
       disabled: false
     }
   },
@@ -134,21 +144,24 @@ export default {
     //     console.log("Something Went Wrong");
     //   })
     // },
+    async getCourseNum() {
+      try {
+        const credentials = {
+          courseNo: this.courseName,
+        };
+        const response = await AuthService.getCourseNum(credentials);
+        this.msg = response.msg;
+      } catch (error) {
+        this.msg = error.response.data.msg;
+      }
+    },
     loadApplicationsTable: function(){
-      axios.get("/api/courseNum", { params: { courseNo: "CS291" } }).then((res) => {
-        this.courseID = res.data.courseID;
-        console.log(this.courseID);
-      })
-      .catch(()=>{
-        console.log("Something Went Wrong");
-      })
-      console.log(this.coursID);
       axios.get("/api/applications", {params: {courseID: this.courseID}}).then((res) => {
           this.applications = res.data.data;
       })
       .catch(()=>{
           console.log("Something Went Wrong");
-      })           
+      })
     }
   }
 };

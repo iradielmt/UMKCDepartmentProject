@@ -15,5 +15,10 @@ export default {
     },
     getSecretContent() {
         return axios.get(url + 'secret-route/').then(response => response.data);
+    },
+    getCourseNum(credentials) {
+        return axios
+            .get(url + 'courseNum/', credentials)
+            .then(response => response.data);
     }
 };

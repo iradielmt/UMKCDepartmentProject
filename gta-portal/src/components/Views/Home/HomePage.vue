@@ -4,9 +4,8 @@
 <meta charset="utf-8">
 </head>
 <body style="margin-bottom:5%;">
-<div>
     <Header />
-</div>
+
 <section class="ftco-section">
     <div class="container">
         <div class="row justify-content-center">

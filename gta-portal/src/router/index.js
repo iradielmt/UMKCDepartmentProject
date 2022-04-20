@@ -6,6 +6,7 @@ import AppPage from "@/components/Views/Application/AppPage"
 import LoginPage from "@/components/Views/Login/LoginPage"
 import StudentPage from "@/components/Views/Student/StudentPage"
 import Admin from "@/components/Views/Admin/Admin"
+import ShowHome from "@/components/Views/Home/Show"
 // import store from "/src/store/store"
 const routes = [
     {
@@ -38,6 +39,10 @@ const routes = [
     {
         path: "/admin",
         component: Admin
+    },
+    {
+        path: "/show",
+        component: ShowHome
     }
 ];
 

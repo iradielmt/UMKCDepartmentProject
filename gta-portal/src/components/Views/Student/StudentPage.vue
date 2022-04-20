@@ -22,7 +22,7 @@
                 <a href="/AppPage" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Start Application</a>
               </div>
                <div>
-                <p class="mb-0">Already filled out an application? <a href="/profile" class="fw-bold">View Applications</a></p>
+                <p class="mb-0">Do you qualify for a GTA position? <a href="/info" class="fw-bold">View Criteria</a></p>
               </div>
             </div>
           </div>

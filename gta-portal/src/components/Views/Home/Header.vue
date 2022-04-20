@@ -16,17 +16,19 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link class="nav-link active" aria-current="page" to="/HomePage"
-            >Home</router-link>
+            <router-link class="nav-link active" aria-current="page" to="/">
+              Home
+            </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link active" aria-current="page" to="/InfoPage"
-            >Info</router-link
-            >
+            <router-link class="nav-link active" aria-current="page" to="/info">
+              Info
+            </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link active" style="text-align:right;" aria-current="page" to="/LoginPage"
-            >Login</router-link>
+            <router-link class="nav-link active" style="text-align:right;" aria-current="page" to="/login">
+              Login
+            </router-link>
           </li>
         </ul>
       </div>
@@ -36,7 +38,7 @@
 
 <script>
 export default {
-  name: "Header-start",
+  name: "HeaderHome",
 };
 
 

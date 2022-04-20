@@ -24,10 +24,10 @@
             <div class="card-body p-5 text-center">
               <h3 class="mb-5">Sign in</h3>
               <div class="form-outline mb-4">
-                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" placeholder="Email"/>
+                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" placeholder="Email" v-model="email"/>
               </div>
               <div class="form-outline mb-4">
-                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="UMKC ID" />
+                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="UMKC ID" v-model="umkcID"/>
               </div>
               <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
               <div>
@@ -49,19 +49,38 @@
 </template>
 
 <script>
-import Header from '../Views/Home/Header.vue'
-import Footer from '../Views/Home/Footer.vue'
+import Header from '../Home/Header.vue'
+import Footer from '../Home/Footer.vue'
+import AuthService from "@/services/AuthService";
+
 export default {
   components: { Header, Footer },
-  name: "LoginPage"
-}
-
-
+  name: "LoginPage",
+  data(){
+    return {
+      email: '',
+      umkcID: '',
+      msg: ''
+    };
+  },
+  methods: {
+    async login() {
+      try {
+        const credentials = {
+          email: this.email,
+          umkcID: this.umkcID
+        };
+        const response = await AuthService.login(credentials);
+        this.msg = response.msg;
+        const token = response.token;
+        const user = response.user;
+        this.$store.dispatch('login', { token, user });
+        await this.$router.push('/appPage');
+      } catch (error) {
+        this.msg = error.response.data.msg;
+      }
+    }
+  }
+};
 
 </script>
-
-  
-
-
-
-<style> @import '@/assets/style.css' </style>

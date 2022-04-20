@@ -119,12 +119,12 @@
                  <button class="btn btn-primary" @click="$router.push('/AppPage')" >Apply</button>
              </div>
              </div>
-            
+
 
            </div>
          </div>
        </div>
-  
+
           </div>
         </div>
       </div>
@@ -195,8 +195,3 @@ export default {
   }
 };
 </script>
-
-
-
-
-<style> @import '@/assets/style.css' </style>

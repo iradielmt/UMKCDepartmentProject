@@ -27,7 +27,7 @@
                                         <div class="row">
                                             <button class="button-19" @click="$router.push('/Register')">Register</button>
                                             <h3 class="mb-4">Existing GTA login:</h3>
-                                            <button class="button-19" @click="$router.push('/LoginPage')">Login</button>
+                                            <button class="button-19" @click="$router.push('/login')">Login</button>
                                         </div>
                                     </form>
                         </div>
@@ -94,19 +94,11 @@
 </template>
 
 <script>
-import Header from '../Views/Home/Header.vue'
-import Footer from '../Views/Home/Footer.vue'
+import Header from './Header.vue'
+import Footer from './Footer.vue'
 export default {
   components: { Header, Footer },
   name: "HomePage"
 }
 
-
-
 </script>
-
-  
-
-
-
-<style> @import '@/assets/style.css' </style>

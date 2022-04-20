@@ -198,7 +198,8 @@ router.get("/courses", (req, res) => {
 });
 
 router.get("/applications", (req, res) => {
-    let query = `SELECT * FROM Applications WHERE courseID ='${req.body.courseNo}'`;
+    let param = req.query.courseNo;
+    let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY GPA DESC`;
 
     db.query(query, (err, result) => {
         if (err) {
@@ -207,11 +208,11 @@ router.get("/applications", (req, res) => {
             })
         }
         res.send(200, {
-            msg: "data fetched",
             data: result
         })
     })
 });
+
 
 router.get("/api/courseNum", (req, res) => {
     let query = `SELECT * FROM Courses WHERE courseNo ='${req.body.courseNo}'`;

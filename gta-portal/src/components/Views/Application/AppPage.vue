@@ -215,10 +215,7 @@ export default {
           courseID: this.courseID,
         };
         const response = await AuthService.postApp(credentials);
-        this.accountMsg = response.msg;
-        if(this.accountMsg === "Registered!"){
-          await this.$router.push('/login');
-        }
+        this.msg = response.msg;
       } catch (error) {
         this.accountMsg = error.response.data.accountMsg;
       }

@@ -207,6 +207,21 @@ router.get("/applications", (req, res) => {
         })
     })
 });
+router.get("/applications/currMajor", (req, res) => {
+    let param = req.query.courseNo;
+    let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY currMajor ASC`;
+    db.query(query, (err, result) => {
+        if (err) {
+            return res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+});
 
 
 router.get("/courseNum", (req, res) => {

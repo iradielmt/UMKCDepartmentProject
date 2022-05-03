@@ -76,7 +76,12 @@ export default {
         const token = response.token;
         const user = response.user;
         this.$store.dispatch('login', { token, user });
-        await this.$router.push('/student');
+        if (this.umkcID.length === 9) {
+          await this.$router.push('/admin');
+        }
+        else {
+          await this.$router.push('/student');
+        }
       } catch (error) {
         this.msg = error.response.data.msg;
       }

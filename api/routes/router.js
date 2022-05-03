@@ -209,7 +209,7 @@ router.get("/applications", (req, res) => {
 });
 router.get("/applications/currMajor", (req, res) => {
     let param = req.query.courseNo;
-    let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY currMajor ASC`;
+    let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY currMajor DESC`;
     db.query(query, (err, result) => {
         if (err) {
             return res.json(500, {

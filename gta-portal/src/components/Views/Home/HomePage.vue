@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 </head>
-<body style="margin-bottom:5%;">
+<body style="margin-bottom:5%; background-image: url('backdrop.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;">
     <Header />
 
 <section class="ftco-section">

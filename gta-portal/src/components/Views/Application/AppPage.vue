@@ -95,19 +95,29 @@
               <input type="text" class="form-control" placeholder="Appplying For" v-model="App_For" />
               </div>
 
+              
               <div>
-              <label for="" class="mt-1">Are you GTA certified? If so, which term did you complete your certification? If you have a previous degree from a US Institute, please indicate this as that waives GTA certification</label>
+              <label for="" class="mt-1"> Are you GTA Certified?</label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Term of Completion/NA" v-model="Cert" />
+              <select name="" id="" class="form-select" v-model="certified">
+              <option value=""> </option>
+              <option value="1">Certified</option>
+              <option value="0">Not Certified</option>
+              </select>
               </div>
 
               <div>
-              <label for="" class="mt-1">If you have a previous degree from a US Institute, please indicate this as that waives GTA certification.</label>
+              <label for="" class="mt-1">If you have a previous degree from a US Institute, please indicate this as that waives GTA certification. </label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Certification(s)/NA" v-model="CertUni" />
-              </div>
+              <select name="" id="" class="form-select" v-model="certified">
+              <option value=""> </option>
+              <option value="1">Previous Degree</option>
+              <option value="0">No Previous Degree</option>
+              </select>
+              </div>   
+             
 
              <div>
              <label for="" class="mt-1">Courses you could serve as lab instructoror grade for(ex. CS 201L/CS 5525/ECE 216, etc.)</label>

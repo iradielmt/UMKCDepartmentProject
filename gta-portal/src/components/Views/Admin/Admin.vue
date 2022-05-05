@@ -28,12 +28,12 @@
           <table class="table table-bordered">
             <thead>
             <tr style="background-color:lightblue;">
-                    <th>First</th>
-                    <th>Last</th>
-                    <th>UMKC ID</th>
-                    <th>Course ID</th>
-                    <th>Current Major</th>
-                    <th>GPA</th>
+                    <th><button @click="loadApplicationsFName()">Name</button></th>
+                    <th><button @click="loadApplicationsLName()">Last</button></th>
+                    <th><button>UMKC ID</button></th>
+                    <th><button>Course ID</button></th>
+                    <th><button @click="loadApplicationsMajor()">Current Major</button></th>
+                    <th><button @click="loadApplicationsGPA()">GPA</button></th>
                 </tr>
             </thead>
             <tbody>
@@ -78,7 +78,7 @@ export default {
   watch: {
     courseName: function(){
       this.isShow=true;
-      this.loadApplications();
+      this.loadApplicationsGPA();
     }
   },
    mounted() {
@@ -93,9 +93,30 @@ export default {
             console.log("Something Went Wrong");
           })
     },
-    loadApplications: function() {
+    loadApplicationsGPA: function() {
       try {
-        axios.get(url + 'applications', {params: {"courseNo": this.courseName.courseID }} ).then((response) => {this.applications = response.data.data});
+        axios.get(url + 'applicationsGPA', {params: {"courseNo": this.courseName.courseID }} ).then((response) => {this.applications = response.data.data});
+      } catch (error) {
+        this.msg = error.response.data.msg;
+      }
+    },
+    loadApplicationsMajor: function() {
+      try {
+        axios.get(url + 'applicationsMajor', {params: {"courseNo": this.courseName.courseID }} ).then((response) => {this.applications = response.data.data});
+      } catch (error) {
+        this.msg = error.response.data.msg;
+      }
+    },
+    loadApplicationsFName: function() {
+      try {
+        axios.get(url + 'applicationsFName', {params: {"courseNo": this.courseName.courseID }} ).then((response) => {this.applications = response.data.data});
+      } catch (error) {
+        this.msg = error.response.data.msg;
+      }
+    },
+    loadApplicationsLName: function() {
+      try {
+        axios.get(url + 'applicationsLName', {params: {"courseNo": this.courseName.courseID }} ).then((response) => {this.applications = response.data.data});
       } catch (error) {
         this.msg = error.response.data.msg;
       }
@@ -108,5 +129,14 @@ export default {
 <style scoped>
 .row{
   margin-bottom: 20px;
+}
+
+button {     
+    font-weight: bold;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;        
 }
 </style>

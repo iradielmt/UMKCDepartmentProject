@@ -125,7 +125,7 @@
               </div>
 
               <div>
-              <label for="" class="mt-1">Are you GTA certified? If so, which term did you complete your certification? If you have a previous degree from a US Institute, please indicate this as that waives GTA certification</label>
+              <label for="" class="mt-1">Are you GTA certified? If so, which term did you complete your certification?</label>
               </div>
               <div class="col-md-6">
               <input type="text" class="form-control" placeholder="Term of Completion/NA" v-model="term" />

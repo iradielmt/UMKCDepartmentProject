@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 </head>
-<body style="margin-bottom:5%;">
+<body style="margin-bottom:5%;" >
 <div>
 <Header />
 </div>
@@ -76,7 +76,12 @@ export default {
         const token = response.token;
         const user = response.user;
         this.$store.dispatch('login', { token, user });
-        await this.$router.push('/student');
+        if (this.umkcID.length === 9) {
+          await this.$router.push('/admin');
+        }
+        else {
+          await this.$router.push('/student');
+        }
       } catch (error) {
         this.msg = error.response.data.msg;
       }

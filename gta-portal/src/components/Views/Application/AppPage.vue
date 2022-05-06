@@ -136,7 +136,7 @@
               </div>
               <div class="row mt-4">
                <div>
-               <label for="" class="mt-1">If certified, Term of completion. </label>
+               <label for="" class="mt-1">If certified, term of completion. </label>
                </div>
                <div class="col-md-6">
                <input type="text" class="form-control" placeholder="" v-model="umkcID" />

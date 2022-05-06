@@ -41,7 +41,14 @@
                <input type="text" class="form-control" placeholder="ID" v-model="umkcID" />
                </div>
                </div>
-
+              <div class="row mt-4">
+                <div>
+                  <label for="" class="mt-1">Email</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="example@umsystem.edu" v-model="email" />
+                </div>
+              </div>
                <div class="row mt-4">
                <div>
                <label for="" class="mt-1">UMKC Current Level (BA/BS/MS/PhD)</label>

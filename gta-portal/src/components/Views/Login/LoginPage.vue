@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 </head>
-<body style="margin-bottom:5%;">
+<body style="margin-bottom:5%;" >
 <div>
 <Header />
 </div>
@@ -30,6 +30,7 @@
                 <input type="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="UMKC ID" v-model="umkcID"/>
               </div>
               <button @click="login" class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+              <p style="color:skyblue" v-if="msg">* {{ msg }}</p>
               <div>
                 <p class="mb-0">Don't have an account? <a href="/register" class="mb-22 fw-bold">Sign Up</a></p>
               </div>
@@ -75,7 +76,12 @@ export default {
         const token = response.token;
         const user = response.user;
         this.$store.dispatch('login', { token, user });
-        await this.$router.push('/appPage');
+        if (this.umkcID.length === 9) {
+          await this.$router.push('/admin');
+        }
+        else {
+          await this.$router.push('/student');
+        }
       } catch (error) {
         this.msg = error.response.data.msg;
       }

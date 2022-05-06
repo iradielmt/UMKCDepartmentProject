@@ -26,8 +26,10 @@
                                     <form>
                                         <div class="row">
                                             <button class="button-19" @click="$router.push('/Register')">Register</button>
+                                            <div class="existing">
                                             <h3 class="mb-4">Existing GTA login:</h3>
                                             <button class="button-19" @click="$router.push('/login')">Login</button>
+                                            </div>
                                         </div>
                                     </form>
                         </div>
@@ -45,7 +47,7 @@
                                              </div>
 
                                             <div class="text pl-3">
-                                            <p class="mb-4"><span>Address:</span> 5110 Rockhill Rd, Kansas City, MO 64110</p>
+                                            <p class="mb-3"><span>Address:</span> 5110 Rockhill Rd, Kansas City, MO 64110</p>
                                             </div>
                                         </div>
 
@@ -101,3 +103,8 @@ export default {
 }
 
 </script>
+<style scoped>
+.existing{
+    margin-top: 50px;
+}
+</style>

@@ -44,27 +44,47 @@ router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
                                 });
                             }
                         );
-                        // Student Info added to DB
-                        // db.query(
-                        //     `INSERT INTO Students (umkcID, fname, lname, contactNo, email, certified) VALUES (${db.escape(req.body.umkcID)}, ${db.escape(req.body.fname)}, ${db.escape(req.body.lname)}, ${db.escape(req.body.contactNo)}, ${db.escape(req.body.email)}, ${db.escape(req.body.certified)})`,
-                        //     (err, result) => {
-                        //         if (err) {
-                        //             throw err;
-                        //             return res.status(400).send({
-                        //                 msg: 'An unexpected error occurred'
-                        //             });
-                        //         }
-                        //         return res.status(201).send({
-                        //             msg: 'Information Recorded'
-                        //         });
-                        //     }
-                        // );
                     }
                 });
             }
         }
     );
 });
+
+router.post("/register/student", (req, res) => {
+    db.query(
+        `INSERT INTO Students (umkcID, fname, lname, contactNo, email, certified) VALUES (${db.escape(req.body.umkcID)}, ${db.escape(req.body.fname)}, ${db.escape(req.body.lname)}, ${db.escape(req.body.contactNo)}, ${db.escape(req.body.email)}, ${db.escape(req.body.certified)})`,
+        (err, result) => {
+            if (err) {
+                throw err;
+                return res.status(400).send({
+                    msg: 'An unexpected error occurred'
+                });
+            }
+            return res.status(201).send({
+                msg: 'Information Recorded'
+            });
+        }
+    );
+})
+
+
+router.post("/send/app", (req, res) => {
+    db.query(
+        `INSERT INTO Applications (fname, lname, umkcID, email, currLevel, gradSemester, GPA, hrsCompleted, degree, currMajor, position, certified, courseID) VALUES (${db.escape(req.body.fname)}, ${db.escape(req.body.lname)}, ${db.escape(req.body.umkcID)}, ${db.escape(req.body.email)}, ${db.escape(req.body.currLevel)}, ${db.escape(req.body.gradSemester)}, ${db.escape(req.body.GPA)}, ${db.escape(req.body.hrsCompleted)}, ${db.escape(req.body.degree)}, ${db.escape(req.body.currMajor)}, ${db.escape(req.body.position)}, ${db.escape(req.body.certified)}, ${db.escape(req.body.courseID)})`,
+        (err, result) => {
+            if (err) {
+                throw err;
+                return res.status(400).send({
+                    msg: 'An unexpected error occurred'
+                });
+            }
+            return res.status(201).send({
+                msg: 'Information Recorded'
+            });
+        }
+    );
+})
 
 router.post('/login', (req, res, next) => {
     db.query(
@@ -97,7 +117,8 @@ router.post('/login', (req, res, next) => {
                     if (bResult) {
                         const token = jwt.sign({
                                 email: result[0].email,
-                                umkcID: result[0].umkcID
+                                umkcID: result[0].umkcID,
+                                idRef: req.body.umkcID.toString()
                             },
                             'TOKEN', {
                                 expiresIn: '3d'
@@ -125,45 +146,6 @@ router.get('/validate', userMiddleware.isLoggedIn, (req, res, next) => {
     res.send('Logged in');
 });
 
-// router.post("/student", (req, res) => {
-//     console.log("Request..	");
-//     let fname = req.body.fname;
-//     let lname = req.body.lname;
-//     let umkcID = req.body.umkcID;
-//
-//     let errFName = validateFName(fname); // will validate first name
-//     let errLName = validateLName(lname); // will validate last name
-//     let errID = validateID(umkcID); // will validate ID
-//     let admin = isAdmin(umkcID); // will determine if user is student or admin
-//
-//     if (errFName.length || errLName.length || errID.length) {
-//         res.json(200, {
-//             msg: "Validation Failed",
-//             errors: {
-//                 fname: errFName,
-//                 lname: errLName,
-//                 umkcID: errID,
-//             }
-//         });
-//     }
-//     else {
-//         let query = `INSERT INTO Students (fname, lname, umkcID, admin) VALUES ('${fname}', '${lname}', '${umkcID}', '${admin}')`;
-//         db.connection.query(query, (err, result) => {
-//             if (err) {
-//                 console.log(err.message);
-//                 // status code 500 is for Internal Server Error
-//                 return res.json(500, {
-//                     msg: "Something went wrong please try again"
-//                 })
-//             }
-//             // if we reach till this point means record is inserted succesfully
-//             return res.json(200, {
-//                 msg: "User Registered Succesfully",
-//             })
-//         })
-//     }
-// });
-//
 router.get("/students", (req, res) => {
     let query = "SELECT * FROM STUDENTS";
 
@@ -182,29 +164,10 @@ router.get("/students", (req, res) => {
 })
 
 router.get("/courses", (req, res) => {
-    let query = "SELECT * FROM Courses";
-
+    let query = `SELECT * FROM Courses ORDER BY courseNo ASC`;
     db.query(query, (err, result) => {
         if (err) {
-            res.json(500, {
-                msg: "Internal Server Error Please Try Again"
-            })
-        }
-
-        res.send(200, {
-            msg: "All the data fetched successfully",
-            data: result
-        })
-    })
-})
-
-router.get("/applications", (req, res) => {
-    // let courseID = req.body.courseID;
-    let query = `SELECT * FROM Applications WHERE courseID ='${req.body.courseID}'`;
-
-    db.query(query, (err, result) => {
-        if (err) {
-            res.json(500, {
+            return res.json(500, {
                 msg: "Internal Server Error Please Try Again"
             })
         }
@@ -215,7 +178,24 @@ router.get("/applications", (req, res) => {
     })
 });
 
-router.get("/api/courseNum", (req, res) => {
+router.get("/applications", (req, res) => {
+    let param = req.query.courseNo;
+    let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY GPA DESC`;
+    db.query(query, (err, result) => {
+        if (err) {
+            return res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+});
+
+
+router.get("/courseNum", (req, res) => {
     let query = `SELECT * FROM Courses WHERE courseNo ='${req.body.courseNo}'`;
     db.query(query, (err, result) => {
         if (err) {
@@ -229,41 +209,5 @@ router.get("/api/courseNum", (req, res) => {
         })
     })
 });
-//
-// router.post("/login", (req, res, next)=> {
-//     let umkcID = req.body.umkcID;
-//     let email = req.body.email;
-//     let errID = validateID(umkcID); // will validate ID
-//     let errEmail = validateEmail(email); // will validate user email is in proper format
-//     if (errID.length || errEmail.length) {
-//         res.locals.errors = {
-//             umkcID: errID,
-//             email: errEmail,
-//         }
-//         return next("Validation Failed");
-//     }
-//
-//     else {
-//         let query = `SELECT umkcID, email FROM Accounts WHERE umkcID = '${umkcID}'`;
-//         db.connection.query(query, (err, results) => {
-//             if (err) {
-//                 console.log(err.message);
-//                 // status code 500 is for Internal Server Error
-//                 return res.json(500, {
-//                     msg: "Something went wrong please try again"
-//                 })
-//             }
-//             if(results.length == 1){
-//                 res.locals.data = {
-//                     msg: "Succesful Login",
-//                 }
-//                 return next();
-//             }
-//             return res.json(401, {
-//                 msg: "Unknown user"
-//             })
-//         })
-//     }
-// })
 
 module.exports = router;

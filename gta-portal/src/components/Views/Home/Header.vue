@@ -31,6 +31,13 @@
             </router-link>
           </li>
         </ul>
+        <ul class ='navbar-nav'>
+          <li class="nav-item" id="navbarSupportedContent">
+            <router-link class="nav-link active" style="" aria-current="page" to="/">
+              Logout
+            </router-link>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>

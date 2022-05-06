@@ -44,21 +44,6 @@ router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
                                 });
                             }
                         );
-                        // Student Info added to DB
-                        // db.query(
-                        //     `INSERT INTO Students (umkcID, fname, lname, contactNo, email, certified) VALUES (${db.escape(req.body.umkcID)}, ${db.escape(req.body.fname)}, ${db.escape(req.body.lname)}, ${db.escape(req.body.contactNo)}, ${db.escape(req.body.email)}, ${db.escape(req.body.certified)})`,
-                        //     (err, result) => {
-                        //         if (err) {
-                        //             throw err;
-                        //             return res.status(400).send({
-                        //                 msg: 'An unexpected error occurred'
-                        //             });
-                        //         }
-                        //         return res.status(201).send({
-                        //             msg: 'Information Recorded'
-                        //         });
-                        //     }
-                        // );
                     }
                 });
             }
@@ -132,7 +117,8 @@ router.post('/login', (req, res, next) => {
                     if (bResult) {
                         const token = jwt.sign({
                                 email: result[0].email,
-                                umkcID: result[0].umkcID
+                                umkcID: result[0].umkcID,
+                                idRef: req.body.umkcID.toString()
                             },
                             'TOKEN', {
                                 expiresIn: '3d'
@@ -223,41 +209,5 @@ router.get("/courseNum", (req, res) => {
         })
     })
 });
-//
-// router.post("/login", (req, res, next)=> {
-//     let umkcID = req.body.umkcID;
-//     let email = req.body.email;
-//     let errID = validateID(umkcID); // will validate ID
-//     let errEmail = validateEmail(email); // will validate user email is in proper format
-//     if (errID.length || errEmail.length) {
-//         res.locals.errors = {
-//             umkcID: errID,
-//             email: errEmail,
-//         }
-//         return next("Validation Failed");
-//     }
-//
-//     else {
-//         let query = `SELECT umkcID, email FROM Accounts WHERE umkcID = '${umkcID}'`;
-//         db.connection.query(query, (err, results) => {
-//             if (err) {
-//                 console.log(err.message);
-//                 // status code 500 is for Internal Server Error
-//                 return res.json(500, {
-//                     msg: "Something went wrong please try again"
-//                 })
-//             }
-//             if(results.length == 1){
-//                 res.locals.data = {
-//                     msg: "Succesful Login",
-//                 }
-//                 return next();
-//             }
-//             return res.json(401, {
-//                 msg: "Unknown user"
-//             })
-//         })
-//     }
-// })
 
 module.exports = router;

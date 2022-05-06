@@ -42,7 +42,17 @@ import Footer from './Footer.vue'
 
 export default {
   components: { Header, Footer },
-  name: "Student-page"
+  name: "Student-page",
+
+  data(){
+    return{
+      user: {}
+    }
+  },
+  mounted() {
+    this.user = this.$store.getters.getUser;
+    // console.log(this.user.email);
+  }
 }
 
 

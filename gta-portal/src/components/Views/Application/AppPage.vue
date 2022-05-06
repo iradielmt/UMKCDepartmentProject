@@ -134,7 +134,15 @@
               <option value="0">Not Certified</option>
               </select>
               </div>
-
+              <div class="row mt-4">
+               <div>
+               <label for="" class="mt-1">If certified, Term of completion. </label>
+               </div>
+               <div class="col-md-6">
+               <input type="text" class="form-control" placeholder="" v-model="umkcID" />
+               </div>
+               </div>
+             
               <div>
               <label for="" class="mt-1">If you have a previous degree from a US Institute, please indicate this as that waives GTA certification. </label>
               </div>

@@ -141,21 +141,27 @@
               <option value="0">Not Certified</option>
               </select>
               </div>
-
+              <div class="row mt-4">
+               <div>
+               <label for="" class="mt-1">If certified, term of completion. </label>
+               </div>
+               <div class="col-md-6">
+               <input type="text" class="form-control" placeholder="" v-model="certificationTerm" />
+               </div>
+               </div>
+             
               <div>
               <label for="" class="mt-1">If you have a previous degree from a US Institute, please indicate this as that waives GTA certification. </label>
               </div>
               <div class="col-md-6">
-              <select name="" id="" class="form-select" v-model="certified">
+              <select name="" id="" class="form-select" v-model="prevDegree">
               <option value=""> </option>
               <option value="1">Previous Degree</option>
               <option value="0">No Previous Degree</option>
               </select>
               </div>
-
-
              <div>
-             <label for="" class="mt-1">Courses you could serve as lab instructoror grade for(ex. CS 201L/CS 5525/ECE 216, etc.)</label>
+             <label for="" class="mt-1">Course you would like to serve as lab instructor or grader for(ex. CS 201L/CS 5525/ECE 216, etc.)</label>
              </div>
              <div class="col-md-6">
              <input type="text" class="form-control" placeholder="Courses" v-model="courseID" />
@@ -165,8 +171,6 @@
                  <p style="color:skyblue" v-if="msg"> {{ msg }}</p>
              </div>
              </div>
-
-
            </div>
          </div>
        </div>
@@ -207,6 +211,8 @@ export default {
       currMajor: "",
       position: "",
       certified: false,
+      certificationTerm: "",
+      prevDegree: false,
       courseID: null,
       courses: {},
       msg: ''

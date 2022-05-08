@@ -75,6 +75,11 @@ export default {
       classes: {},
     }
   },
+  async created() {
+    if (!this.$store.getters.isLoggedIn) {
+      await this.$router.push('/login');
+    }
+  },
   watch: {
     courseName: function(){
       this.isShow=true;

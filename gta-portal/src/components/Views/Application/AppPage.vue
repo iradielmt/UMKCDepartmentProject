@@ -218,6 +218,11 @@ export default {
       msg: ''
     }
   },
+  async created() {
+    if (!this.$store.getters.isLoggedIn) {
+      await this.$router.push('/login');
+    }
+  },
   methods: {
     async postApp() {
       try {

@@ -49,6 +49,11 @@ export default {
       user: {}
     }
   },
+  async created() {
+    if (!this.$store.getters.isLoggedIn) {
+      await this.$router.push('/login');
+    }
+  },
   mounted() {
     this.user = this.$store.getters.getUser;
     // console.log(this.user.email);

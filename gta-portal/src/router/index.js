@@ -6,7 +6,7 @@ import AppPage from "@/components/Views/Application/AppPage"
 import LoginPage from "@/components/Views/Login/LoginPage"
 import StudentPage from "@/components/Views/Student/StudentPage"
 import Admin from "@/components/Views/Admin/Admin"
-import store from "/src/store/store"
+// import store from "/src/store/store"
 const routes = [
     {
         path: "/",
@@ -59,17 +59,17 @@ const router = createRouter({
     routes,
 });
 
-router.beforeEach((to, from, next) => {
-    if (to.matched.some((route) => route.meta.requiresAuth) && store.state.user === null) {
-        next({name: 'login'});
-        return;
-    }
-    if (to.path === '/login' && store.state.user != null) {
-        next({name: 'student'});
-        return;
-    }
-    console.log(store.state.user)
-    next();
-});
+// router.beforeEach((to, from, next) => {
+//     if (to.matched.some((route) => route.meta.requiresAuth) && store.state.user === null) {
+//         next({name: 'login'});
+//         return;
+//     }
+//     if (to.path === '/login' && store.state.user != null) {
+//         next({name: 'landing'});
+//         return;
+//     }
+//     console.log(store.state.user)
+//     next();
+// });
 
 export default router;

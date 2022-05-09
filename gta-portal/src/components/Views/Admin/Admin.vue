@@ -1,5 +1,5 @@
 <template>
-<Header />
+<AdminHeader />
 <div >
   <section class="vh-100" style="background-color: skyblue;">
     <div class="center1">
@@ -57,14 +57,14 @@
 </template>
 
 <script>
-import Header from "@/components/Views/Home/Header.vue";
 import Footer from "@/components/Views/Home/Footer.vue";
 import axios from 'axios';
+import AdminHeader from "@/components/Views/Admin/AdminHeader";
 const url = 'http://localhost:3000/api/';
 
 export default {
-  components: { 
-    Header,
+  components: {
+    AdminHeader,
     Footer,
    },
   name: "Admin-page",
@@ -73,6 +73,11 @@ export default {
       applications: {},
       courseName: {},
       classes: {},
+    }
+  },
+  async created() {
+    if (!this.$store.getters.isLoggedIn) {
+      await this.$router.push('/login');
     }
   },
   watch: {

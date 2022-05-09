@@ -31,6 +31,13 @@
             </router-link>
           </li>
         </ul>
+        <ul class ='navbar-nav'>
+          <button style="background-color: #1c1e25" class="nav-item" id="navbarSupportedContent" @click="logout">
+            <router-link class="nav-link active" style="" aria-current="page" to="/">
+              Logout
+            </router-link>
+          </button>
+        </ul>
       </div>
     </div>
   </nav>
@@ -39,7 +46,12 @@
 <script>
 export default {
   name: "HeaderHome",
-};
-
+  methods: {
+    logout() {
+      this.$store.dispatch('logout');
+      this.$router.push('/login');
+    }
+  }
+}
 
 </script>

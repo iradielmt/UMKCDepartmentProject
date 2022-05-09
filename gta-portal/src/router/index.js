@@ -6,6 +6,7 @@ import AppPage from "@/components/Views/Application/AppPage"
 import LoginPage from "@/components/Views/Login/LoginPage"
 import StudentPage from "@/components/Views/Student/StudentPage"
 import Admin from "@/components/Views/Admin/Admin"
+import Landing from "@/components/Views/Landing/Landing";
 // import store from "/src/store/store"
 const routes = [
     {
@@ -32,6 +33,14 @@ const routes = [
         path: "/AppPage",
         name: "apppage",
         component: AppPage,
+        meta: {
+            requiresAuth: true,
+        },
+    },
+    {
+        path:"/landing",
+        name: "landing",
+        component: Landing,
         meta: {
             requiresAuth: true,
         },
@@ -68,7 +77,6 @@ const router = createRouter({
 //         next({name: 'landing'});
 //         return;
 //     }
-//     console.log(store.state.user)
 //     next();
 // });
 

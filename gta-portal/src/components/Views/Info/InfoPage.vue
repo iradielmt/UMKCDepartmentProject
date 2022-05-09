@@ -23,7 +23,7 @@
 			<div class="wrapper">
 				<div class="contact-wrap w-100 p-md-5 p-4 py-5">
 				
-				<h3 class="mb-4">Potential GTA's are evaulated based on:</h3>
+				<h3 class="mb-4">Potential GTA's are evaluated based on:</h3>
 				<ul>
 				<li>Competence in major field</li>
 				<li>Quality of training in field related to major subject</li>

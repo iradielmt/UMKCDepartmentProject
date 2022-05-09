@@ -113,11 +113,15 @@ export default {
       certified: false,
       contactNo: "",
       accountMsg: '',
-      studentMsg:''
+      studentMsg:'',
+      isAdmin: 0
     }
   },
   methods: {
     async signUp() {
+      if(this.umkcID.length === 9){
+        this.isAdmin = 1;
+      }
       try {
         const credentials = {
           fname: this.fname,
@@ -126,6 +130,7 @@ export default {
           email: this.email,
           contactNo: this.contactNo,
           certified: this.certified,
+          isAdmin: this.isAdmin
         };
         const response = await AuthService.signUp(credentials);
         const response2 = await AuthService.postStudent(credentials);

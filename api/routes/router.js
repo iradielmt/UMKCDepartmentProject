@@ -31,7 +31,7 @@ router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
                     } else {
                         // has hashed umkcID => add to database
                         db.query(
-                            `INSERT INTO Accounts (email, umkcID) VALUES (${db.escape(req.body.email)}, ${db.escape(hash)} )`,
+                            `INSERT INTO Accounts (email, isAdmin, umkcID) VALUES (${db.escape(req.body.email)}, ${db.escape(req.body.isAdmin)}, ${db.escape(hash)} )`,
                             (err, result) => {
                                 if (err) {
                                     throw err;

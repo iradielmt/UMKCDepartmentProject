@@ -41,13 +41,20 @@
                <input type="text" class="form-control" placeholder="ID" v-model="umkcID" />
                </div>
                </div>
-
+              <div class="row mt-4">
+                <div>
+                  <label for="" class="mt-1">Email</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="example@umsystem.edu" v-model="email" />
+                </div>
+              </div>
                <div class="row mt-4">
                <div>
                <label for="" class="mt-1">UMKC Current Level (BA/BS/MS/PhD)</label>
                </div>
                <div class="col-md-6">
-               <select name="CurrentLevel" id="CurrentLevel" v-model="currLevel">
+               <select name="CurrentLevel" class="form-select" id="CurrentLevel" v-model="currLevel">
                   <option value="BA">BA</option>
                   <option value="BS">BS</option>
                   <option value="MS">MS</option>
@@ -60,7 +67,7 @@
                <label for="" class="mt-1">Graduating Semester</label>
                </div>
                <div class="col-md-6">
-               <select name="GradSemester" id="GradSemester" v-model="gradSemester">
+               <select name="GradSemester" class="form-select" id="GradSemester" v-model="gradSemester">
                   <option value="Spring 22">Spring 22</option>
                   <option value="Summer 22">Summer 22</option>
                   <option value="Fall 22">Fall 22</option>
@@ -105,7 +112,7 @@
               <label for="" class="mt-1">Current Major(CS/IT/ECE/EE)</label>
               </div>
               <div class="col-md-6">
-              <select name="CurrentMajor" id="CurrentMajor" v-model="currMajor">
+              <select name="CurrentMajor" class="form-select" id="CurrentMajor" v-model="currMajor">
                   <option value="CS">CS</option>
                   <option value="IT">IT</option>
                   <option value="ECE">ECE</option>
@@ -117,7 +124,7 @@
               <label for="" class="mt-1">Applying for: (Grader, Lab Instructor or Both) </label>
               </div>
               <div class="col-md-6">
-              <select name="applying" id="applying" v-model="position">
+              <select name="applying" class="form-select" id="applying" v-model="position">
                   <option value="Grader">Grader</option>
                   <option value="Lab Instructor">Lab Instructor</option>
                   <option value="Both">Both</option>
@@ -125,21 +132,36 @@
               </div>
 
               <div>
-              <label for="" class="mt-1">Are you GTA certified? If so, which term did you complete your certification?</label>
+              <label for="" class="mt-1"> Are you GTA Certified?</label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Term of Completion/NA" v-model="term" />
+              <select name="" id="" class="form-select" v-model="certified">
+              <option value=""> </option>
+              <option value="1">Certified</option>
+              <option value="0">Not Certified</option>
+              </select>
               </div>
-
+              <div class="row mt-4">
+               <div>
+               <label for="" class="mt-1">If certified, term of completion. </label>
+               </div>
+               <div class="col-md-6">
+               <input type="text" class="form-control" placeholder="" v-model="certificationTerm" />
+               </div>
+               </div>
+             
               <div>
-              <label for="" class="mt-1">If you have a previous degree from a US Institute, please indicate this as that waives GTA certification.</label>
+              <label for="" class="mt-1">If you have a previous degree from a US Institute, please indicate this as that waives GTA certification. </label>
               </div>
               <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Certification(s)/NA" v-model="certified" />
+              <select name="" id="" class="form-select" v-model="prevDegree">
+              <option value=""> </option>
+              <option value="1">Previous Degree</option>
+              <option value="0">No Previous Degree</option>
+              </select>
               </div>
-
              <div>
-             <label for="" class="mt-1">Courses you could serve as lab instructoror grade for(ex. CS 201L/CS 5525/ECE 216, etc.)</label>
+             <label for="" class="mt-1">Course you would like to serve as lab instructor or grader for(ex. CS 201L/CS 5525/ECE 216, etc.)</label>
              </div>
              <div class="col-md-6">
              <input type="text" class="form-control" placeholder="Courses" v-model="courseID" />
@@ -149,8 +171,6 @@
                  <p style="color:skyblue" v-if="msg"> {{ msg }}</p>
              </div>
              </div>
-
-
            </div>
          </div>
        </div>
@@ -191,9 +211,16 @@ export default {
       currMajor: "",
       position: "",
       certified: false,
+      certificationTerm: "",
+      prevDegree: false,
       courseID: null,
       courses: {},
       msg: ''
+    }
+  },
+  async created() {
+    if (!this.$store.getters.isLoggedIn) {
+      await this.$router.push('/login');
     }
   },
   methods: {

@@ -56,8 +56,6 @@ export default {
   },
   mounted() {
     this.user = this.$store.getters.getUser;
-    // console.log(this.user);
-    // console.log(this.user.email);
   }
 }
 

@@ -178,7 +178,7 @@ router.get("/courses", (req, res) => {
     })
 });
 
-router.get("/applications", (req, res) => {
+router.get("/applicationsGPA", (req, res) => {
     let param = req.query.courseNo;
     let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY GPA DESC`;
     db.query(query, (err, result) => {
@@ -194,6 +194,53 @@ router.get("/applications", (req, res) => {
     })
 });
 
+router.get("/applicationsHrs", (req, res) => {
+    let param = req.query.courseNo;
+    let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY hrsCompleted DESC`;
+    db.query(query, (err, result) => {
+        if (err) {
+            return res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+});
+
+router.get("/applicationsFName", (req, res) => {
+    let param = req.query.courseNo;
+    let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY fname ASC`;
+    db.query(query, (err, result) => {
+        if (err) {
+            return res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+});
+
+router.get("/applicationsLName", (req, res) => {
+    let param = req.query.courseNo;
+    let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY lname ASC`;
+    db.query(query, (err, result) => {
+        if (err) {
+            return res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+});
 
 router.get("/courseNum", (req, res) => {
     let query = `SELECT * FROM Courses WHERE courseNo ='${req.body.courseNo}'`;

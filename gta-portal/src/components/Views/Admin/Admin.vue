@@ -32,7 +32,7 @@
                     <th><button @click="loadApplicationsLName()">Last</button></th>
                     <th><button>UMKC ID</button></th>
                     <th><button>Course ID</button></th>
-                    <th><button @click="loadApplicationsMajor()">Current Major</button></th>
+                    <th><button @click="loadApplicationsHrs()">Credits Passed</button></th>
                     <th><button @click="loadApplicationsGPA()">GPA</button></th>
                 </tr>
             </thead>
@@ -42,7 +42,7 @@
                     <td>{{application.lname}}</td>
                     <td>{{application.umkcID}}</td>
                     <td>{{application.courseID}}</td> 
-                    <td>{{application.currMajor}}</td>
+                    <td>{{application.hrsCompleted}}</td>
                     <td>{{application.GPA}}</td>
                 </tr>
             </tbody>
@@ -105,9 +105,9 @@ export default {
         this.msg = error.response.data.msg;
       }
     },
-    loadApplicationsMajor: function() {
+    loadApplicationsHrs: function() {
       try {
-        axios.get(url + 'applicationsMajor', {params: {"courseNo": this.courseName.courseID }} ).then((response) => {this.applications = response.data.data});
+        axios.get(url + 'applicationsHrs', {params: {"courseNo": this.courseName.courseID }} ).then((response) => {this.applications = response.data.data});
       } catch (error) {
         this.msg = error.response.data.msg;
       }

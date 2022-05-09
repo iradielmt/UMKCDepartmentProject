@@ -194,9 +194,9 @@ router.get("/applicationsGPA", (req, res) => {
     })
 });
 
-router.get("/applicationsMajor", (req, res) => {
+router.get("/applicationsHrs", (req, res) => {
     let param = req.query.courseNo;
-    let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY currMajor DESC`;
+    let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY hrsCompleted DESC`;
     db.query(query, (err, result) => {
         if (err) {
             return res.json(500, {

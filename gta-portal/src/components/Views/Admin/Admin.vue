@@ -139,12 +139,7 @@ export default {
   watch: {
     courseName: function(){
       this.isShow=true;
-<<<<<<< HEAD
-      this.loadApplications();
-      this.loadcurrMajorApplications();
-=======
       this.loadApplicationsGPA();
->>>>>>> 44d25ef499f54f7f29a27aa4558ce157b4f9c9d3
     }
   },
    mounted() {

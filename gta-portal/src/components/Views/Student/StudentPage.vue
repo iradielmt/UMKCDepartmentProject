@@ -43,7 +43,7 @@
             <tr style="background-color:lightblue;">
                     <th>First</th>
                     <th>Last</th>
-                    <th>UMKC ID</th>
+                    <th>Hours Complete</th>
                     <th>Course ID</th>
                     <th>Current Major</th>
                     <th>GPA</th>
@@ -53,7 +53,7 @@
                 <tr v-for="application in applications" :key="application.email">
                     <td>{{application.fname}}</td>
                     <td>{{application.lname}}</td>
-                    <td>{{application.umkcID}}</td>
+                    <td>{{application.hrsCompleted}}</td>
                     <td>{{application.courseID}}</td> 
                     <td>{{application.currMajor}}</td>
                     <td>{{application.GPA}}</td>
@@ -81,25 +81,6 @@ const url = 'http://localhost:3000/api/';
 export default {
   components: { Header, Footer },
   name: "Student-page",
-<<<<<<< HEAD
-=======
-
-  data(){
-    return{
-      user: {}
-    }
-  },
-  async created() {
-    if (!this.$store.getters.isLoggedIn) {
-      await this.$router.push('/login');
-    }
-  },
-  mounted() {
-    this.user = this.$store.getters.getUser;
-  }
-}
-
->>>>>>> 44d25ef499f54f7f29a27aa4558ce157b4f9c9d3
 
   data(){
     return{
@@ -117,8 +98,9 @@ export default {
   },
   mounted() {
     this.user = this.$store.getters.getUser;
-    this.loadAllApplications();
+   
     this.loadApplications();
+   
     console.log(this.user.email);
     // this.loadAccounts();
     
@@ -126,26 +108,19 @@ export default {
   methods:{
      loadApplications: function() {
       try {
-        axios.get(url + 'applications/umkcId', {params: {"email": this.user.email }} ).then((response) => {this.applications = response.data.data});
+        axios.get(url + 'applications/umkcId', {params: {"email": this.user.email }} ).then((response) => {
+          this.applications = response.data.data;
+          for(var i = 0; i<this.applications.length; i++){
+          console.log(this.applications[i]);
+        }
+          
+          });
+        
+
       } catch (error) {
         this.msg = error.response.data.msg;
       }
     },
-    loadAllApplications: function() {
-       try {
-        axios.get(url + 'applications').then((response) => {this.allApplications = response.data.data});
-      } catch (error) {
-        this.msg = error.response.data.msg;
-      }
-    }
-    // loadAccounts: function() {
-    //     axios.get(url + 'accounts').then((response) => {
-    //       this.accounts = response.data.data
-    //     })
-    //         .catch(()=>{
-    //           console.log("Something Went Wrong")
-    //         })
-    // },
   }
 } 
 </script>

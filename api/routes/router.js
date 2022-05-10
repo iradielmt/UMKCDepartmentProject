@@ -178,26 +178,7 @@ router.get("/courses", (req, res) => {
     })
 });
 
-<<<<<<< HEAD
-router.get("/applications", (req, res) => {
-    // let param = req.query.courseNo;
-    let query = `SELECT * FROM Applications`;
-    db.query(query, (err, result) => {
-        if (err) {
-            return res.json(500, {
-                msg: "Internal Server Error Please Try Again"
-            })
-        }
-        res.send(200, {
-            msg: "All the data fetched successfully",
-            data: result
-        })
-    })
-});
-router.get("/applications/currMajor", (req, res) => {
-=======
 router.get("/applicationsGPA", (req, res) => {
->>>>>>> 44d25ef499f54f7f29a27aa4558ce157b4f9c9d3
     let param = req.query.courseNo;
     let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY currMajor DESC`;
     db.query(query, (err, result) => {
@@ -227,6 +208,7 @@ router.get("/applications/umkcID", (req, res) => {
             data: result
         })
     })
+
 });
 
 router.get("/applicationsHrs", (req, res) => {
@@ -291,59 +273,5 @@ router.get("/courseNum", (req, res) => {
         })
     })
 });
-<<<<<<< HEAD
-
-router.get("/accounts", (req, res)=>{
-    let query = `SELECT * FROM Accounts`;
-    db.query(query, (err, result) => {
-        if (err) {
-            return res.json(500, {
-                msg: "Internal Server Error Please Try Again"
-            })
-        }
-        res.send(200, {
-            msg: "All the data fetched successfully",
-            data: result
-        })
-    })
-});
-//
-// router.post("/login", (req, res, next)=> {
-//     let umkcID = req.body.umkcID;
-//     let email = req.body.email;
-//     let errID = validateID(umkcID); // will validate ID
-//     let errEmail = validateEmail(email); // will validate user email is in proper format
-//     if (errID.length || errEmail.length) {
-//         res.locals.errors = {
-//             umkcID: errID,
-//             email: errEmail,
-//         }
-//         return next("Validation Failed");
-//     }
-//
-//     else {
-//         let query = `SELECT umkcID, email FROM Accounts WHERE umkcID = '${umkcID}'`;
-//         db.connection.query(query, (err, results) => {
-//             if (err) {
-//                 console.log(err.message);
-//                 // status code 500 is for Internal Server Error
-//                 return res.json(500, {
-//                     msg: "Something went wrong please try again"
-//                 })
-//             }
-//             if(results.length == 1){
-//                 res.locals.data = {
-//                     msg: "Succesful Login",
-//                 }
-//                 return next();
-//             }
-//             return res.json(401, {
-//                 msg: "Unknown user"
-//             })
-//         })
-//     }
-// })
-=======
->>>>>>> 44d25ef499f54f7f29a27aa4558ce157b4f9c9d3
 
 module.exports = router;

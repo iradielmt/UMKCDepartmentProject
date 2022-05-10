@@ -1,5 +1,6 @@
 # UMKCDepartmentProject
 Web based application to handle GTA applications
+*DB Schema for this application is titled as UMKCGTAdatabase.sql
 # gta-portal
 
 ## Project setup

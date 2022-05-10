@@ -180,7 +180,7 @@ router.get("/courses", (req, res) => {
 
 router.get("/applicationsGPA", (req, res) => {
     let param = req.query.courseNo;
-    let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY GPA DESC`;
+    let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY currMajor DESC`;
     db.query(query, (err, result) => {
         if (err) {
             return res.json(500, {
@@ -192,6 +192,23 @@ router.get("/applicationsGPA", (req, res) => {
             data: result
         })
     })
+});
+
+router.get("/applications/umkcID", (req, res) => {
+    let param = req.query.email;
+    let query = `SELECT * FROM Applications WHERE email ='${param}' `;
+    db.query(query, (err, result) => {
+        if (err) {
+            return res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+
 });
 
 router.get("/applicationsHrs", (req, res) => {

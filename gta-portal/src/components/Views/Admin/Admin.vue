@@ -28,8 +28,8 @@
           <table class="table table-bordered">
             <thead>
             <tr style="background-color:lightblue;">
-                    <th><button @click="loadApplicationsFName()">Name</button></th>
-                    <th><button @click="loadApplicationsLName()">Last</button></th>
+                    <th><button @click="loadApplicationsFName()">First Name</button></th>
+                    <th><button @click="loadApplicationsLName()">Last Name</button></th>
                     <th><button>UMKC ID</button></th>
                     <th><button>Course ID</button></th>
                     <th><button @click="loadApplicationsHrs()">Credits Passed</button></th>

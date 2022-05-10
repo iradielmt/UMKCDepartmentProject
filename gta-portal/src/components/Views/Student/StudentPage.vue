@@ -11,7 +11,7 @@
             </div>
 </div>
 <div class="main">
-<section class="vh-100">
+<section class="vh-50">
     <div class="container py-5 h-50" >
       <div class="row d-flex justify-content-center align-items-center" >
         <div class="col-12 col-md-8 col-lg-6 col-xl-5" >
@@ -31,6 +31,41 @@
     </div>
   </section>
 </div>
+<div >
+  <section class="vh-50" style="background-color: skyblue;">
+    <div class="main">
+      <div class="container py-0 h-50" >
+        <div>
+        <div >
+          <h2 style="text-align: center">Previous Applications:</h2>
+          <table class="table table-bordered">
+            <thead>
+            <tr style="background-color:lightblue;">
+                    <th>First</th>
+                    <th>Last</th>
+                    <th>UMKC ID</th>
+                    <th>Course ID</th>
+                    <th>Current Major</th>
+                    <th>GPA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="application in applications" :key="application.email">
+                    <td>{{application.fname}}</td>
+                    <td>{{application.lname}}</td>
+                    <td>{{application.umkcID}}</td>
+                    <td>{{application.courseID}}</td> 
+                    <td>{{application.currMajor}}</td>
+                    <td>{{application.GPA}}</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+</div>
 </body>
 <Footer />
 </html>
@@ -39,13 +74,61 @@
 <script>
 import Header from "@/components/Views/Student/StudentHeader.vue";
 import Footer from './Footer.vue'
+import axios from 'axios';
+const url = 'http://localhost:3000/api/';
+
 
 export default {
   components: { Header, Footer },
-  name: "Student-page"
-}
+  name: "Student-page",
 
-
+  data(){
+    return{
+      user: {},
+      email: {},
+      applications: {},
+      allApplications:{},
+      accounts: {},
+    }
+  },
+  watch: {
+    userEmail: function(){
+      this.loadApplications();
+    } 
+  },
+  mounted() {
+    this.user = this.$store.getters.getUser;
+    this.loadAllApplications();
+    this.loadApplications();
+    console.log(this.user.email);
+    // this.loadAccounts();
+    
+  },
+  methods:{
+     loadApplications: function() {
+      try {
+        axios.get(url + 'applications/umkcId', {params: {"email": this.user.email }} ).then((response) => {this.applications = response.data.data});
+      } catch (error) {
+        this.msg = error.response.data.msg;
+      }
+    },
+    loadAllApplications: function() {
+       try {
+        axios.get(url + 'applications').then((response) => {this.allApplications = response.data.data});
+      } catch (error) {
+        this.msg = error.response.data.msg;
+      }
+    }
+    // loadAccounts: function() {
+    //     axios.get(url + 'accounts').then((response) => {
+    //       this.accounts = response.data.data
+    //     })
+    //         .catch(()=>{
+    //           console.log("Something Went Wrong")
+    //         })
+    // },
+  }
+} 
 </script>
 
 <style scoped>

@@ -76,8 +76,8 @@
                  </div>
                  <div class="row mt-4">
                  <div class="col-md-4">
-                   <button class="btn btn-primary" @click="signUp" value="Sign Up">Register</button>
-                   <p style="color:skyblue" v-if="accountMsg">* {{ accountMsg }}</p>
+                   <button class="btn btn-primary" @click="signUp">Register</button>
+                   <p style="color:skyblue" v-if="response"> {{ response.msg }}</p>
                  </div>
                  </div>
                 </div>
@@ -112,9 +112,11 @@ export default {
       email: "",
       certified: false,
       contactNo: "",
-      accountMsg: '',
-      studentMsg:'',
-      isAdmin: 0
+      accountMsg: "",
+      studentMsg: "",
+      isAdmin: 0,
+      response: {},
+      response2: {}
     }
   },
   methods: {
@@ -132,10 +134,11 @@ export default {
           certified: this.certified,
           isAdmin: this.isAdmin
         };
-        const response = await AuthService.signUp(credentials);
-        const response2 = await AuthService.postStudent(credentials);
-        this.accountMsg = response.msg;
-        this.studentMsg = response2.msg
+        this.response = await AuthService.signUp(credentials);
+        this.response2 = await AuthService.postStudent(credentials);
+        this.accountMsg = this.response.msg;
+        console.log(this.response.message);
+        this.studentMsg = this.response2.msg
         if(this.accountMsg === "Registered!"){
            await this.$router.push('/login');
         }

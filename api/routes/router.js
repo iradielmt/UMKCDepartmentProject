@@ -24,7 +24,7 @@ router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
                 // New account being created
                 bcrypt.hash(req.body.umkcID, 10, (err, hash) => {
                     if (err) {
-                        console.log(err);
+                        // console.log(err);
                         return res.status(500).send({
                             msg: JSON.stringify(err)
                         });
@@ -34,7 +34,7 @@ router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
                             `INSERT INTO Accounts (email, isAdmin, umkcID) VALUES (${db.escape(req.body.email)}, ${db.escape(req.body.isAdmin)}, ${db.escape(hash)} )`,
                             (err, result) => {
                                 if (err) {
-                                    throw err;
+                                    // throw err;
                                     return res.status(400).send({
                                         msg: 'An unexpected error occurred'
                                     });

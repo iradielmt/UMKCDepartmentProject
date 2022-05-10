@@ -81,6 +81,25 @@ const url = 'http://localhost:3000/api/';
 export default {
   components: { Header, Footer },
   name: "Student-page",
+<<<<<<< HEAD
+=======
+
+  data(){
+    return{
+      user: {}
+    }
+  },
+  async created() {
+    if (!this.$store.getters.isLoggedIn) {
+      await this.$router.push('/login');
+    }
+  },
+  mounted() {
+    this.user = this.$store.getters.getUser;
+  }
+}
+
+>>>>>>> 44d25ef499f54f7f29a27aa4558ce157b4f9c9d3
 
   data(){
     return{

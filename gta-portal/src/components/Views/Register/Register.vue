@@ -76,8 +76,8 @@
                  </div>
                  <div class="row mt-4">
                  <div class="col-md-4">
-                   <button class="btn btn-primary" @click="signUp" value="Sign Up">Register</button>
-                   <p style="color:skyblue" v-if="accountMsg">* {{ accountMsg }}</p>
+                   <button class="btn btn-primary" @click="signUp">Register</button>
+                   <p style="color:skyblue" v-if="response"> {{ response.msg }}</p>
                  </div>
                  </div>
                 </div>
@@ -112,12 +112,18 @@ export default {
       email: "",
       certified: false,
       contactNo: "",
-      accountMsg: '',
-      studentMsg:''
+      accountMsg: "",
+      studentMsg: "",
+      isAdmin: 0,
+      response: {},
+      response2: {}
     }
   },
   methods: {
     async signUp() {
+      if(this.umkcID.length === 9){
+        this.isAdmin = 1;
+      }
       try {
         const credentials = {
           fname: this.fname,
@@ -126,11 +132,13 @@ export default {
           email: this.email,
           contactNo: this.contactNo,
           certified: this.certified,
+          isAdmin: this.isAdmin
         };
-        const response = await AuthService.signUp(credentials);
-        const response2 = await AuthService.postStudent(credentials);
-        this.accountMsg = response.msg;
-        this.studentMsg = response2.msg
+        this.response = await AuthService.signUp(credentials);
+        this.response2 = await AuthService.postStudent(credentials);
+        this.accountMsg = this.response.msg;
+        console.log(this.response.message);
+        this.studentMsg = this.response2.msg
         if(this.accountMsg === "Registered!"){
            await this.$router.push('/login');
         }

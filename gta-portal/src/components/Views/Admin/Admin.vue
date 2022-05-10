@@ -1,5 +1,5 @@
 <template>
-<Header />
+<AdminHeader />
 <div >
   <section class="vh-25" style="background-color: skyblue;">
     <div class="center1">
@@ -29,12 +29,12 @@
           <table class="table table-bordered">
             <thead>
             <tr style="background-color:lightblue;">
-                    <th>First</th>
-                    <th>Last</th>
-                    <th>UMKC ID</th>
-                    <th>Course ID</th>
-                    <th>Current Major</th>
-                    <th>GPA</th>
+                    <th><button @click="loadApplicationsFName()">Name</button></th>
+                    <th><button @click="loadApplicationsLName()">Last</button></th>
+                    <th><button>UMKC ID</button></th>
+                    <th><button>Course ID</button></th>
+                    <th><button @click="loadApplicationsHrs()">Credits Passed</button></th>
+                    <th><button @click="loadApplicationsGPA()">GPA</button></th>
                 </tr>
             </thead>
             <tbody>
@@ -43,7 +43,7 @@
                     <td>{{application.lname}}</td>
                     <td>{{application.umkcID}}</td>
                     <td>{{application.courseID}}</td> 
-                    <td>{{application.currMajor}}</td>
+                    <td>{{application.hrsCompleted}}</td>
                     <td>{{application.GPA}}</td>
                 </tr>
             </tbody>
@@ -112,14 +112,14 @@
 </template>
 
 <script>
-import Header from "@/components/Views/Home/Header.vue";
 import Footer from "@/components/Views/Home/Footer.vue";
 import axios from 'axios';
+import AdminHeader from "@/components/Views/Admin/AdminHeader";
 const url = 'http://localhost:3000/api/';
 
 export default {
-  components: { 
-    Header,
+  components: {
+    AdminHeader,
     Footer,
    },
   name: "Admin-page",
@@ -131,11 +131,20 @@ export default {
       classes: {},
     }
   },
+  async created() {
+    if (!this.$store.getters.isLoggedIn) {
+      await this.$router.push('/login');
+    }
+  },
   watch: {
     courseName: function(){
       this.isShow=true;
+<<<<<<< HEAD
       this.loadApplications();
       this.loadcurrMajorApplications();
+=======
+      this.loadApplicationsGPA();
+>>>>>>> 44d25ef499f54f7f29a27aa4558ce157b4f9c9d3
     }
   },
    mounted() {
@@ -150,9 +159,30 @@ export default {
             console.log("Something Went Wrong");
           })
     },
-    loadApplications: function() {
+    loadApplicationsGPA: function() {
       try {
-        axios.get(url + 'applications', {params: {"courseNo": this.courseName.courseID }} ).then((response) => {this.applications = response.data.data});
+        axios.get(url + 'applicationsGPA', {params: {"courseNo": this.courseName.courseID }} ).then((response) => {this.applications = response.data.data});
+      } catch (error) {
+        this.msg = error.response.data.msg;
+      }
+    },
+    loadApplicationsHrs: function() {
+      try {
+        axios.get(url + 'applicationsHrs', {params: {"courseNo": this.courseName.courseID }} ).then((response) => {this.applications = response.data.data});
+      } catch (error) {
+        this.msg = error.response.data.msg;
+      }
+    },
+    loadApplicationsFName: function() {
+      try {
+        axios.get(url + 'applicationsFName', {params: {"courseNo": this.courseName.courseID }} ).then((response) => {this.applications = response.data.data});
+      } catch (error) {
+        this.msg = error.response.data.msg;
+      }
+    },
+    loadApplicationsLName: function() {
+      try {
+        axios.get(url + 'applicationsLName', {params: {"courseNo": this.courseName.courseID }} ).then((response) => {this.applications = response.data.data});
       } catch (error) {
         this.msg = error.response.data.msg;
       }
@@ -172,5 +202,14 @@ export default {
 <style scoped>
 .row{
   margin-bottom: 20px;
+}
+
+button {     
+    font-weight: bold;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;        
 }
 </style>

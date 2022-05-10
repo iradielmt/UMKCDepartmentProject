@@ -24,17 +24,17 @@ router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
                 // New account being created
                 bcrypt.hash(req.body.umkcID, 10, (err, hash) => {
                     if (err) {
-                        console.log(err);
+                        // console.log(err);
                         return res.status(500).send({
                             msg: JSON.stringify(err)
                         });
                     } else {
                         // has hashed umkcID => add to database
                         db.query(
-                            `INSERT INTO Accounts (email, umkcID) VALUES (${db.escape(req.body.email)}, ${db.escape(hash)} )`,
+                            `INSERT INTO Accounts (email, isAdmin, umkcID) VALUES (${db.escape(req.body.email)}, ${db.escape(req.body.isAdmin)}, ${db.escape(hash)} )`,
                             (err, result) => {
                                 if (err) {
-                                    throw err;
+                                    // throw err;
                                     return res.status(400).send({
                                         msg: 'An unexpected error occurred'
                                     });
@@ -44,21 +44,6 @@ router.post('/register', userMiddleware.validateRegister, (req, res, next) => {
                                 });
                             }
                         );
-                        // Student Info added to DB
-                        // db.query(
-                        //     `INSERT INTO Students (umkcID, fname, lname, contactNo, email, certified) VALUES (${db.escape(req.body.umkcID)}, ${db.escape(req.body.fname)}, ${db.escape(req.body.lname)}, ${db.escape(req.body.contactNo)}, ${db.escape(req.body.email)}, ${db.escape(req.body.certified)})`,
-                        //     (err, result) => {
-                        //         if (err) {
-                        //             throw err;
-                        //             return res.status(400).send({
-                        //                 msg: 'An unexpected error occurred'
-                        //             });
-                        //         }
-                        //         return res.status(201).send({
-                        //             msg: 'Information Recorded'
-                        //         });
-                        //     }
-                        // );
                     }
                 });
             }
@@ -132,7 +117,8 @@ router.post('/login', (req, res, next) => {
                     if (bResult) {
                         const token = jwt.sign({
                                 email: result[0].email,
-                                umkcID: result[0].umkcID
+                                umkcID: result[0].umkcID,
+                                idRef: req.body.umkcID.toString()
                             },
                             'TOKEN', {
                                 expiresIn: '3d'
@@ -192,6 +178,7 @@ router.get("/courses", (req, res) => {
     })
 });
 
+<<<<<<< HEAD
 router.get("/applications", (req, res) => {
     // let param = req.query.courseNo;
     let query = `SELECT * FROM Applications`;
@@ -208,6 +195,9 @@ router.get("/applications", (req, res) => {
     })
 });
 router.get("/applications/currMajor", (req, res) => {
+=======
+router.get("/applicationsGPA", (req, res) => {
+>>>>>>> 44d25ef499f54f7f29a27aa4558ce157b4f9c9d3
     let param = req.query.courseNo;
     let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY currMajor DESC`;
     db.query(query, (err, result) => {
@@ -239,6 +229,53 @@ router.get("/applications/umkcID", (req, res) => {
     })
 });
 
+router.get("/applicationsHrs", (req, res) => {
+    let param = req.query.courseNo;
+    let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY hrsCompleted DESC`;
+    db.query(query, (err, result) => {
+        if (err) {
+            return res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+});
+
+router.get("/applicationsFName", (req, res) => {
+    let param = req.query.courseNo;
+    let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY fname ASC`;
+    db.query(query, (err, result) => {
+        if (err) {
+            return res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+});
+
+router.get("/applicationsLName", (req, res) => {
+    let param = req.query.courseNo;
+    let query = `SELECT * FROM Applications WHERE courseID = '${param}' ORDER BY lname ASC`;
+    db.query(query, (err, result) => {
+        if (err) {
+            return res.json(500, {
+                msg: "Internal Server Error Please Try Again"
+            })
+        }
+        res.send(200, {
+            msg: "All the data fetched successfully",
+            data: result
+        })
+    })
+});
 
 router.get("/courseNum", (req, res) => {
     let query = `SELECT * FROM Courses WHERE courseNo ='${req.body.courseNo}'`;
@@ -254,6 +291,7 @@ router.get("/courseNum", (req, res) => {
         })
     })
 });
+<<<<<<< HEAD
 
 router.get("/accounts", (req, res)=>{
     let query = `SELECT * FROM Accounts`;
@@ -305,5 +343,7 @@ router.get("/accounts", (req, res)=>{
 //         })
 //     }
 // })
+=======
+>>>>>>> 44d25ef499f54f7f29a27aa4558ce157b4f9c9d3
 
 module.exports = router;

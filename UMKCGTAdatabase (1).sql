@@ -369,3 +369,4 @@ INNER JOIN Student_courses s ON a.umkcID = s.umkcID
 WHERE a.courseID = 12719
 ORDER BY GPA DESC;
 
+

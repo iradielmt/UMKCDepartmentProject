@@ -41,8 +41,8 @@ create table Students (
 
 INSERT INTO Students
 (umkcID, fname, lname, contactno, email, certified) VALUES
-(16303387, 'Iradiel', 'Torres', '9132869647', 'imcrm@umsystem.edu', FALSE),
-(16240105, 'Alec', 'Beckman', '9131234567', 'ab7c8@umsystem.edu', FALSE),
+(16303387, 'Iradiel', 'Torres', '9139876543', 'abcd@umsystem.edu', FALSE),
+(16240105, 'Alec', 'Beckman', '9131234567', 'zyxw@umsystem.edu', FALSE),
 (16972302, 'Brage', 'Warwick', '9132093839', 'abuik@umsystem.edu', FALSE),
 (16192898, 'Guntram', 'Quirke', '9131827123', 'biued@umsystem.edu', FALSE),
 (16238022, 'Liam', 'George', '9132387320', 'jef3f@umsystem.edu', FALSE),
@@ -78,9 +78,9 @@ create table Applications (
 
 INSERT INTO Applications (applicationID, fname, lname, umkcID, email, currLevel, gradSemester, 
 	GPA, hrsCompleted, degree, currMajor, position, certified, courseID, appDate, certificationTerm, prevDegree) VALUES
-(1, 'Iradiel', 'Torres', 16303387, 'imcrm@umsystem.edu', 'senior', 'Fall 2022', 3.5, 120, "Associate's", 'Computer Science',
+(1, 'Iradiel', 'Torres', 16300123, 'abcd@umsystem.edu', 'senior', 'Fall 2022', 3.5, 120, "Associate's", 'Computer Science',
 	'both', FALSE, 12719, '2022-04-09', 'N/A', TRUE),
-    (2, 'Alec', 'Beckman', 16240105, 'ab7c8@umsystem.edu', 'senior', 'Spring 2022', 4.0, 135, "None", 'Computer Science', 
+    (2, 'Alec', 'Beckman', 16200321, 'zyxw@umsystem.edu', 'senior', 'Spring 2022', 4.0, 135, "None", 'Computer Science', 
 	'grader', FALSE, 12719, '2022-04-11', 'N/A', FALSE),
     (3, 'Brage', 'Warwick', 16972302, 'abuik@umsystem.edu', 'senior', 'Spring 2022', 3.8, 140, "None", 'Computer Science', 
 	'lab instructor', TRUE, 12719, '2022-04-11', 'Fall 2019', FALSE),
